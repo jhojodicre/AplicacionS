@@ -1,0 +1,10 @@
+C:\Users\60091592\source\repos\AplicacionS\bin\Debug\AplicacionS.exe.config
+C:\Users\60091592\source\repos\AplicacionS\bin\Debug\AplicacionS.exe
+C:\Users\60091592\source\repos\AplicacionS\bin\Debug\AplicacionS.pdb
+C:\Users\60091592\source\repos\AplicacionS\obj\Debug\AplicacionS.csproj.AssemblyReference.cache
+C:\Users\60091592\source\repos\AplicacionS\obj\Debug\AplicacionS.Form1.resources
+C:\Users\60091592\source\repos\AplicacionS\obj\Debug\AplicacionS.Properties.Resources.resources
+C:\Users\60091592\source\repos\AplicacionS\obj\Debug\AplicacionS.csproj.GenerateResource.cache
+C:\Users\60091592\source\repos\AplicacionS\obj\Debug\AplicacionS.csproj.CoreCompileInputs.cache
+C:\Users\60091592\source\repos\AplicacionS\obj\Debug\AplicacionS.exe
+C:\Users\60091592\source\repos\AplicacionS\obj\Debug\AplicacionS.pdb
