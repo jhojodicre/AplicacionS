@@ -16,7 +16,7 @@ namespace AplicacionS
         public Form1()
         {
             InitializeComponent();
-            SerialESP = new SerialPort();
+            
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -36,6 +36,19 @@ namespace AplicacionS
             SerialESP.ReadTimeout = 300;
             SerialESP.Handshake = Handshake.None;
         }
+        public static void SerialRecive()
+        {
+            while (true)
+            {
+                try
+                {
+                    SerialBufferRx = SerialESP.ReadLine();
+                    Console.WriteLine(SerialBufferRx);
+                }
+                catch { }
+            }
+        }
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -51,12 +64,31 @@ namespace AplicacionS
 
         private void button1_Click(object sender, EventArgs e)
         {
+            List<string> ListaDatosDelChip = new List<string>();
+
+            SerialESP = new SerialPort();
+
             SerialESP.Open();
+
+            SerialHilo = new Thread(SerialRecive);
+            SerialHilo.Start();
+
+            while (SerialSt != "0")
+            {
+                SerialSt = Console.ReadLine();
+                SerialESP.WriteLine(SerialSt);
+                ListaDatosDelChip.Add(SerialBufferRx);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             SerialESP.Close();
+        }
+
+        private void txtParametros_TextChanged(object sender, EventArgs e)
+        {
+            SerialSt = txtParametros.Text;
         }
     }
 }
