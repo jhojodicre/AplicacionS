@@ -60,3 +60,89 @@ namespace AplicacionS
         }
     }
 }
+//using System;
+//using System.Collections.Generic;
+//using System.IO.Ports;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
+//using System.Threading;
+
+
+//namespace ConsoleApp2
+//{
+//    //Variables
+
+
+//    //Instancias
+//    internal class Program2
+//    {
+//        static SerialPort SerialESP;
+//        static Thread SerialHilo;
+//        static string SerialBufferRx;
+//        static string SerialSt = "1";
+//        static void Main(string[] args)
+//        {
+//            SerialESP = new SerialPort();
+//            SerialConfig();
+//            SerialESP.Open();
+
+//            SerialHilo = new Thread(SerialRecive);
+//            SerialHilo.Start();
+
+//            while (SerialSt != "0")
+//            {
+//                SerialSt = Console.ReadLine();
+//                SerialESP.WriteLine(SerialSt);
+//            }
+//            Console.WriteLine("Cerrando");
+//            SerialESP.Close();
+//            SerialHilo.Join();
+
+//        }
+//        public static void SerialConfig()
+//        {
+//            SerialESP.PortName = SerialCOM();
+//            SerialESP.BaudRate = 9600;
+//            SerialESP.Parity = Parity.None;
+//            SerialESP.DataBits = 8;
+//            SerialESP.StopBits = StopBits.One;
+//            SerialESP.WriteTimeout = 300;
+//            SerialESP.ReadTimeout = 300;
+//        }
+//        public static string SerialCOM()
+//        {
+//            int comNumeros = 0;
+//            int comSeleccionado;
+//            List<string> comListados = new List<string>();
+
+//            foreach (string com in SerialPort.GetPortNames())
+//            {
+//                comListados.Add(com);
+//            }
+//            Console.WriteLine("Seleccione un Puerto:");
+//            foreach (string com in comListados)
+//            {
+//                comNumeros++;
+//                Console.WriteLine(comNumeros + ")" + com);
+//            }
+//            comSeleccionado = int.Parse(Console.ReadLine());
+//            comSeleccionado--;
+//            return comListados[comSeleccionado];
+//        }
+//        public static void SerialRecive()
+//        {
+//            while (true)
+//            {
+//                try
+//                {
+//                    SerialBufferRx = SerialESP.ReadLine();
+//                    Console.WriteLine(SerialBufferRx);
+//                }
+//                catch { }
+//            }
+//        }
+
+//    }
+
+//}
