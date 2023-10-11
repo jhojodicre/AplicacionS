@@ -4,20 +4,21 @@ using System.IO.Ports;
 using System.Threading;
 using System.Windows.Forms;
 using AplicacionS.Models;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 
 namespace AplicacionS
 {
     public partial class Form1 : Form
     {
-        static SerialPort SerialESP;
-        static Thread SerialHilo;
-        static string SerialBufferRx;
+        string SerialBufferRx;
         static string SerialSt = "1";
         public Form1()
         {
             InitializeComponent();
-            
+
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -25,9 +26,9 @@ namespace AplicacionS
             SerialConfig(selectionCOM);
 
         }
-        public static void SerialConfig(string selectionCOM)
+        public void SerialConfig(string selectionCOM)
         {
-            SerialPort SerialESP = new SerialPort();
+            //SerialPort SerialESP = new SerialPort();
             SerialESP.PortName = selectionCOM;
             SerialESP.BaudRate = 9600;
             SerialESP.Parity = Parity.None;
@@ -37,25 +38,27 @@ namespace AplicacionS
             SerialESP.ReadTimeout = 300;
             SerialESP.Handshake = Handshake.None;
         }
-        public static void SerialRecive()
-        {
-            while (true)
-            {
-                try
-                {
-                    SerialBufferRx = SerialESP.ReadLine();
-                    Console.WriteLine(SerialBufferRx);
-                }
-                catch { }
-            }
-        }
+        //public void SerialRecive()
+        //{
+        //    while (true)
+        //    {
+        //        try
+        //        {
+        //            SerialBufferRx = SerialESP.ReadLine();
+        //            Buffer(SerialBufferRx);
+        //            //Console.WriteLine(SerialBufferRx);
+
+        //        }
+        //        catch { }
+        //    }
+        //}
 
 
         private void Form1_Load(object sender, EventArgs e)
         {
             //SerialESP = new SerialPort();
             List<string> comListados = new List<string>();
-            comListados.Add("serialpreuba");
+            //comListados.Add("serialpreuba");
             foreach (string com in SerialPort.GetPortNames())
             {
                 comListados.Add(com);
@@ -66,26 +69,21 @@ namespace AplicacionS
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SerialESP = new SerialPort();
-
             SerialESP.Open();
-
-            SerialHilo = new Thread(SerialRecive);
-            SerialHilo.Start();
-            Buffer(SerialSt);
-
-            
         }
-        public void Buffer(string SerialSt)
+
+        public void Buffer(string Serial)
         {
-            List<DataFromChips> ListaDatosDelChip = new List<DataFromChips>();
-            //while (SerialSt != "0")
-            //{
-            //    SerialSt = Console.ReadLine();
-            //    ListaDatosDelChip.Add(new DataFromChips { datos = SerialBufferRx });
-            //}
-            ListaDatosDelChip.Add(new DataFromChips { datos = "me comi una salchipapa" });
-            dataGridView1.DataSource= ListaDatosDelChip;
+            List<string> ListaDatosDelChip = new List<string>();
+            while (SerialSt != "0")
+            {
+                //ListaDatosDelChip.Add(new DataFromChips { datos = SerialBufferRx });
+                ListaDatosDelChip.Add(Serial);
+                
+                dataGridView1.DataSource = ListaDatosDelChip;
+            }
+            //ListaDatosDelChip.Add(new DataFromChips { datos = "me comi una salchipapa" });
+            //dataGridView1.DataSource = ListaDatosDelChip;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -97,6 +95,12 @@ namespace AplicacionS
         {
             SerialSt = txtParametros.Text;
             Buffer(SerialSt);
+        }
+
+        private void SerialESP_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            SerialBufferRx = SerialESP.ReadLine();
+            Buffer(SerialBufferRx);
         }
     }
 }
