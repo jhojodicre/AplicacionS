@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO.Ports;
 using System.Threading;
 using System.Windows.Forms;
+using AplicacionS.Models;
 
 
 namespace AplicacionS
@@ -64,20 +65,23 @@ namespace AplicacionS
 
         private void button1_Click(object sender, EventArgs e)
         {
-            List<string> ListaDatosDelChip = new List<string>();
-
             SerialESP = new SerialPort();
 
             SerialESP.Open();
 
             SerialHilo = new Thread(SerialRecive);
             SerialHilo.Start();
+            Buffer(SerialSt);
 
+            
+        }
+        public void Buffer(string SerialSt)
+        {
+            List<DataFromChips> ListaDatosDelChip = new List<DataFromChips>();
             while (SerialSt != "0")
             {
                 SerialSt = Console.ReadLine();
-                SerialESP.WriteLine(SerialSt);
-                ListaDatosDelChip.Add(SerialBufferRx);
+                ListaDatosDelChip.Add(new DataFromChips { datos = SerialBufferRx });
             }
         }
 
@@ -89,6 +93,7 @@ namespace AplicacionS
         private void txtParametros_TextChanged(object sender, EventArgs e)
         {
             SerialSt = txtParametros.Text;
+            Buffer(SerialSt);
         }
     }
 }
