@@ -27,7 +27,7 @@ namespace AplicacionS
         }
         public static void SerialConfig(string selectionCOM)
         {
-            //SerialPort SerialESP = new SerialPort();
+            SerialPort SerialESP = new SerialPort();
             SerialESP.PortName = selectionCOM;
             SerialESP.BaudRate = 9600;
             SerialESP.Parity = Parity.None;
@@ -55,6 +55,7 @@ namespace AplicacionS
         {
             //SerialESP = new SerialPort();
             List<string> comListados = new List<string>();
+            comListados.Add("serialpreuba");
             foreach (string com in SerialPort.GetPortNames())
             {
                 comListados.Add(com);
@@ -78,11 +79,13 @@ namespace AplicacionS
         public void Buffer(string SerialSt)
         {
             List<DataFromChips> ListaDatosDelChip = new List<DataFromChips>();
-            while (SerialSt != "0")
-            {
-                SerialSt = Console.ReadLine();
-                ListaDatosDelChip.Add(new DataFromChips { datos = SerialBufferRx });
-            }
+            //while (SerialSt != "0")
+            //{
+            //    SerialSt = Console.ReadLine();
+            //    ListaDatosDelChip.Add(new DataFromChips { datos = SerialBufferRx });
+            //}
+            ListaDatosDelChip.Add(new DataFromChips { datos = "me comi una salchipapa" });
+            dataGridView1.DataSource= ListaDatosDelChip;
         }
 
         private void button2_Click(object sender, EventArgs e)
