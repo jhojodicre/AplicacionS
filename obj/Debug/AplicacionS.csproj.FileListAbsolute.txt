@@ -28,3 +28,13 @@ C:\Users\GRUAS\Source\Repos\AplicacionS\obj\Debug\AplicacionS.csproj.GenerateRes
 C:\Users\GRUAS\Source\Repos\AplicacionS\obj\Debug\AplicacionS.csproj.CoreCompileInputs.cache
 C:\Users\GRUAS\Source\Repos\AplicacionS\obj\Debug\AplicacionS.exe
 C:\Users\GRUAS\Source\Repos\AplicacionS\obj\Debug\AplicacionS.pdb
+C:\Users\user\source\repos\bin\Debug\AplicacionS.exe.config
+C:\Users\user\source\repos\bin\Debug\AplicacionS.exe
+C:\Users\user\source\repos\bin\Debug\AplicacionS.pdb
+C:\Users\user\source\repos\obj\Debug\AplicacionS.csproj.AssemblyReference.cache
+C:\Users\user\source\repos\obj\Debug\AplicacionS.Form1.resources
+C:\Users\user\source\repos\obj\Debug\AplicacionS.Properties.Resources.resources
+C:\Users\user\source\repos\obj\Debug\AplicacionS.csproj.GenerateResource.cache
+C:\Users\user\source\repos\obj\Debug\AplicacionS.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\obj\Debug\AplicacionS.exe
+C:\Users\user\source\repos\obj\Debug\AplicacionS.pdb

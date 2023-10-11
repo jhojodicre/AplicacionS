@@ -7,7 +7,7 @@ using AplicacionS.Models;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Drawing;
 
 namespace AplicacionS
 {
@@ -18,9 +18,7 @@ namespace AplicacionS
         public Form1()
         {
             InitializeComponent();
-
         }
-
         public void SerialConfig(string selectionCOM)
         {
             //SerialPort SerialESP = new SerialPort();
@@ -33,20 +31,6 @@ namespace AplicacionS
             SerialESP.ReadTimeout = 300;
             SerialESP.Handshake = Handshake.None;
         }
-        public void Buffer(string Serial)
-        {
-            List<string> ListaDatosDelChip = new List<string>();
-            while (SerialSt != "0")
-            {
-                //ListaDatosDelChip.Add(new DataFromChips { datos = SerialBufferRx });
-                ListaDatosDelChip.Add(Serial);
-
-                dataGridView1.DataSource = ListaDatosDelChip;
-            }
-            //ListaDatosDelChip.Add(new DataFromChips { datos = "me comi una salchipapa" });
-            //dataGridView1.DataSource = ListaDatosDelChip;
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             //SerialESP = new SerialPort();
@@ -75,13 +59,38 @@ namespace AplicacionS
         }
         private void txtParametros_TextChanged(object sender, EventArgs e)
         {
-            SerialSt = txtParametros.Text;
-            Buffer(SerialSt);
+            SerialBufferRx = txtParametros.Text;
+            //Buffer(SerialSt);
         }
         private void SerialESP_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             SerialBufferRx = SerialESP.ReadLine();
-            Buffer(SerialBufferRx);
+            List<DataFromChips> ListaDatosDelChip = new List<DataFromChips>();
+            while (SerialBufferRx != "0")
+            {
+                if (SerialBufferRx == "x")
+                    LineaPerimetral1.BackColor = Color.Red;
+                ListaDatosDelChip.Add(new DataFromChips { datos = SerialBufferRx });
+                dataGridView1.DataBindings.Clear();
+                dataGridView1.DataSource = ListaDatosDelChip;
+            }
+            //ListaDatosDelChip.Add(new DataFromChips { datos = "me comi una salchipapa" });
+            //dataGridView1.DataSource = ListaDatosDelChip;
+            //Buffer(SerialBufferRx);
         }
+
+        //public void Buffer(string Serial)
+        //{
+        //    List<DataFromChips> ListaDatosDelChip = new List<DataFromChips>();
+        //    while (SerialSt != "0")
+        //    {
+        //        ListaDatosDelChip.Add(new DataFromChips { datos = SerialBufferRx });
+        //        dataGridView1.DataBindings.Clear();
+        //        dataGridView1.DataSource = ListaDatosDelChip;
+        //    }
+        //    //ListaDatosDelChip.Add(new DataFromChips { datos = "me comi una salchipapa" });
+        //    //dataGridView1.DataSource = ListaDatosDelChip;
+        //}
+
     }
 }
