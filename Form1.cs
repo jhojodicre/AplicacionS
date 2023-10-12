@@ -17,6 +17,8 @@ namespace AplicacionS
         string SerialBufferTx;
         static string SerialSt = "1";
         List<DataFromChips> ListaDatosDelChip = new List<DataFromChips>();
+        private bool SerialESPconect;
+
         public Form1()
         {
             InitializeComponent();
@@ -54,6 +56,7 @@ namespace AplicacionS
         private void button1_Click(object sender, EventArgs e)
         {
             SerialESP.Open();
+            SerialESPconect = true;
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -66,21 +69,32 @@ namespace AplicacionS
         }
         private void SerialESP_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            
-            SerialBufferRx = SerialESP.ReadLine();
-            
-            while (SerialBufferRx != "0")
-            {
-                if (SerialBufferRx == "SEC,NOK,1,B\r")
-                    LineaPerimetral1.BackColor = Color.Green;
-                ListaDatosDelChip.Add(new DataFromChips { datos = SerialBufferRx });
-                
 
-                dataGridView1.Invoke(new MethodInvoker(delegate 
+            if (SerialESPconect && SerialESP.IsOpen)
+            {
+                try
                 {
-                    dataGridView1.DataSource = null;
-                    dataGridView1.DataSource=ListaDatosDelChip; 
-                }));
+                    SerialBufferRx = SerialESP.ReadLine();
+
+                }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
+                if(SerialBufferRx != "0")
+                {
+                    if (SerialBufferRx == "SEC,NOK,1,B\r")
+                        LineaPerimetral1.BackColor = Color.Green;
+                    ListaDatosDelChip.Add(new DataFromChips { datos = SerialBufferRx });
+
+
+                    dataGridView1.Invoke(new MethodInvoker(delegate
+                    {
+                        dataGridView1.DataSource = null;
+                        dataGridView1.DataSource = ListaDatosDelChip;
+                    }));
+                }
             }
         }
 
