@@ -14,7 +14,9 @@ namespace AplicacionS
     public partial class Form1 : Form
     {
         string SerialBufferRx;
+        string SerialBufferTx;
         static string SerialSt = "1";
+        List<DataFromChips> ListaDatosDelChip = new List<DataFromChips>();
         public Form1()
         {
             InitializeComponent();
@@ -59,38 +61,33 @@ namespace AplicacionS
         }
         private void txtParametros_TextChanged(object sender, EventArgs e)
         {
-            SerialBufferRx = txtParametros.Text;
-            //Buffer(SerialSt);
+            SerialBufferTx = txtParametros.Text;
+            SerialESP.WriteLine(txtParametros.Text);
         }
         private void SerialESP_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
+            
             SerialBufferRx = SerialESP.ReadLine();
-            List<DataFromChips> ListaDatosDelChip = new List<DataFromChips>();
+            
             while (SerialBufferRx != "0")
             {
-                if (SerialBufferRx == "x")
-                    LineaPerimetral1.BackColor = Color.Red;
+                if (SerialBufferRx == "SEC,NOK,1,B\r")
+                    LineaPerimetral1.BackColor = Color.Green;
                 ListaDatosDelChip.Add(new DataFromChips { datos = SerialBufferRx });
-                dataGridView1.DataBindings.Clear();
-                dataGridView1.DataSource = ListaDatosDelChip;
+                
+
+                dataGridView1.Invoke(new MethodInvoker(delegate 
+                {
+                    dataGridView1.DataSource = null;
+                    dataGridView1.DataSource=ListaDatosDelChip; 
+                }));
             }
-            //ListaDatosDelChip.Add(new DataFromChips { datos = "me comi una salchipapa" });
-            //dataGridView1.DataSource = ListaDatosDelChip;
-            //Buffer(SerialBufferRx);
         }
 
-        //public void Buffer(string Serial)
-        //{
-        //    List<DataFromChips> ListaDatosDelChip = new List<DataFromChips>();
-        //    while (SerialSt != "0")
-        //    {
-        //        ListaDatosDelChip.Add(new DataFromChips { datos = SerialBufferRx });
-        //        dataGridView1.DataBindings.Clear();
-        //        dataGridView1.DataSource = ListaDatosDelChip;
-        //    }
-        //    //ListaDatosDelChip.Add(new DataFromChips { datos = "me comi una salchipapa" });
-        //    //dataGridView1.DataSource = ListaDatosDelChip;
-        //}
+        private void button3_Click(object sender, EventArgs e)
+        {
+            SerialESP.WriteLine("A145");
+        }
 
     }
 }
