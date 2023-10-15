@@ -9,13 +9,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Security.Policy;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace AplicacionS
 {
     public partial class Form1 : Form
     {
+        private delegate void DelegadoAcceso(string iterruptToForm);
         string SerialBufferRx;
         string SerialBufferTx;
+        List<string> BufferProcesar = new List<string>();
+        List<string> comListados;
+        string selectionCOM;
         static string SerialSt = "1";
         List<DataFromChips> ListaDatosDelChip = new List<DataFromChips>();
         private bool SerialESPconect;
@@ -23,12 +28,78 @@ namespace AplicacionS
         public Form1()
         {
             InitializeComponent();
+            comListados = new List<string>();
         }
-        public void SerialConfig(string selectionCOM)
+        private void AccesoForm(string accion)
         {
-            //SerialPort SerialESP = new SerialPort();
+            SerialBufferRx = accion;
+
+            // A partir de aqui Se trantan Los datos.
+            txBSerial.Text = SerialBufferTx;
+        }
+        private void AccesoInterrupcion(string accion)
+        {
+            // Creamos una variable delegado que te permita llegar al Form
+            DelegadoAcceso Accediendo;
+            Accediendo = new DelegadoAcceso(AccesoForm);
+            // Objeto que permita pasar los datos.
+            object[] arg = { accion };
+            base.Invoke(Accediendo, arg);
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            foreach (string com in SerialPort.GetPortNames())
+            {
+                cmbSerial_COM.Items.Add(com);
+                comListados.Add(com);
+
+            }
+            // Desactivar Controles.
+            btnNodo1.Enabled = false;
+            btnSerial_Enviar.Enabled = false;
+            txBSerial.Visible = false;
+
+            WindowState = FormWindowState.Maximized;
+        }
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            SerialESP.Close();
+            SerialESPconect = false;
+        }
+
+        #region Serial Puerto
+        private void cmbSerial_DropDown(object sender, EventArgs e)
+        {
+            cmbSerial_COM.BackColor = Color.LightBlue;
+            cmbSerial_COM.Items.Clear();
+            try
+            {
+                foreach (string com in SerialPort.GetPortNames())
+                {
+                    cmbSerial_COM.Items.Add(com);
+                    comListados.Add(com);
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            //ListaCOM.DataSource = comListados;
+        }
+        private void cmbSerial_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectionCOM = comListados[cmbSerial_COM.SelectedIndex];
+            cfgSerial_Config(selectionCOM);
+            cmbSerial_COM.BackColor = Color.White;
+            btnSerial_Conectar.BackColor = Color.LightBlue;
+
+        }
+        public void cfgSerial_Config(string selectionCOM)
+        {
             SerialESP.PortName = selectionCOM;
-            SerialESP.BaudRate = 9600;
+            SerialESP.BaudRate = 115200;
             SerialESP.Parity = Parity.None;
             SerialESP.DataBits = 8;
             SerialESP.StopBits = StopBits.One;
@@ -36,75 +107,239 @@ namespace AplicacionS
             SerialESP.ReadTimeout = 300;
             SerialESP.Handshake = Handshake.None;
         }
-        private void Form1_Load(object sender, EventArgs e)
+        private void btnSerial_Conectar_Click(object sender, EventArgs e)
         {
-            //SerialESP = new SerialPort();
-            List<string> comListados = new List<string>();
-            //comListados.Add("serialpreuba");
-            foreach (string com in SerialPort.GetPortNames())
+            if (selectionCOM == null)
             {
-                comListados.Add(com);
-                ListaCOM.Items.Add(com);
+                MessageBox.Show("Seleccione Un Puerto");
+                cmbSerial_COM.BackColor = Color.MediumVioletRed;
+                return;
             }
-            ListaCOM.DataSource = comListados;
-        }
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string selectionCOM = ListaCOM.SelectedValue.ToString();
-            SerialConfig(selectionCOM);
+            if (btnSerial_Conectar.Text == "Conectar")
+            {
+                try
+                {
+                    SerialESP.Open();
+                    SerialESPconect = true;
+                    btnSerial_Conectar.BackColor = Color.White;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
+                if (SerialESP.IsOpen)
+                {
+                    btnNodo1.Enabled = true;
+                    btnSerial_Enviar.Enabled = true;
+
+                    btnSerial_Conectar.Text = "Desconectar";
+                    lblSerial_Status.BackColor = Color.Green;
+                }
+            }
+            else if (btnSerial_Conectar.Text == "Desconectar" && SerialESP.IsOpen)
+            {
+                MessageBox.Show("Cuidado Dejara el Sistema sin Comunicaion");
+                MessageBoxButtons msgSerial_Desconectar = MessageBoxButtons.YesNoCancel;
+                string message = "Está seguro que Desea Desconectar el Sistema";
+                string caption = "Desconexion del Sistema";
+                DialogResult result;
+
+                // Displays the MessageBox.
+                result = MessageBox.Show(message, caption, msgSerial_Desconectar);
+                if (result == System.Windows.Forms.DialogResult.Yes)
+                {
+                    try
+                    {
+                        SerialESP.Close();
+                        SerialESPconect = false;
+                        btnSerial_Conectar.Text = "Conectar";
+                        lblSerial_Status.BackColor = Color.White;
+                    }
+                    catch { }
+                }
+                
+            }
 
         }
-        private void button1_Click(object sender, EventArgs e)
+        private void txtSerial_BufferTX_TextChanged(object sender, EventArgs e)
         {
-            SerialESP.Open();
-            SerialESPconect = true;
+            SerialBufferTx = txtSerial_BufferTX.Text;
+            SerialESP.WriteLine(txtSerial_BufferTX.Text);
         }
-        private void button2_Click(object sender, EventArgs e)
+        private void btnSerial_Enviar_Click(object sender, EventArgs e)
         {
-            SerialESP.Close();
-        }
-        private void txtParametros_TextChanged(object sender, EventArgs e)
-        {
-            SerialBufferTx = txtParametros.Text;
-            SerialESP.WriteLine(txtParametros.Text);
+            try
+            {
+                SerialESP.DiscardOutBuffer();
+                SerialESP.WriteLine("A145");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
         private void SerialESP_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
+            //AccesoInterrupcion(SerialESP.ReadExisting());
 
             if (SerialESPconect && SerialESP.IsOpen)
             {
                 try
                 {
                     SerialBufferRx = SerialESP.ReadLine();
-
+                    //BufferProcesar.Add(SerialBufferTx);
+                    txBSerial.AppendText(SerialBufferRx.ToString());
                 }
                 catch (Exception ex)
                 {
 
-                    throw ex;
+                    MessageBox.Show(ex.Message.ToString());
                 }
-                if(SerialBufferRx != "0")
+
+                //if (SerialBufferRx != "0")
+                //{
+                //    if (SerialBufferRx == "SEC,NOK,1,B\r")
+                //        btnNodo1.BackColor = Color.Green;
+
+                //    ListaDatosDelChip.Add(new DataFromChips { datos = SerialBufferRx });
+
+                //    dataGridView1.Invoke(new MethodInvoker(delegate
+                //    {
+                //        dataGridView1.DataSource = null;
+                //        dataGridView1.DataSource = ListaDatosDelChip;
+                //    }));
+                //}
+                //if (BufferProcesar[1] == "SEC")
+                //{
+
+                //    switch (BufferProcesar[1])
+                //    {
+                //        case "BOK":
+                //            switch (BufferProcesar[2])
+                //            {
+                //                case "1":
+                //                    switch (BufferProcesar[3])
+                //                    {
+                //                        case "A":
+                //                            lblNodo1_ZA.BackColor = Color.Green;
+                //                            break;
+                //                        case "B":
+                //                            lblNodo1_ZB.BackColor = Color.Green;
+                //                            break;
+                //                    }
+                //                    break;
+                //                case "2":
+                //                    switch (BufferProcesar[3])
+                //                    {
+                //                        case "A":
+                //                            lblNodo2_ZA.BackColor = Color.Green;
+                //                            break;
+                //                        case "B":
+                //                            lblNodo2_ZB.BackColor = Color.Green;
+                //                            break;
+                //                    }
+                //                    break;
+                //                case "3":
+                //                    switch (BufferProcesar[3])
+                //                    {
+                //                        case "A":
+                //                            lblNodo3_ZA.BackColor = Color.Green;
+                //                            break;
+                //                        case "B":
+                //                            lblNodo3_ZB.BackColor = Color.Green;
+                //                            break;
+                //                    }
+                //                    break;
+                //            }
+                //            break;
+                //        case "NOK":
+                //            switch (BufferProcesar[2])
+                //            {
+                //                case "1":
+                //                    switch (BufferProcesar[3])
+                //                    {
+                //                        case "A":
+                //                            lblNodo1_ZA.BackColor = Color.Red;
+                //                            break;
+                //                        case "B":
+                //                            lblNodo1_ZB.BackColor = Color.Red;
+                //                            break;
+                //                    }
+                //                    break;
+                //                case "2":
+                //                    switch (BufferProcesar[3])
+                //                    {
+                //                        case "A":
+                //                            lblNodo2_ZA.BackColor = Color.Red;
+                //                            break;
+                //                        case "B":
+                //                            lblNodo2_ZB.BackColor = Color.Red;
+                //                            break;
+                //                    }
+                //                    break;
+                //                case "3":
+                //                    switch (BufferProcesar[3])
+                //                    {
+                //                        case "A":
+                //                            lblNodo3_ZA.BackColor = Color.Red;
+                //                            break;
+                //                        case "B":
+                //                            lblNodo3_ZB.BackColor = Color.Red;
+                //                            break;
+                //                    }
+                //                    break;
+                //            }
+                //            break;
+                //        default: throw new Exception();
+                //    }
+                //}
+                //}
+            }
+        }
+        #endregion
+        private void btnNodo1_Click(object sender, EventArgs e)
+        {
+            MessageBoxButtons msgNodo1 = MessageBoxButtons.YesNoCancel;
+            string message = "Desea Resetear el Nodo1";
+            string caption = "Reset Nodo1";
+            DialogResult result;
+
+            // Displays the MessageBox.
+            result = MessageBox.Show(message, caption, msgNodo1);
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                try
                 {
-                    if (SerialBufferRx == "SEC,NOK,1,B\r")
-                        LineaPerimetral1.BackColor = Color.Green;
-                    ListaDatosDelChip.Add(new DataFromChips { datos = SerialBufferRx });
-
-
-                    dataGridView1.Invoke(new MethodInvoker(delegate
-                    {
-                        dataGridView1.DataSource = null;
-                        dataGridView1.DataSource = ListaDatosDelChip;
-                    }));
+                    SerialESP.WriteLine("B71A9");
                 }
+                catch { }
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            SerialESP.WriteLine("A145");
+            if (e.KeyCode == Keys.F1)
+            { 
+
+                MessageBox.Show("Hola");
+            }
         }
 
+        private void btnSerial_Consola_Click(object sender, EventArgs e)
+        {
+            if (btnSerial_Consola.Text == "Consola")
+            {
+                txBSerial.Visible = true;
+                btnSerial_Consola.Text = "NO Consola";
+            }
+            else if (btnSerial_Consola.Text == "NO Consola")
+            {
+                txBSerial.Visible = false;
+                btnSerial_Consola.Text = "Consola";
+            }
+        }
     }
+
 }
 
 

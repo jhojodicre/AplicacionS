@@ -38,3 +38,13 @@ C:\Users\user\source\repos\obj\Debug\AplicacionS.csproj.GenerateResource.cache
 C:\Users\user\source\repos\obj\Debug\AplicacionS.csproj.CoreCompileInputs.cache
 C:\Users\user\source\repos\obj\Debug\AplicacionS.exe
 C:\Users\user\source\repos\obj\Debug\AplicacionS.pdb
+C:\Users\ILATINA\Source\Repos\jhojodicre\AplicacionS\bin\Debug\AplicacionS.exe.config
+C:\Users\ILATINA\Source\Repos\jhojodicre\AplicacionS\bin\Debug\AplicacionS.exe
+C:\Users\ILATINA\Source\Repos\jhojodicre\AplicacionS\bin\Debug\AplicacionS.pdb
+C:\Users\ILATINA\Source\Repos\jhojodicre\AplicacionS\obj\Debug\AplicacionS.csproj.AssemblyReference.cache
+C:\Users\ILATINA\Source\Repos\jhojodicre\AplicacionS\obj\Debug\AplicacionS.Form1.resources
+C:\Users\ILATINA\Source\Repos\jhojodicre\AplicacionS\obj\Debug\AplicacionS.Properties.Resources.resources
+C:\Users\ILATINA\Source\Repos\jhojodicre\AplicacionS\obj\Debug\AplicacionS.csproj.GenerateResource.cache
+C:\Users\ILATINA\Source\Repos\jhojodicre\AplicacionS\obj\Debug\AplicacionS.csproj.CoreCompileInputs.cache
+C:\Users\ILATINA\Source\Repos\jhojodicre\AplicacionS\obj\Debug\AplicacionS.exe
+C:\Users\ILATINA\Source\Repos\jhojodicre\AplicacionS\obj\Debug\AplicacionS.pdb
