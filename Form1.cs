@@ -35,7 +35,7 @@ namespace AplicacionS
             SerialBufferRx = accion;
 
             // A partir de aqui Se trantan Los datos.
-            txBSerial.Text = SerialBufferTx;
+            txBSerial.AppendText(SerialBufferRx.ToString());
         }
         private void AccesoInterrupcion(string accion)
         {
@@ -66,7 +66,14 @@ namespace AplicacionS
             SerialESP.Close();
             SerialESPconect = false;
         }
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
 
+                MessageBox.Show("Hola");
+            }
+        }
         #region Serial Puerto
         private void cmbSerial_DropDown(object sender, EventArgs e)
         {
@@ -178,123 +185,22 @@ namespace AplicacionS
                 MessageBox.Show(ex.Message.ToString());
             }
         }
+        private void btnSerial_Consola_Click(object sender, EventArgs e)
+        {
+            if (btnSerial_Consola.Text == "Consola")
+            {
+                txBSerial.Visible = true;
+                btnSerial_Consola.Text = "NO Consola";
+            }
+            else if (btnSerial_Consola.Text == "NO Consola")
+            {
+                txBSerial.Visible = false;
+                btnSerial_Consola.Text = "Consola";
+            }
+        }
         private void SerialESP_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            //AccesoInterrupcion(SerialESP.ReadExisting());
-
-            if (SerialESPconect && SerialESP.IsOpen)
-            {
-                try
-                {
-                    SerialBufferRx = SerialESP.ReadLine();
-                    //BufferProcesar.Add(SerialBufferTx);
-                    txBSerial.AppendText(SerialBufferRx.ToString());
-                }
-                catch (Exception ex)
-                {
-
-                    MessageBox.Show(ex.Message.ToString());
-                }
-
-                //if (SerialBufferRx != "0")
-                //{
-                //    if (SerialBufferRx == "SEC,NOK,1,B\r")
-                //        btnNodo1.BackColor = Color.Green;
-
-                //    ListaDatosDelChip.Add(new DataFromChips { datos = SerialBufferRx });
-
-                //    dataGridView1.Invoke(new MethodInvoker(delegate
-                //    {
-                //        dataGridView1.DataSource = null;
-                //        dataGridView1.DataSource = ListaDatosDelChip;
-                //    }));
-                //}
-                //if (BufferProcesar[1] == "SEC")
-                //{
-
-                //    switch (BufferProcesar[1])
-                //    {
-                //        case "BOK":
-                //            switch (BufferProcesar[2])
-                //            {
-                //                case "1":
-                //                    switch (BufferProcesar[3])
-                //                    {
-                //                        case "A":
-                //                            lblNodo1_ZA.BackColor = Color.Green;
-                //                            break;
-                //                        case "B":
-                //                            lblNodo1_ZB.BackColor = Color.Green;
-                //                            break;
-                //                    }
-                //                    break;
-                //                case "2":
-                //                    switch (BufferProcesar[3])
-                //                    {
-                //                        case "A":
-                //                            lblNodo2_ZA.BackColor = Color.Green;
-                //                            break;
-                //                        case "B":
-                //                            lblNodo2_ZB.BackColor = Color.Green;
-                //                            break;
-                //                    }
-                //                    break;
-                //                case "3":
-                //                    switch (BufferProcesar[3])
-                //                    {
-                //                        case "A":
-                //                            lblNodo3_ZA.BackColor = Color.Green;
-                //                            break;
-                //                        case "B":
-                //                            lblNodo3_ZB.BackColor = Color.Green;
-                //                            break;
-                //                    }
-                //                    break;
-                //            }
-                //            break;
-                //        case "NOK":
-                //            switch (BufferProcesar[2])
-                //            {
-                //                case "1":
-                //                    switch (BufferProcesar[3])
-                //                    {
-                //                        case "A":
-                //                            lblNodo1_ZA.BackColor = Color.Red;
-                //                            break;
-                //                        case "B":
-                //                            lblNodo1_ZB.BackColor = Color.Red;
-                //                            break;
-                //                    }
-                //                    break;
-                //                case "2":
-                //                    switch (BufferProcesar[3])
-                //                    {
-                //                        case "A":
-                //                            lblNodo2_ZA.BackColor = Color.Red;
-                //                            break;
-                //                        case "B":
-                //                            lblNodo2_ZB.BackColor = Color.Red;
-                //                            break;
-                //                    }
-                //                    break;
-                //                case "3":
-                //                    switch (BufferProcesar[3])
-                //                    {
-                //                        case "A":
-                //                            lblNodo3_ZA.BackColor = Color.Red;
-                //                            break;
-                //                        case "B":
-                //                            lblNodo3_ZB.BackColor = Color.Red;
-                //                            break;
-                //                    }
-                //                    break;
-                //            }
-                //            break;
-                //        default: throw new Exception();
-                //    }
-                //}
-                //}
-            }
+            AccesoInterrupcion(SerialESP.ReadExisting());
         }
         #endregion
         private void btnNodo1_Click(object sender, EventArgs e)
@@ -316,28 +222,7 @@ namespace AplicacionS
             }
         }
 
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F1)
-            { 
 
-                MessageBox.Show("Hola");
-            }
-        }
-
-        private void btnSerial_Consola_Click(object sender, EventArgs e)
-        {
-            if (btnSerial_Consola.Text == "Consola")
-            {
-                txBSerial.Visible = true;
-                btnSerial_Consola.Text = "NO Consola";
-            }
-            else if (btnSerial_Consola.Text == "NO Consola")
-            {
-                txBSerial.Visible = false;
-                btnSerial_Consola.Text = "Consola";
-            }
-        }
     }
 
 }

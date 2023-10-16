@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.SerialESP = new System.IO.Ports.SerialPort(this.components);
             this.cmbSerial_COM = new System.Windows.Forms.ComboBox();
             this.btnSerial_Conectar = new System.Windows.Forms.Button();
@@ -38,7 +37,10 @@
             this.btnNodo1 = new System.Windows.Forms.Button();
             this.btnSerial_Enviar = new System.Windows.Forms.Button();
             this.panelSuperior = new System.Windows.Forms.Panel();
+            this.btnSerial_Consola = new System.Windows.Forms.Button();
             this.panelIzquierdo = new System.Windows.Forms.Panel();
+            this.txBSerial = new System.Windows.Forms.TextBox();
+            this.lblSerial_Status = new System.Windows.Forms.Label();
             this.lblNodo2_ZA = new System.Windows.Forms.Label();
             this.lblNodo2_ZB = new System.Windows.Forms.Label();
             this.btnNodo2 = new System.Windows.Forms.Button();
@@ -47,16 +49,17 @@
             this.lblNodo3_ZA = new System.Windows.Forms.Label();
             this.lblNodo3_ZB = new System.Windows.Forms.Label();
             this.btnNodo3 = new System.Windows.Forms.Button();
-            this.lblSerial_Status = new System.Windows.Forms.Label();
-            this.txBSerial = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panelCentral = new System.Windows.Forms.Panel();
-            this.btnSerial_Consola = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.lblForm1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panelSuperior.SuspendLayout();
             this.panelIzquierdo.SuspendLayout();
             this.panelCentral.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -67,17 +70,6 @@
             this.label1.Size = new System.Drawing.Size(76, 19);
             this.label1.TabIndex = 6;
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(223, 108);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(113, 206);
-            this.dataGridView1.TabIndex = 1;
-            // 
             // SerialESP
             // 
             this.SerialESP.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.SerialESP_DataReceived);
@@ -86,7 +78,7 @@
             // 
             this.cmbSerial_COM.FormattingEnabled = true;
             this.cmbSerial_COM.Location = new System.Drawing.Point(4, 13);
-            this.cmbSerial_COM.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbSerial_COM.Margin = new System.Windows.Forms.Padding(2);
             this.cmbSerial_COM.Name = "cmbSerial_COM";
             this.cmbSerial_COM.Size = new System.Drawing.Size(124, 21);
             this.cmbSerial_COM.TabIndex = 3;
@@ -96,8 +88,11 @@
             // 
             // btnSerial_Conectar
             // 
+            this.btnSerial_Conectar.Font = new System.Drawing.Font("Yu Gothic UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSerial_Conectar.ForeColor = System.Drawing.SystemColors.Info;
+            this.btnSerial_Conectar.Image = global::AplicacionS.Properties.Resources._0abde68a_e3a8_4d20_b346_ce66116c8a05;
             this.btnSerial_Conectar.Location = new System.Drawing.Point(131, 11);
-            this.btnSerial_Conectar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSerial_Conectar.Margin = new System.Windows.Forms.Padding(2);
             this.btnSerial_Conectar.Name = "btnSerial_Conectar";
             this.btnSerial_Conectar.Size = new System.Drawing.Size(101, 24);
             this.btnSerial_Conectar.TabIndex = 4;
@@ -107,10 +102,10 @@
             // 
             // txtSerial_BufferTX
             // 
-            this.txtSerial_BufferTX.Location = new System.Drawing.Point(316, 14);
+            this.txtSerial_BufferTX.Location = new System.Drawing.Point(-5, 322);
             this.txtSerial_BufferTX.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.txtSerial_BufferTX.Name = "txtSerial_BufferTX";
-            this.txtSerial_BufferTX.Size = new System.Drawing.Size(124, 22);
+            this.txtSerial_BufferTX.Size = new System.Drawing.Size(81, 22);
             this.txtSerial_BufferTX.TabIndex = 7;
             this.txtSerial_BufferTX.TextChanged += new System.EventHandler(this.txtSerial_BufferTX_TextChanged);
             // 
@@ -128,10 +123,10 @@
             // 
             // btnSerial_Enviar
             // 
-            this.btnSerial_Enviar.Location = new System.Drawing.Point(444, 17);
-            this.btnSerial_Enviar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSerial_Enviar.Location = new System.Drawing.Point(72, 322);
+            this.btnSerial_Enviar.Margin = new System.Windows.Forms.Padding(2);
             this.btnSerial_Enviar.Name = "btnSerial_Enviar";
-            this.btnSerial_Enviar.Size = new System.Drawing.Size(56, 19);
+            this.btnSerial_Enviar.Size = new System.Drawing.Size(42, 19);
             this.btnSerial_Enviar.TabIndex = 9;
             this.btnSerial_Enviar.Text = "Enviar";
             this.btnSerial_Enviar.UseVisualStyleBackColor = true;
@@ -140,11 +135,10 @@
             // panelSuperior
             // 
             this.panelSuperior.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.panelSuperior.Controls.Add(this.btnSerial_Consola);
-            this.panelSuperior.Controls.Add(this.txtSerial_BufferTX);
+            this.panelSuperior.Controls.Add(this.pictureBox2);
+            this.panelSuperior.Controls.Add(this.lblForm1);
             this.panelSuperior.Controls.Add(this.btnSerial_Conectar);
             this.panelSuperior.Controls.Add(this.cmbSerial_COM);
-            this.panelSuperior.Controls.Add(this.btnSerial_Enviar);
             this.panelSuperior.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSuperior.Location = new System.Drawing.Point(0, 0);
             this.panelSuperior.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
@@ -152,9 +146,25 @@
             this.panelSuperior.Size = new System.Drawing.Size(1028, 50);
             this.panelSuperior.TabIndex = 10;
             // 
+            // btnSerial_Consola
+            // 
+            this.btnSerial_Consola.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnSerial_Consola.Location = new System.Drawing.Point(0, 338);
+            this.btnSerial_Consola.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.btnSerial_Consola.Name = "btnSerial_Consola";
+            this.btnSerial_Consola.Size = new System.Drawing.Size(119, 24);
+            this.btnSerial_Consola.TabIndex = 10;
+            this.btnSerial_Consola.TabStop = false;
+            this.btnSerial_Consola.Text = "Consola";
+            this.btnSerial_Consola.UseVisualStyleBackColor = true;
+            this.btnSerial_Consola.Click += new System.EventHandler(this.btnSerial_Consola_Click);
+            // 
             // panelIzquierdo
             // 
             this.panelIzquierdo.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.panelIzquierdo.Controls.Add(this.txtSerial_BufferTX);
+            this.panelIzquierdo.Controls.Add(this.btnSerial_Consola);
+            this.panelIzquierdo.Controls.Add(this.btnSerial_Enviar);
             this.panelIzquierdo.Controls.Add(this.txBSerial);
             this.panelIzquierdo.Controls.Add(this.lblSerial_Status);
             this.panelIzquierdo.Controls.Add(this.lblNodo2_ZA);
@@ -172,6 +182,30 @@
             this.panelIzquierdo.Name = "panelIzquierdo";
             this.panelIzquierdo.Size = new System.Drawing.Size(119, 362);
             this.panelIzquierdo.TabIndex = 11;
+            // 
+            // txBSerial
+            // 
+            this.txBSerial.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.txBSerial.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txBSerial.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txBSerial.ForeColor = System.Drawing.Color.Maroon;
+            this.txBSerial.Location = new System.Drawing.Point(0, 0);
+            this.txBSerial.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.txBSerial.Multiline = true;
+            this.txBSerial.Name = "txBSerial";
+            this.txBSerial.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txBSerial.Size = new System.Drawing.Size(119, 362);
+            this.txBSerial.TabIndex = 18;
+            // 
+            // lblSerial_Status
+            // 
+            this.lblSerial_Status.Location = new System.Drawing.Point(7, 2);
+            this.lblSerial_Status.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSerial_Status.Name = "lblSerial_Status";
+            this.lblSerial_Status.Size = new System.Drawing.Size(100, 24);
+            this.lblSerial_Status.TabIndex = 0;
+            this.lblSerial_Status.Text = "NODOS";
+            this.lblSerial_Status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblNodo2_ZA
             // 
@@ -253,30 +287,6 @@
             this.btnNodo3.Text = "Nodo 3";
             this.btnNodo3.UseVisualStyleBackColor = true;
             // 
-            // lblSerial_Status
-            // 
-            this.lblSerial_Status.Location = new System.Drawing.Point(7, 2);
-            this.lblSerial_Status.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSerial_Status.Name = "lblSerial_Status";
-            this.lblSerial_Status.Size = new System.Drawing.Size(100, 24);
-            this.lblSerial_Status.TabIndex = 0;
-            this.lblSerial_Status.Text = "NODOS";
-            this.lblSerial_Status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txBSerial
-            // 
-            this.txBSerial.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.txBSerial.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txBSerial.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txBSerial.ForeColor = System.Drawing.Color.Maroon;
-            this.txBSerial.Location = new System.Drawing.Point(0, 87);
-            this.txBSerial.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.txBSerial.Multiline = true;
-            this.txBSerial.Name = "txBSerial";
-            this.txBSerial.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txBSerial.Size = new System.Drawing.Size(119, 275);
-            this.txBSerial.TabIndex = 18;
-            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Black;
@@ -299,7 +309,7 @@
             // panelCentral
             // 
             this.panelCentral.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.panelCentral.Controls.Add(this.dataGridView1);
+            this.panelCentral.Controls.Add(this.pictureBox1);
             this.panelCentral.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelCentral.Font = new System.Drawing.Font("Yu Gothic UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panelCentral.Location = new System.Drawing.Point(119, 50);
@@ -308,17 +318,38 @@
             this.panelCentral.Size = new System.Drawing.Size(880, 325);
             this.panelCentral.TabIndex = 14;
             // 
-            // btnSerial_Consola
+            // lblForm1
             // 
-            this.btnSerial_Consola.Location = new System.Drawing.Point(571, 17);
-            this.btnSerial_Consola.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.btnSerial_Consola.Name = "btnSerial_Consola";
-            this.btnSerial_Consola.Size = new System.Drawing.Size(76, 24);
-            this.btnSerial_Consola.TabIndex = 10;
-            this.btnSerial_Consola.TabStop = false;
-            this.btnSerial_Consola.Text = "Consola";
-            this.btnSerial_Consola.UseVisualStyleBackColor = true;
-            this.btnSerial_Consola.Click += new System.EventHandler(this.btnSerial_Consola_Click);
+            this.lblForm1.AutoSize = true;
+            this.lblForm1.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.lblForm1.Font = new System.Drawing.Font("Algerian", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblForm1.ForeColor = System.Drawing.Color.DarkCyan;
+            this.lblForm1.Location = new System.Drawing.Point(400, 11);
+            this.lblForm1.Name = "lblForm1";
+            this.lblForm1.Size = new System.Drawing.Size(387, 35);
+            this.lblForm1.TabIndex = 5;
+            this.lblForm1.Text = "Seguridad Perimetral";
+            this.lblForm1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = global::AplicacionS.Properties.Resources.BARRIO_ZARATE;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(880, 325);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::AplicacionS.Properties.Resources.Imagen_de_Seguridad;
+            this.pictureBox2.Location = new System.Drawing.Point(869, 5);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(88, 45);
+            this.pictureBox2.TabIndex = 6;
+            this.pictureBox2.TabStop = false;
             // 
             // Form1
             // 
@@ -333,18 +364,19 @@
             this.Controls.Add(this.panelSuperior);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Yu Gothic UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Seguridad Perimetral";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panelSuperior.ResumeLayout(false);
             this.panelSuperior.PerformLayout();
             this.panelIzquierdo.ResumeLayout(false);
             this.panelIzquierdo.PerformLayout();
             this.panelCentral.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -375,6 +407,9 @@
         private System.Windows.Forms.Label lblNodo1_ZB;
         private System.Windows.Forms.TextBox txBSerial;
         private System.Windows.Forms.Button btnSerial_Consola;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblForm1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 
