@@ -24,11 +24,24 @@ namespace AplicacionS
         static string SerialSt = "1";
         List<DataFromChips> ListaDatosDelChip = new List<DataFromChips>();
         private bool SerialESPconect;
+        Point startPoint;
+        Point endPoint;
+        public Graphics Perimetro;
+        private Pen z1;
+        private Pen z2;
+        private Pen z3;
+        private Pen z4;
+        private Pen z5;
+        private Pen z6;
+        private Pen z7;
+        private Pen z8;
 
+        #region Form1
         public Form1()
         {
             InitializeComponent();
             comListados = new List<string>();
+            
         }
         private void AccesoForm(string accion)
         {
@@ -54,6 +67,16 @@ namespace AplicacionS
                 comListados.Add(com);
 
             }
+            z1 = new Pen(Color.Green, 10);
+            z2 = new Pen(Color.Green, 5);
+            z3 = new Pen(Color.Green, 5);
+            z4 = new Pen(Color.Green, 5);
+            z5 = new Pen(Color.Red, 5);
+            z6 = new Pen(Color.Green, 5);
+            z7 = new Pen(Color.Green, 5);
+            z8 = new Pen(Color.Green, 5);
+
+            Perimetro = pbxPerimetro.CreateGraphics();
             // Desactivar Controles.
             btnNodo1.Enabled = false;
             btnSerial_Enviar.Enabled = false;
@@ -74,6 +97,7 @@ namespace AplicacionS
                 MessageBox.Show("Hola");
             }
         }
+        #endregion
         #region Serial Puerto
         private void cmbSerial_DropDown(object sender, EventArgs e)
         {
@@ -203,6 +227,7 @@ namespace AplicacionS
             AccesoInterrupcion(SerialESP.ReadExisting());
         }
         #endregion
+        #region Botones Nodos
         private void btnNodo1_Click(object sender, EventArgs e)
         {
             MessageBoxButtons msgNodo1 = MessageBoxButtons.YesNoCancel;
@@ -221,8 +246,47 @@ namespace AplicacionS
                 catch { }
             }
         }
+        #endregion
+        #region Perimetro
+        private void btnConfig_Zones_Click(object sender, EventArgs e)
+        {
+            
+            Perimetro.DrawLine(z1, 103, 281, 388, 146);
+            Perimetro.DrawLine(z2,401,142,707,11);
+            Perimetro.DrawLine(z3,716,10,807,66);
+            Perimetro.DrawLine(z4,807,75,889,275);
+            Perimetro.DrawLine(z5,813,374,338,583);
+            Perimetro.DrawLine(z6,749,398,336,586);
+            Perimetro.DrawLine(z7,228,448,319,588);
+            Perimetro.DrawLine(z8,108,287,221,443);
+        }
 
+            #region Dibujar Zona
+        private void pbxPerimetro_MouseDown(object sender, MouseEventArgs e)
+        {
+            // Guarda la posición inicial del mouse
+            startPoint = new Point(e.X, e.Y);
+            // Dibuja un punto en la posición inicial del mouse
+            Pen pen = new Pen(Color.Red, 5);
+            Perimetro.DrawEllipse(pen, startPoint.X, startPoint.Y, 1, 1);
+            
+        }
 
+        private void pbxPerimetro_MouseClick(object sender, MouseEventArgs e)
+        {
+            
+            // Dibuja una línea entre la posición inicial y final del mouse
+            endPoint = new Point(e.X, e.Y);
+            Pen pen = new Pen(Color.Blue, 5);
+            Perimetro.DrawLine(pen, startPoint, endPoint);
+            txBSerial.AppendText("P1: (" + startPoint.X + "," + startPoint.Y + ") " + "P2: (" + endPoint.X + "," + endPoint.Y + ")");
+        }
+            #endregion
+        #endregion
+        private void button1_Click(object sender, EventArgs e)
+        {
+            z1.Color = Color.Red;
+        }
     }
 
 }
