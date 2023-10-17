@@ -27,21 +27,21 @@ namespace AplicacionS
         Point startPoint;
         Point endPoint;
         public Graphics Perimetro;
-        private Pen z1;
-        private Pen z2;
-        private Pen z3;
-        private Pen z4;
-        private Pen z5;
-        private Pen z6;
+        private Pen zRoja;
+        private Pen zVerde;
+        private Pen zGris;
+        private Pen zAzul;
+        private Pen zAmarilla;
+        private Pen zBlanca;
         private Pen z7;
         private Pen z8;
-
+        bool PerimetroState = true;
         #region Form1
         public Form1()
         {
             InitializeComponent();
             comListados = new List<string>();
-            
+
         }
         private void AccesoForm(string accion)
         {
@@ -49,6 +49,15 @@ namespace AplicacionS
 
             // A partir de aqui Se trantan Los datos.
             txBSerial.AppendText(SerialBufferRx.ToString());
+
+            BufferProcesar = SerialBufferRx.Split(',').ToList();
+
+            if (BufferProcesar[0] == "SEC")
+            {
+                ActualizarInterfaz(BufferProcesar[1], BufferProcesar[2], BufferProcesar[3]);
+
+            }
+
         }
         private void AccesoInterrupcion(string accion)
         {
@@ -67,22 +76,43 @@ namespace AplicacionS
                 comListados.Add(com);
 
             }
-            z1 = new Pen(Color.Green, 10);
-            z2 = new Pen(Color.Green, 5);
-            z3 = new Pen(Color.Green, 5);
-            z4 = new Pen(Color.Green, 5);
-            z5 = new Pen(Color.Red, 5);
-            z6 = new Pen(Color.Green, 5);
-            z7 = new Pen(Color.Green, 5);
-            z8 = new Pen(Color.Green, 5);
+            zVerde = new Pen(Color.Green, 15);
+            zRoja = new Pen(Color.Green, 15);
+            zAmarilla = new Pen(Color.Green, 15);
+            zAzul = new Pen(Color.Green, 15);
+            zGris = new Pen(Color.DarkGray, 15);
+            //zBlanco = new Pen(Color.Green, 15);
+            z7 = new Pen(Color.Green, 15);
+            z8 = new Pen(Color.Green, 15);
 
             Perimetro = pbxPerimetro.CreateGraphics();
             // Desactivar Controles.
             btnNodo1.Enabled = false;
             btnSerial_Enviar.Enabled = false;
-            txBSerial.Visible = false;
 
+            //Ocultar Controles
+            txBSerial.Visible = false;
+            lblZ1.Visible = false;
+            lblZ2.Visible = false;
+            lblZ3.Visible = false;
+            lblZ4.Visible = false;
+            lblZ5.Visible = false;
+            lblZ6.Visible = false;
+            lblZ7.Visible = false;
+            lblZ8.Visible = false;
+            lblZ9.Visible = false;
+            lblz10.Visible = false;
+
+            btnNodo_1.Visible = false;
+            btnNodo_2.Visible = false;
+            btnNodo_3.Visible = false;
+            btnNodo_4.Visible = false;
+            btnNodo_5.Visible = false;
+
+            // Condicion Inicial
             WindowState = FormWindowState.Maximized;
+
+
         }
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -130,7 +160,7 @@ namespace AplicacionS
         public void cfgSerial_Config(string selectionCOM)
         {
             SerialESP.PortName = selectionCOM;
-            SerialESP.BaudRate = 115200;
+            SerialESP.BaudRate = 9600;
             SerialESP.Parity = Parity.None;
             SerialESP.DataBits = 8;
             SerialESP.StopBits = StopBits.One;
@@ -165,6 +195,7 @@ namespace AplicacionS
 
                     btnSerial_Conectar.Text = "Desconectar";
                     lblSerial_Status.BackColor = Color.Green;
+                    EstablecerZonas();
                 }
             }
             else if (btnSerial_Conectar.Text == "Desconectar" && SerialESP.IsOpen)
@@ -188,7 +219,7 @@ namespace AplicacionS
                     }
                     catch { }
                 }
-                
+
             }
 
         }
@@ -242,6 +273,7 @@ namespace AplicacionS
                 try
                 {
                     SerialESP.WriteLine("B71A9");
+                    //SerialESP.WriteLine("A134");
                 }
                 catch { }
             }
@@ -250,18 +282,42 @@ namespace AplicacionS
         #region Perimetro
         private void btnConfig_Zones_Click(object sender, EventArgs e)
         {
-            
-            Perimetro.DrawLine(z1, 103, 281, 388, 146);
-            Perimetro.DrawLine(z2,401,142,707,11);
-            Perimetro.DrawLine(z3,716,10,807,66);
-            Perimetro.DrawLine(z4,807,75,889,275);
-            Perimetro.DrawLine(z5,813,374,338,583);
-            Perimetro.DrawLine(z6,749,398,336,586);
-            Perimetro.DrawLine(z7,228,448,319,588);
-            Perimetro.DrawLine(z8,108,287,221,443);
+
+
+        }
+        private void EstablecerZonas()
+        {
+            PerimetroState = true;
+            Perimetro.DrawLine(zGris, 119, 335, 189, 426);
+            Perimetro.DrawLine(zGris, 206, 451, 359, 661);
+            Perimetro.DrawLine(zGris, 385, 679, 616, 582);
+            Perimetro.DrawLine(zGris, 650, 563, 855, 473);
+            Perimetro.DrawLine(zGris, 881, 460, 1012, 374);
+            Perimetro.DrawLine(zGris, 1017, 364, 932, 128);
+            Perimetro.DrawLine(zGris, 924, 116, 827, 4);
+            Perimetro.DrawLine(zGris, 817, 14, 677, 62);
+            Perimetro.DrawLine(zGris, 654, 72, 458, 157);
+            Perimetro.DrawLine(zGris, 444, 167, 121, 318);
+
+            lblZ1.Visible = true;
+            lblZ2.Visible = true;
+            lblZ3.Visible = true;
+            lblZ4.Visible = true;
+            lblZ5.Visible = true;
+            lblZ6.Visible = true;
+            lblZ7.Visible = true;
+            lblZ8.Visible = true;
+            lblZ9.Visible = true;
+            lblz10.Visible = true;
+
+            btnNodo_1.Visible = true;
+            btnNodo_2.Visible = true;
+            btnNodo_3.Visible = true;
+            btnNodo_4.Visible = true;
+            btnNodo_5.Visible = true;
         }
 
-            #region Dibujar Zona
+        #region Dibujar Zona
         private void pbxPerimetro_MouseDown(object sender, MouseEventArgs e)
         {
             // Guarda la posición inicial del mouse
@@ -269,262 +325,165 @@ namespace AplicacionS
             // Dibuja un punto en la posición inicial del mouse
             Pen pen = new Pen(Color.Red, 5);
             Perimetro.DrawEllipse(pen, startPoint.X, startPoint.Y, 1, 1);
-            
+
         }
 
         private void pbxPerimetro_MouseClick(object sender, MouseEventArgs e)
         {
-            
+
             // Dibuja una línea entre la posición inicial y final del mouse
             endPoint = new Point(e.X, e.Y);
             Pen pen = new Pen(Color.Blue, 5);
             Perimetro.DrawLine(pen, startPoint, endPoint);
             txBSerial.AppendText("P1: (" + startPoint.X + "," + startPoint.Y + ") " + "P2: (" + endPoint.X + "," + endPoint.Y + ")");
         }
-            #endregion
+        #endregion
         #endregion
         private void button1_Click(object sender, EventArgs e)
         {
-            z1.Color = Color.Red;
+            
+        }
+
+        private void ActualizarInterfaz(string estado, string nodo, string zona)
+        {
+            switch (estado)
+            {
+                case "BOK":
+                    switch (nodo)
+                    {
+                        case "1":
+                            switch (zona)
+                            {
+                                case "A":
+                                    Perimetro.DrawLine(zVerde, 119, 335, 189, 426);
+                                    break;
+                                case "B":
+                                    Perimetro.DrawLine(zVerde, 206, 451, 359, 661);
+                                    break;
+
+                            }
+                            break;
+                        case "2":
+                            switch (zona)
+                            {
+                                case "A":
+                                    Perimetro.DrawLine(zVerde, 385, 679, 616, 582);
+                                    break;
+                                case "B":
+                                    Perimetro.DrawLine(zVerde, 650, 563, 855, 473);
+                                    break;
+                            }
+                            break;
+                        case "3":
+                            switch (zona)
+                            {
+                                case "A":
+                                    Perimetro.DrawLine(zVerde, 881, 460, 1012, 374);
+                                    break;
+                                case "B":
+                                    Perimetro.DrawLine(zVerde, 1017, 364, 932, 128);
+                                    break;
+                            }
+                            break;
+                        case "4":
+                            switch (zona)
+                            {
+                                case "A":
+                                    Perimetro.DrawLine(zVerde, 924, 116, 827, 4);
+                                    break;
+                                case "B":
+                                    Perimetro.DrawLine(zVerde, 817, 14, 677, 62);
+                                    break;
+                            }
+                            break;
+                        case "5":
+                            switch (zona)
+                            {
+                                case "A":
+                                    Perimetro.DrawLine(zVerde, 654, 72, 458, 157);
+                                    break;
+                                case "B":
+                                    Perimetro.DrawLine(zVerde, 444, 167, 121, 318);
+                                    break;
+                            }
+                            break;
+                    }
+                    break;
+                case "NOK":
+                    switch (nodo)
+                    {
+                        case "1":
+                            switch (zona)
+                            {
+                                case "A":
+                                    Perimetro.DrawLine(zRoja, 119, 335, 189, 426);
+                                    break;
+                                case "B":
+                                    Perimetro.DrawLine(zRoja, 206, 451, 359, 661);
+                                    break;
+
+                            }
+                            break;
+                        case "2":
+                            switch (zona)
+                            {
+                                case "A":
+                                    Perimetro.DrawLine(zRoja, 385, 679, 616, 582);
+                                    break;
+                                case "B":
+                                    Perimetro.DrawLine(zRoja, 650, 563, 855, 473);
+                                    break;
+                            }
+                            break;
+                        case "3":
+                            switch (zona)
+                            {
+                                case "A":
+                                    Perimetro.DrawLine(zRoja, 881, 460, 1012, 374);
+                                    break;
+                                case "B":
+                                    Perimetro.DrawLine(zRoja, 1017, 364, 932, 128);
+                                    break;
+                            }
+                            break;
+                        case "4":
+                            switch (zona)
+                            {
+                                case "A":
+                                    Perimetro.DrawLine(zRoja, 924, 116, 827, 4);
+                                    break;
+                                case "B":
+                                    Perimetro.DrawLine(zRoja, 817, 14, 677, 62);
+                                    break;
+                            }
+                            break;
+                        case "5":
+                            switch (zona)
+                            {
+                                case "A":
+                                    Perimetro.DrawLine(zRoja, 654, 72, 458, 157);
+                                    break;
+                                case "B":
+                                    Perimetro.DrawLine(zRoja, 444, 167, 121, 318);
+                                    break;
+                            }
+                            break;
+                    }
+                    break;
+                case "ALL":
+                    Perimetro.DrawLine(zVerde, 119, 335, 189, 426);
+                    Perimetro.DrawLine(zVerde, 206, 451, 359, 661);
+                    Perimetro.DrawLine(zVerde, 385, 679, 616, 582);
+                    Perimetro.DrawLine(zVerde, 650, 563, 855, 473);
+                    Perimetro.DrawLine(zVerde, 881, 460, 1012, 374);
+                    Perimetro.DrawLine(zVerde, 1017, 364, 932, 128);
+                    Perimetro.DrawLine(zVerde, 924, 116, 827, 4);
+                    Perimetro.DrawLine(zVerde, 817, 14, 677, 62);
+                    Perimetro.DrawLine(zVerde, 654, 72, 458, 157);
+                    Perimetro.DrawLine(zVerde, 444, 167, 121, 318);
+                    break;
+            }
         }
     }
 
 }
-
-
-
-////1. Librerias.
-////- 1.1 Librerias
-////****************************
-
-////2. Definicion de Pinout.
-////****************************
-//// Las Etiquetas para los pinout son los que comienzan con GPIO
-//// Es decir, si queremos activar la salida 1, tenemos que buscar la referencia GPIO 1, Pero solomante Escribir 1 sin "GPIO"
-//// NO tomar como referencia las etiquetas D1.
-////- 2.1 Definicion de etiquetas para las Entradas.
-//#define PB_ENTER 0
-
-////- 2.2 Definicion de etiquetas para las Salidas.
-//#define LED_azul 2               // Led Por defecto embebido con la Placa GPIO 2 "D4"
-
-
-////3. Variables Globales.
-//int nodo;
-//int state;
-//String zonaS;
-//String stateS;
-
-////-3.1 Variables para las Interrupciones
-//String inputString;                     // Buffer recepcion Serial.
-//volatile byte Hola_1 = 0;
-//volatile bool stringComplete = false;   // Flag: mensaje Serial Recibido completo.
-//                                        //-3.2 Variables Globales para Las Funciones.
-//bool inicio = true;             // Habilitar mensaje de inicio por unica vez
-//String funtion_Mode;          // Tipo de funcion para ejecutar.
-//String funtion_Number;        // Numero de funcion a EJECUTAR.
-//String funtion_Parmeter1;     // Parametro 1 de la Funcion;
-//String funtion_Parmeter2;     // Parametro 2 de la Funcion;
-//bool codified_funtion = false;  // Notifica que la funcion ha sido codificada
-
-////-3.3 RFM95 Variables
-//int16_t packetnum = 0;  // packet counter, we increment per xmission
-//unsigned int placa; // placa en el perimetro.
-//unsigned int zona;  // Zona del perimetro.
-//char radiopacket[32] = "012345 23456789 1   ";
-
-//int packetSize = 0;
-//String outgoing;              // outgoing message
-//byte msgCount = 0;            // count of outgoing messages
-//byte localAddress = 0xFF;     // address of this device
-//byte destination = 0x01;      // destination to send to
-//long lastSendTime = 0;        // last send time
-//int interval = 2000;          // interval between sends.
-
-////4. Instancias de Clases de Librerias Incluidas.
-////-4.1
-////5. Funciones ISR.
-////-5.1 ISR Serial
-//void serialEvent()
-//{
-//    while (Serial.available())
-//    {
-//        // get the new byte:
-//        char inChar = (char)Serial.read();
-//        // add it to the inputString:
-//        inputString += inChar;
-//        // if the incoming character is a newline, set a flag so the main loop can
-//        // do something about it:
-//        if (inChar == '\n')
-//        {
-//            stringComplete = true;
-//            codified_funtion = false;
-//        }
-//    }
-//    Serial.println(inputString);
-
-//}
-//void setup()
-//{
-//    //1. Configuracion de Puertos
-//    //-1.1 Configuracion de Salidas:
-//    pinMode(LED_azul, OUTPUT);
-//    //-1.2 Configuracion de Entradas
-
-//    //2. Condiciones Iniciales.
-//    //-2.1 Estado de Salidas.
-//    digitalWrite(LED_azul, HIGH);
-//    //-2.2 Valores y Espacios de Variables
-//    inputString.reserve(200);         // reserve 200 bytes for the inputString:
-
-//    //3. Configuracion de Perifericos:
-//    //-3.1 Initialize serial communication at 9600 bits per second:
-//    Serial.begin(9600);
-//    delay(10);
-//    //-3.2 Interrupciones Habilitadas.
-//    //interrupts ();
-
-//    //4. Sitema Minimo Configurado.
-//    Serial.println("Sistema Minimo Configurado");
-//    //5. Configuracion de DEVICE externos
-//}
-//void loop()
-//{
-//    //1. Mensaje de Bienvenida Para Comprobar el Sistema minimo de Funcionamiento.
-//    while (inicio)
-//    {
-//        welcome();
-//        led_Monitor(2);
-//    }
-//    //2. Decodificar Funcion
-//    if (stringComplete)
-//    {
-//        decodificar_solicitud();
-//    }
-//    //3. Ejecutar Funcion
-//    if (codified_funtion)
-//    {
-//        ejecutar_solicitud();
-//        // 3.1 Desactivar Banderas.
-//        codified_funtion = false;
-//    }
-
-//    aleatorio();
-//    Serial.println("SEC," + stateS + "," + nodo + "," + zonaS);
-//    delay(5000);
-
-//}
-////1. Funciones de Logic interna del Micro.
-//void welcome()
-//{
-//    // Deshabilitamos Banderas
-//    inicio = false;
-//    Serial.println("Comenzamos el Programa");
-//    Serial.println("Esperamos recibir un Dato");
-//    Serial.println("ESP8266 MASTER CONFIGURADO");
-//}
-//void led_Monitor(int repeticiones)
-//{
-//    // Deshabilitamos Banderas
-//    int repetir = repeticiones;
-//    for (int encender = 0; encender <= repetir; ++encender)
-//    {
-//        digitalWrite(LED_azul, LOW);   // Led ON.
-//        delay(500);                    // pausa 1 seg.
-//        digitalWrite(LED_azul, HIGH);    // Led OFF.
-//        delay(500);                    // pausa 1 seg.
-//    }
-//}
-//void decodificar_solicitud()
-//{
-//    //Deshabilitamos Banderas
-//    stringComplete = false;
-//    codified_funtion = true;
-//    Serial.println(inputString);         // Pureba de Comunicacion Serial.
-//    funtion_Mode = inputString.substring(0, 1);
-//    funtion_Number = inputString.substring(1, 2);
-//    funtion_Parmeter1 = inputString.substring(2, 3);
-//    funtion_Parmeter2 = inputString.substring(3, 4);
-//    inputString = "";
-//    Serial.println("funcion: " + funtion_Mode);
-//    Serial.println("Numero: " + funtion_Number);
-//    Serial.println("Parametro1: " + funtion_Parmeter1);
-//    Serial.println("Parametro2: " + funtion_Parmeter2 + "\n");
-//    //Serial.println("Numero de funcion: ")
-//}
-
-////2. Funciones Seleccionadas para Ejecutar.
-//void f1_Destellos(int repeticiones, int tiempo)
-//{
-//    int veces = repeticiones;
-//    int retardo = tiempo * 100;
-//    Serial.println("Ejecutando F1.. \n");
-//    for (int repetir = 0; repetir < veces; ++repetir)
-//    {
-//        delay(retardo);                  // pausa 1 seg.
-//        digitalWrite(LED_azul, LOW);     // Led ON.
-//        delay(retardo);                  // pausa 1 seg.
-//        digitalWrite(LED_azul, HIGH);    // Led OFF.
-//    }
-//}
-//void f2_serial_Enviar(int par1)
-//{
-//    Serial.println("a");
-//}
-//void f3_XXXXX_reserva(int par1)
-//{
-//    int uno = 0;
-//}
-////3. Gestiona las funciones a Ejecutar.
-//void ejecutar_solicitud()
-//{
-//    // Deshabilitamos Banderas
-//    int x1 = funtion_Parmeter1.toInt();
-//    int x2 = funtion_Parmeter2.toInt();
-//    if (funtion_Number == "1")
-//    {
-//        Serial.println("funion Nº1");
-//        f1_Destellos(x1, x2);
-//    }
-//    if (funtion_Number == "2")
-//    {
-//        Serial.println("funion Nº2");
-//        f2_serial_Enviar(x2);
-//    }
-//    if (funtion_Number == "3")
-//    {
-//        Serial.println("funion Nº3");
-//        //f3_rf95();
-//    }
-//    if (funtion_Number == "4")
-//    {
-//        Serial.println("funion Nº4");
-//    }
-//    if (funtion_Number == "5")
-//    {
-//        Serial.println("funion Nº5");
-//    }
-//    else
-//    {
-//        Serial.println("Ninguna Funcion");
-//    }
-
-//}
-//void aleatorio()
-//{
-//    nodo = random(1, 6);
-//    zona = random(1, 3);
-//    if (zona == 1)
-//        zonaS = "A";
-//    else
-//        zonaS = "B";
-
-//    state = random(1, 3);
-//    if (state == 1)
-//        stateS = "BOK";
-//    else
-//        stateS = "NOK";
-
-//}
-////4. Funciones de Dispositivos Externos.
-////-4.1 
