@@ -61,22 +61,23 @@
             this.btnConfig_Zones = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panelCentral = new System.Windows.Forms.Panel();
-            this.pbxPerimetro = new System.Windows.Forms.PictureBox();
-            this.btnNodo_1 = new System.Windows.Forms.Button();
-            this.btnNodo_2 = new System.Windows.Forms.Button();
-            this.btnNodo_3 = new System.Windows.Forms.Button();
-            this.btnNodo_5 = new System.Windows.Forms.Button();
-            this.btnNodo_4 = new System.Windows.Forms.Button();
-            this.lblZ1 = new System.Windows.Forms.Label();
-            this.lblZ2 = new System.Windows.Forms.Label();
-            this.lblZ3 = new System.Windows.Forms.Label();
-            this.lblZ4 = new System.Windows.Forms.Label();
-            this.lblZ5 = new System.Windows.Forms.Label();
-            this.lblZ6 = new System.Windows.Forms.Label();
-            this.lblZ7 = new System.Windows.Forms.Label();
-            this.lblZ8 = new System.Windows.Forms.Label();
-            this.lblZ9 = new System.Windows.Forms.Label();
             this.lblz10 = new System.Windows.Forms.Label();
+            this.lblZ9 = new System.Windows.Forms.Label();
+            this.lblZ8 = new System.Windows.Forms.Label();
+            this.lblZ7 = new System.Windows.Forms.Label();
+            this.lblZ6 = new System.Windows.Forms.Label();
+            this.lblZ5 = new System.Windows.Forms.Label();
+            this.lblZ4 = new System.Windows.Forms.Label();
+            this.lblZ3 = new System.Windows.Forms.Label();
+            this.lblZ2 = new System.Windows.Forms.Label();
+            this.lblZ1 = new System.Windows.Forms.Label();
+            this.btnNodo_4 = new System.Windows.Forms.Button();
+            this.btnNodo_5 = new System.Windows.Forms.Button();
+            this.btnNodo_3 = new System.Windows.Forms.Button();
+            this.btnNodo_2 = new System.Windows.Forms.Button();
+            this.btnNodo_1 = new System.Windows.Forms.Button();
+            this.pbxPerimetro = new System.Windows.Forms.PictureBox();
+            this.labelprueba = new System.Windows.Forms.Label();
             this.panelSuperior.SuspendLayout();
             this.panelIzquierdo.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -195,6 +196,7 @@
             // panelIzquierdo
             // 
             this.panelIzquierdo.BackColor = System.Drawing.Color.LightGray;
+            this.panelIzquierdo.Controls.Add(this.labelprueba);
             this.panelIzquierdo.Controls.Add(this.label4);
             this.panelIzquierdo.Controls.Add(this.label5);
             this.panelIzquierdo.Controls.Add(this.btnNodo5);
@@ -453,6 +455,151 @@
             this.panelCentral.Size = new System.Drawing.Size(1630, 834);
             this.panelCentral.TabIndex = 14;
             // 
+            // lblz10
+            // 
+            this.lblz10.AutoSize = true;
+            this.lblz10.BackColor = System.Drawing.Color.Silver;
+            this.lblz10.Location = new System.Drawing.Point(253, 247);
+            this.lblz10.Name = "lblz10";
+            this.lblz10.Size = new System.Drawing.Size(33, 19);
+            this.lblz10.TabIndex = 16;
+            this.lblz10.Text = "Z10";
+            // 
+            // lblZ9
+            // 
+            this.lblZ9.AutoSize = true;
+            this.lblZ9.BackColor = System.Drawing.Color.Silver;
+            this.lblZ9.Location = new System.Drawing.Point(578, 111);
+            this.lblZ9.Name = "lblZ9";
+            this.lblZ9.Size = new System.Drawing.Size(25, 19);
+            this.lblZ9.TabIndex = 15;
+            this.lblZ9.Text = "Z9";
+            // 
+            // lblZ8
+            // 
+            this.lblZ8.AutoSize = true;
+            this.lblZ8.BackColor = System.Drawing.Color.Silver;
+            this.lblZ8.Location = new System.Drawing.Point(717, 48);
+            this.lblZ8.Name = "lblZ8";
+            this.lblZ8.Size = new System.Drawing.Size(25, 19);
+            this.lblZ8.TabIndex = 14;
+            this.lblZ8.Text = "Z8";
+            // 
+            // lblZ7
+            // 
+            this.lblZ7.AutoSize = true;
+            this.lblZ7.BackColor = System.Drawing.Color.Silver;
+            this.lblZ7.Location = new System.Drawing.Point(905, 75);
+            this.lblZ7.Name = "lblZ7";
+            this.lblZ7.Size = new System.Drawing.Size(25, 19);
+            this.lblZ7.TabIndex = 13;
+            this.lblZ7.Text = "Z7";
+            // 
+            // lblZ6
+            // 
+            this.lblZ6.AutoSize = true;
+            this.lblZ6.BackColor = System.Drawing.Color.Silver;
+            this.lblZ6.Location = new System.Drawing.Point(985, 219);
+            this.lblZ6.Name = "lblZ6";
+            this.lblZ6.Size = new System.Drawing.Size(25, 19);
+            this.lblZ6.TabIndex = 12;
+            this.lblZ6.Text = "Z6";
+            // 
+            // lblZ5
+            // 
+            this.lblZ5.AutoSize = true;
+            this.lblZ5.BackColor = System.Drawing.Color.Silver;
+            this.lblZ5.Location = new System.Drawing.Point(932, 432);
+            this.lblZ5.Name = "lblZ5";
+            this.lblZ5.Size = new System.Drawing.Size(25, 19);
+            this.lblZ5.TabIndex = 11;
+            this.lblZ5.Text = "Z5";
+            // 
+            // lblZ4
+            // 
+            this.lblZ4.AutoSize = true;
+            this.lblZ4.BackColor = System.Drawing.Color.Silver;
+            this.lblZ4.Location = new System.Drawing.Point(739, 525);
+            this.lblZ4.Name = "lblZ4";
+            this.lblZ4.Size = new System.Drawing.Size(25, 19);
+            this.lblZ4.TabIndex = 10;
+            this.lblZ4.Text = "Z4";
+            // 
+            // lblZ3
+            // 
+            this.lblZ3.AutoSize = true;
+            this.lblZ3.BackColor = System.Drawing.Color.Silver;
+            this.lblZ3.Location = new System.Drawing.Point(505, 629);
+            this.lblZ3.Name = "lblZ3";
+            this.lblZ3.Size = new System.Drawing.Size(25, 19);
+            this.lblZ3.TabIndex = 9;
+            this.lblZ3.Text = "Z3";
+            // 
+            // lblZ2
+            // 
+            this.lblZ2.AutoSize = true;
+            this.lblZ2.BackColor = System.Drawing.Color.Silver;
+            this.lblZ2.Location = new System.Drawing.Point(283, 588);
+            this.lblZ2.Name = "lblZ2";
+            this.lblZ2.Size = new System.Drawing.Size(25, 19);
+            this.lblZ2.TabIndex = 8;
+            this.lblZ2.Text = "Z2";
+            // 
+            // lblZ1
+            // 
+            this.lblZ1.AutoSize = true;
+            this.lblZ1.BackColor = System.Drawing.Color.Silver;
+            this.lblZ1.Location = new System.Drawing.Point(103, 335);
+            this.lblZ1.Name = "lblZ1";
+            this.lblZ1.Size = new System.Drawing.Size(25, 19);
+            this.lblZ1.TabIndex = 6;
+            this.lblZ1.Text = "Z1";
+            // 
+            // btnNodo_4
+            // 
+            this.btnNodo_4.Location = new System.Drawing.Point(792, 5);
+            this.btnNodo_4.Name = "btnNodo_4";
+            this.btnNodo_4.Size = new System.Drawing.Size(53, 35);
+            this.btnNodo_4.TabIndex = 5;
+            this.btnNodo_4.Text = "Nodo 4";
+            this.btnNodo_4.UseVisualStyleBackColor = true;
+            // 
+            // btnNodo_5
+            // 
+            this.btnNodo_5.Location = new System.Drawing.Point(430, 156);
+            this.btnNodo_5.Name = "btnNodo_5";
+            this.btnNodo_5.Size = new System.Drawing.Size(64, 41);
+            this.btnNodo_5.TabIndex = 4;
+            this.btnNodo_5.Text = "Nodo 5";
+            this.btnNodo_5.UseVisualStyleBackColor = true;
+            // 
+            // btnNodo_3
+            // 
+            this.btnNodo_3.Location = new System.Drawing.Point(989, 352);
+            this.btnNodo_3.Name = "btnNodo_3";
+            this.btnNodo_3.Size = new System.Drawing.Size(65, 32);
+            this.btnNodo_3.TabIndex = 3;
+            this.btnNodo_3.Text = "Nodo 3";
+            this.btnNodo_3.UseVisualStyleBackColor = true;
+            // 
+            // btnNodo_2
+            // 
+            this.btnNodo_2.Location = new System.Drawing.Point(607, 568);
+            this.btnNodo_2.Name = "btnNodo_2";
+            this.btnNodo_2.Size = new System.Drawing.Size(65, 39);
+            this.btnNodo_2.TabIndex = 2;
+            this.btnNodo_2.Text = "Nodo 2";
+            this.btnNodo_2.UseVisualStyleBackColor = true;
+            // 
+            // btnNodo_1
+            // 
+            this.btnNodo_1.Location = new System.Drawing.Point(174, 442);
+            this.btnNodo_1.Name = "btnNodo_1";
+            this.btnNodo_1.Size = new System.Drawing.Size(67, 37);
+            this.btnNodo_1.TabIndex = 1;
+            this.btnNodo_1.Text = "Nodo 1";
+            this.btnNodo_1.UseVisualStyleBackColor = true;
+            // 
             // pbxPerimetro
             // 
             this.pbxPerimetro.Image = global::AplicacionS.Properties.Resources.BARRIO_ZARATE;
@@ -465,150 +612,14 @@
             this.pbxPerimetro.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pbxPerimetro_MouseClick);
             this.pbxPerimetro.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbxPerimetro_MouseDown);
             // 
-            // btnNodo_1
+            // labelprueba
             // 
-            this.btnNodo_1.Location = new System.Drawing.Point(174, 442);
-            this.btnNodo_1.Name = "btnNodo_1";
-            this.btnNodo_1.Size = new System.Drawing.Size(67, 37);
-            this.btnNodo_1.TabIndex = 1;
-            this.btnNodo_1.Text = "Nodo 1";
-            this.btnNodo_1.UseVisualStyleBackColor = true;
-            // 
-            // btnNodo_2
-            // 
-            this.btnNodo_2.Location = new System.Drawing.Point(607, 568);
-            this.btnNodo_2.Name = "btnNodo_2";
-            this.btnNodo_2.Size = new System.Drawing.Size(65, 39);
-            this.btnNodo_2.TabIndex = 2;
-            this.btnNodo_2.Text = "Nodo 2";
-            this.btnNodo_2.UseVisualStyleBackColor = true;
-            // 
-            // btnNodo_3
-            // 
-            this.btnNodo_3.Location = new System.Drawing.Point(989, 352);
-            this.btnNodo_3.Name = "btnNodo_3";
-            this.btnNodo_3.Size = new System.Drawing.Size(65, 32);
-            this.btnNodo_3.TabIndex = 3;
-            this.btnNodo_3.Text = "Nodo 3";
-            this.btnNodo_3.UseVisualStyleBackColor = true;
-            // 
-            // btnNodo_5
-            // 
-            this.btnNodo_5.Location = new System.Drawing.Point(430, 156);
-            this.btnNodo_5.Name = "btnNodo_5";
-            this.btnNodo_5.Size = new System.Drawing.Size(64, 41);
-            this.btnNodo_5.TabIndex = 4;
-            this.btnNodo_5.Text = "Nodo 5";
-            this.btnNodo_5.UseVisualStyleBackColor = true;
-            // 
-            // btnNodo_4
-            // 
-            this.btnNodo_4.Location = new System.Drawing.Point(792, 5);
-            this.btnNodo_4.Name = "btnNodo_4";
-            this.btnNodo_4.Size = new System.Drawing.Size(53, 35);
-            this.btnNodo_4.TabIndex = 5;
-            this.btnNodo_4.Text = "Nodo 4";
-            this.btnNodo_4.UseVisualStyleBackColor = true;
-            // 
-            // lblZ1
-            // 
-            this.lblZ1.AutoSize = true;
-            this.lblZ1.BackColor = System.Drawing.Color.Silver;
-            this.lblZ1.Location = new System.Drawing.Point(103, 335);
-            this.lblZ1.Name = "lblZ1";
-            this.lblZ1.Size = new System.Drawing.Size(25, 19);
-            this.lblZ1.TabIndex = 6;
-            this.lblZ1.Text = "Z1";
-            // 
-            // lblZ2
-            // 
-            this.lblZ2.AutoSize = true;
-            this.lblZ2.BackColor = System.Drawing.Color.Silver;
-            this.lblZ2.Location = new System.Drawing.Point(283, 588);
-            this.lblZ2.Name = "lblZ2";
-            this.lblZ2.Size = new System.Drawing.Size(25, 19);
-            this.lblZ2.TabIndex = 8;
-            this.lblZ2.Text = "Z2";
-            // 
-            // lblZ3
-            // 
-            this.lblZ3.AutoSize = true;
-            this.lblZ3.BackColor = System.Drawing.Color.Silver;
-            this.lblZ3.Location = new System.Drawing.Point(505, 629);
-            this.lblZ3.Name = "lblZ3";
-            this.lblZ3.Size = new System.Drawing.Size(25, 19);
-            this.lblZ3.TabIndex = 9;
-            this.lblZ3.Text = "Z3";
-            // 
-            // lblZ4
-            // 
-            this.lblZ4.AutoSize = true;
-            this.lblZ4.BackColor = System.Drawing.Color.Silver;
-            this.lblZ4.Location = new System.Drawing.Point(739, 525);
-            this.lblZ4.Name = "lblZ4";
-            this.lblZ4.Size = new System.Drawing.Size(25, 19);
-            this.lblZ4.TabIndex = 10;
-            this.lblZ4.Text = "Z4";
-            // 
-            // lblZ5
-            // 
-            this.lblZ5.AutoSize = true;
-            this.lblZ5.BackColor = System.Drawing.Color.Silver;
-            this.lblZ5.Location = new System.Drawing.Point(932, 432);
-            this.lblZ5.Name = "lblZ5";
-            this.lblZ5.Size = new System.Drawing.Size(25, 19);
-            this.lblZ5.TabIndex = 11;
-            this.lblZ5.Text = "Z5";
-            // 
-            // lblZ6
-            // 
-            this.lblZ6.AutoSize = true;
-            this.lblZ6.BackColor = System.Drawing.Color.Silver;
-            this.lblZ6.Location = new System.Drawing.Point(985, 219);
-            this.lblZ6.Name = "lblZ6";
-            this.lblZ6.Size = new System.Drawing.Size(25, 19);
-            this.lblZ6.TabIndex = 12;
-            this.lblZ6.Text = "Z6";
-            // 
-            // lblZ7
-            // 
-            this.lblZ7.AutoSize = true;
-            this.lblZ7.BackColor = System.Drawing.Color.Silver;
-            this.lblZ7.Location = new System.Drawing.Point(905, 75);
-            this.lblZ7.Name = "lblZ7";
-            this.lblZ7.Size = new System.Drawing.Size(25, 19);
-            this.lblZ7.TabIndex = 13;
-            this.lblZ7.Text = "Z7";
-            // 
-            // lblZ8
-            // 
-            this.lblZ8.AutoSize = true;
-            this.lblZ8.BackColor = System.Drawing.Color.Silver;
-            this.lblZ8.Location = new System.Drawing.Point(717, 48);
-            this.lblZ8.Name = "lblZ8";
-            this.lblZ8.Size = new System.Drawing.Size(25, 19);
-            this.lblZ8.TabIndex = 14;
-            this.lblZ8.Text = "Z8";
-            // 
-            // lblZ9
-            // 
-            this.lblZ9.AutoSize = true;
-            this.lblZ9.BackColor = System.Drawing.Color.Silver;
-            this.lblZ9.Location = new System.Drawing.Point(578, 111);
-            this.lblZ9.Name = "lblZ9";
-            this.lblZ9.Size = new System.Drawing.Size(25, 19);
-            this.lblZ9.TabIndex = 15;
-            this.lblZ9.Text = "Z9";
-            // 
-            // lblz10
-            // 
-            this.lblz10.AutoSize = true;
-            this.lblz10.BackColor = System.Drawing.Color.Silver;
-            this.lblz10.Location = new System.Drawing.Point(253, 247);
-            this.lblz10.Name = "lblz10";
-            this.lblz10.Size = new System.Drawing.Size(33, 19);
-            this.lblz10.TabIndex = 16;
-            this.lblz10.Text = "Z10";
+            this.labelprueba.AutoSize = true;
+            this.labelprueba.Location = new System.Drawing.Point(32, 259);
+            this.labelprueba.Name = "labelprueba";
+            this.labelprueba.Size = new System.Drawing.Size(52, 19);
+            this.labelprueba.TabIndex = 25;
+            this.labelprueba.Text = "prueba";
             // 
             // Form1
             // 
@@ -692,6 +703,7 @@
         private System.Windows.Forms.Label lblZ4;
         private System.Windows.Forms.Label lblZ3;
         private System.Windows.Forms.Label lblZ2;
+        private System.Windows.Forms.Label labelprueba;
     }
 }
 

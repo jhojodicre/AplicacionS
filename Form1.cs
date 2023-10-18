@@ -18,7 +18,7 @@ namespace AplicacionS
         private delegate void DelegadoAcceso(string iterruptToForm);
         string SerialBufferRx;
         string SerialBufferTx;
-        List<string> BufferProcesar = new List<string>();
+        //List<string> BufferProcesar = new List<string>();
         List<string> comListados;
         string selectionCOM;
         static string SerialSt = "1";
@@ -46,16 +46,18 @@ namespace AplicacionS
         private void AccesoForm(string accion)
         {
             SerialBufferRx = accion;
-
+            List<string> BufferProcesar = new List<string>();
             // A partir de aqui Se trantan Los datos.
             txBSerial.AppendText(SerialBufferRx.ToString());
 
             BufferProcesar = SerialBufferRx.Split(',').ToList();
-
+            //BufferProcesar.Add(SerialBufferRx);
+            //txBSerial.AppendText(BufferProcesar[0]);
+            labelprueba.Text = BufferProcesar[0];
             if (BufferProcesar[0] == "SEC")
             {
                 ActualizarInterfaz(BufferProcesar[1], BufferProcesar[2], BufferProcesar[3]);
-
+                
             }
 
         }
