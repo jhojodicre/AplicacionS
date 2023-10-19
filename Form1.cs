@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Security.Policy;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
+using System.Runtime.InteropServices;
 
 namespace AplicacionS
 {
@@ -18,7 +19,7 @@ namespace AplicacionS
         private delegate void DelegadoAcceso(string iterruptToForm);
         string SerialBufferRx;
         string SerialBufferTx;
-        //List<string> BufferProcesar = new List<string>();
+        List<string> BufferProcesar = new List<string>();
         List<string> comListados;
         string selectionCOM;
         static string SerialSt = "1";
@@ -31,11 +32,16 @@ namespace AplicacionS
         private Pen zVerde;
         private Pen zGris;
         private Pen zAzul;
-        private Pen zAmarilla;
+        private Pen zAmarillo;
         private Pen zBlanca;
         private Pen z7;
         private Pen z8;
+        int Cont = 0;
         bool PerimetroState = true;
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static extern bool AllocConsole();
         #region Form1
         public Form1()
         {
@@ -46,20 +52,75 @@ namespace AplicacionS
         private void AccesoForm(string accion)
         {
             SerialBufferRx = accion;
-            List<string> BufferProcesar = new List<string>();
-            // A partir de aqui Se trantan Los datos.
-            txBSerial.AppendText(SerialBufferRx.ToString());
-
-            BufferProcesar = SerialBufferRx.Split(',').ToList();
-            //BufferProcesar.Add(SerialBufferRx);
-            //txBSerial.AppendText(BufferProcesar[0]);
-            labelprueba.Text = BufferProcesar[0];
-            if (BufferProcesar[0] == "SEC")
+           
+            if (SerialBufferRx.Count() > 0)
             {
-                ActualizarInterfaz(BufferProcesar[1], BufferProcesar[2], BufferProcesar[3]);
-                
+                labelprueba.Text=SerialBufferRx.Count().ToString();
+                txBSerial.AppendText(SerialBufferRx);
+                switch (SerialBufferRx)
+                {
+                    case "SEC,BOK,1,A":
+                        Perimetro.DrawLine(zVerde, 119, 335, 189, 426);
+                        break;
+                    case "SEC,BOK,1,B":
+                        Perimetro.DrawLine(zVerde, 206, 451, 359, 661);
+                        break;
+                    case "SEC,BOK,2,A":
+                        Perimetro.DrawLine(zVerde, 385, 679, 616, 582);
+                        break;
+                    case "SEC,BOX,2,B":
+                        Perimetro.DrawLine(zVerde, 650, 563, 855, 473);
+                        break;
+                    case "SEC,BOK,3,A":
+                        Perimetro.DrawLine(zVerde, 881, 460, 1012, 374);
+                        break;
+                    case "SEC,BOK,3,B":
+                        Perimetro.DrawLine(zVerde, 1017, 364, 932, 128);
+                        break;
+                    case "SEC,BOK,4,A":
+                        Perimetro.DrawLine(zVerde, 924, 116, 827, 4);
+                        break;
+                    case "SEC,BOK,4,B":
+                        Perimetro.DrawLine(zVerde, 924, 116, 827, 4);
+                        break;
+                    case "SEC,BOK,5,A":
+                        Perimetro.DrawLine(zVerde, 654, 72, 458, 157);
+                        break;
+                    case "SEC,BOK,5,B":
+                        Perimetro.DrawLine(zVerde, 444, 167, 121, 318);
+                        break;
+                    case "SEC,NOK,1,A":
+                        Perimetro.DrawLine(zRoja, 119, 335, 189, 426);
+                        break;
+                    case "SEC,NOK,1,B":
+                        Perimetro.DrawLine(zRoja, 206, 451, 359, 661);
+                        break;
+                    case "SEC,NOK,2,A":
+                        Perimetro.DrawLine(zRoja, 385, 679, 616, 582);
+                        break;
+                    case "SEC,NOK,2,B":
+                        Perimetro.DrawLine(zRoja, 650, 563, 855, 473);
+                        break;
+                    case "SEC,NOK,3,A":
+                        Perimetro.DrawLine(zRoja, 881, 460, 1012, 374);
+                        break;
+                    case "SEC,NOK,3,B":
+                        Perimetro.DrawLine(zRoja, 1017, 364, 932, 128);
+                        break;
+                    default:
+                        Perimetro.DrawLine(zAmarillo, 119, 335, 189, 426);
+                        Perimetro.DrawLine(zAmarillo, 206, 451, 359, 661);
+                        Perimetro.DrawLine(zAmarillo, 385, 679, 616, 582);
+                        Perimetro.DrawLine(zAmarillo, 650, 563, 855, 473);
+                        Perimetro.DrawLine(zAmarillo, 881, 460, 1012, 374);
+                        Perimetro.DrawLine(zAmarillo, 1017, 364, 932, 128);
+                        Perimetro.DrawLine(zAmarillo, 924, 116, 827, 4);
+                        Perimetro.DrawLine(zAmarillo, 817, 14, 677, 62);
+                        Perimetro.DrawLine(zAmarillo, 654, 72, 458, 157);
+                        Perimetro.DrawLine(zAmarillo, 444, 167, 121, 318);
+                        break;
+                }
             }
-
         }
         private void AccesoInterrupcion(string accion)
         {
@@ -79,9 +140,9 @@ namespace AplicacionS
 
             }
             zVerde = new Pen(Color.Green, 15);
-            zRoja = new Pen(Color.Green, 15);
-            zAmarilla = new Pen(Color.Green, 15);
-            zAzul = new Pen(Color.Green, 15);
+            zRoja = new Pen(Color.Red, 15);
+            zAmarillo = new Pen(Color.Yellow, 15);
+            zAzul = new Pen(Color.Blue, 15);
             zGris = new Pen(Color.DarkGray, 15);
             //zBlanco = new Pen(Color.Green, 15);
             z7 = new Pen(Color.Green, 15);
@@ -146,7 +207,7 @@ namespace AplicacionS
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
 
             //ListaCOM.DataSource = comListados;
@@ -343,149 +404,7 @@ namespace AplicacionS
         #endregion
         private void button1_Click(object sender, EventArgs e)
         {
-            
-        }
 
-        private void ActualizarInterfaz(string estado, string nodo, string zona)
-        {
-            switch (estado)
-            {
-                case "BOK":
-                    switch (nodo)
-                    {
-                        case "1":
-                            switch (zona)
-                            {
-                                case "A":
-                                    Perimetro.DrawLine(zVerde, 119, 335, 189, 426);
-                                    break;
-                                case "B":
-                                    Perimetro.DrawLine(zVerde, 206, 451, 359, 661);
-                                    break;
-
-                            }
-                            break;
-                        case "2":
-                            switch (zona)
-                            {
-                                case "A":
-                                    Perimetro.DrawLine(zVerde, 385, 679, 616, 582);
-                                    break;
-                                case "B":
-                                    Perimetro.DrawLine(zVerde, 650, 563, 855, 473);
-                                    break;
-                            }
-                            break;
-                        case "3":
-                            switch (zona)
-                            {
-                                case "A":
-                                    Perimetro.DrawLine(zVerde, 881, 460, 1012, 374);
-                                    break;
-                                case "B":
-                                    Perimetro.DrawLine(zVerde, 1017, 364, 932, 128);
-                                    break;
-                            }
-                            break;
-                        case "4":
-                            switch (zona)
-                            {
-                                case "A":
-                                    Perimetro.DrawLine(zVerde, 924, 116, 827, 4);
-                                    break;
-                                case "B":
-                                    Perimetro.DrawLine(zVerde, 817, 14, 677, 62);
-                                    break;
-                            }
-                            break;
-                        case "5":
-                            switch (zona)
-                            {
-                                case "A":
-                                    Perimetro.DrawLine(zVerde, 654, 72, 458, 157);
-                                    break;
-                                case "B":
-                                    Perimetro.DrawLine(zVerde, 444, 167, 121, 318);
-                                    break;
-                            }
-                            break;
-                    }
-                    break;
-                case "NOK":
-                    switch (nodo)
-                    {
-                        case "1":
-                            switch (zona)
-                            {
-                                case "A":
-                                    Perimetro.DrawLine(zRoja, 119, 335, 189, 426);
-                                    break;
-                                case "B":
-                                    Perimetro.DrawLine(zRoja, 206, 451, 359, 661);
-                                    break;
-
-                            }
-                            break;
-                        case "2":
-                            switch (zona)
-                            {
-                                case "A":
-                                    Perimetro.DrawLine(zRoja, 385, 679, 616, 582);
-                                    break;
-                                case "B":
-                                    Perimetro.DrawLine(zRoja, 650, 563, 855, 473);
-                                    break;
-                            }
-                            break;
-                        case "3":
-                            switch (zona)
-                            {
-                                case "A":
-                                    Perimetro.DrawLine(zRoja, 881, 460, 1012, 374);
-                                    break;
-                                case "B":
-                                    Perimetro.DrawLine(zRoja, 1017, 364, 932, 128);
-                                    break;
-                            }
-                            break;
-                        case "4":
-                            switch (zona)
-                            {
-                                case "A":
-                                    Perimetro.DrawLine(zRoja, 924, 116, 827, 4);
-                                    break;
-                                case "B":
-                                    Perimetro.DrawLine(zRoja, 817, 14, 677, 62);
-                                    break;
-                            }
-                            break;
-                        case "5":
-                            switch (zona)
-                            {
-                                case "A":
-                                    Perimetro.DrawLine(zRoja, 654, 72, 458, 157);
-                                    break;
-                                case "B":
-                                    Perimetro.DrawLine(zRoja, 444, 167, 121, 318);
-                                    break;
-                            }
-                            break;
-                    }
-                    break;
-                case "ALL":
-                    Perimetro.DrawLine(zVerde, 119, 335, 189, 426);
-                    Perimetro.DrawLine(zVerde, 206, 451, 359, 661);
-                    Perimetro.DrawLine(zVerde, 385, 679, 616, 582);
-                    Perimetro.DrawLine(zVerde, 650, 563, 855, 473);
-                    Perimetro.DrawLine(zVerde, 881, 460, 1012, 374);
-                    Perimetro.DrawLine(zVerde, 1017, 364, 932, 128);
-                    Perimetro.DrawLine(zVerde, 924, 116, 827, 4);
-                    Perimetro.DrawLine(zVerde, 817, 14, 677, 62);
-                    Perimetro.DrawLine(zVerde, 654, 72, 458, 157);
-                    Perimetro.DrawLine(zVerde, 444, 167, 121, 318);
-                    break;
-            }
         }
     }
-
 }

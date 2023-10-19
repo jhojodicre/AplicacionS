@@ -655,7 +655,6 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.IO.Ports.SerialPort SerialESP;
         private System.Windows.Forms.ComboBox cmbSerial_COM;
         private System.Windows.Forms.Button btnSerial_Conectar;
