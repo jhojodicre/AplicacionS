@@ -17,7 +17,6 @@ namespace AplicacionS
         //1 Variable
 
         //2. Instancias
-        static SerialPort SerialESP;
 
         [STAThread]
         static void Main()
