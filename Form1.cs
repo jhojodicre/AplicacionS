@@ -39,9 +39,7 @@ namespace AplicacionS
         int Cont = 0;
         bool PerimetroState = true;
 
-        [DllImport("kernel32.dll", SetLastError = true)]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        static extern bool AllocConsole();
+
         #region Form1
         public Form1()
         {
