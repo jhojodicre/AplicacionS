@@ -11,11 +11,14 @@ using System.Drawing;
 using System.Security.Policy;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 using System.Runtime.InteropServices;
+using System.Media;
 
 namespace AplicacionS
 {
     public partial class Form1 : Form
     {
+        SoundPlayer sound_Alarma;
+        bool sound_Alarma_Status = false;
         private delegate void DelegadoAcceso(string iterruptToForm);
         string SerialBufferRx;
         string SerialBufferTx;
@@ -134,6 +137,9 @@ namespace AplicacionS
                 comListados.Add(com);
 
             }
+            //sound_Alarma = new SoundPlayer(Application.StartupPath+@"\Resource\sound_alarma_1.mp3");
+            sound_Alarma = new SoundPlayer();
+            sound_Alarma.SoundLocation = "C:/Users/ILATINA/source/repos/jhojodicre/AplicacionS/Resources/sound_alarma_1.wav";
             zVerde = new Pen(Color.Green, 15);
             zRoja = new Pen(Color.Red, 15);
             zAmarilla = new Pen(Color.Yellow, 15);
@@ -185,14 +191,7 @@ namespace AplicacionS
                 MessageBox.Show(ex.Message);
             }
         }
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F1)
-            {
 
-                MessageBox.Show("Hola");
-            }
-        }
         #endregion
         #region Serial Puerto
         private void cmbSerial_DropDown(object sender, EventArgs e)
@@ -498,6 +497,19 @@ namespace AplicacionS
                     }
                     break;
                 case "NOK":
+                    if (!sound_Alarma_Status)
+                    {
+                        sound_Alarma_Status = true;
+                        try
+                        {
+                            sound_Alarma.Play();
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
                     switch (nodo)
                     {
                         case "1":
@@ -563,7 +575,7 @@ namespace AplicacionS
 
                     }
                     break;
-                case "FAL":
+                case "ERR":
                     switch (nodo)
                     {
                         case "1":
@@ -711,11 +723,12 @@ namespace AplicacionS
             result = MessageBox.Show(message, caption, buttons);
             if (result == System.Windows.Forms.DialogResult.OK)
             {
+                sound_Alarma.Stop();
                 if (AL_N1_ZA)
                 {
                     ACK_N1_ZA = true;
                 }
-                if(AL_N1_ZB)
+                if (AL_N1_ZB)
                 {
                     ACK_N1_ZB = true;
                 }
@@ -744,6 +757,17 @@ namespace AplicacionS
             if (ACK_N5_ZB) Perimetro.DrawLine(zAmarilla, 444, 167, 121, 318);
 
 
+        }
+
+        private void tmrHora_Tick(object sender, EventArgs e)
+        {
+            lblHora.Text = DateTime.Now.ToLongTimeString();
+            //lblHora.Text = DateTime.Now.ToString("hh:mm:ss");
+            //lblHora.Text = DateTime.Now.ToString("h:mm:s");
+            //lblFecha.Text = DateTime.Now.ToLongDateString();
+            lblFecha.Text = DateTime.Now.ToShortDateString();
+            //lblHora.Text = DateTime.Now.ToString("dddd:MMMM:yyyy");
+            //lblHora.Text = DateTime.Now.ToString("dddd MMMM yyyy");
         }
     }
 }

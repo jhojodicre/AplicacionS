@@ -40,7 +40,6 @@
             this.lblForm1 = new System.Windows.Forms.Label();
             this.btnSerial_Consola = new System.Windows.Forms.Button();
             this.panelIzquierdo = new System.Windows.Forms.Panel();
-            this.labelprueba = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btnNodo5 = new System.Windows.Forms.Button();
@@ -57,6 +56,7 @@
             this.lblNodo3_ZA = new System.Windows.Forms.Label();
             this.lblNodo3_ZB = new System.Windows.Forms.Label();
             this.btnNodo3 = new System.Windows.Forms.Button();
+            this.labelprueba = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.btnConfig_Zones = new System.Windows.Forms.Button();
@@ -78,6 +78,9 @@
             this.btnNodo_2 = new System.Windows.Forms.Button();
             this.btnNodo_1 = new System.Windows.Forms.Button();
             this.pbxPerimetro = new System.Windows.Forms.PictureBox();
+            this.lblFecha = new System.Windows.Forms.Label();
+            this.lblHora = new System.Windows.Forms.Label();
+            this.tmrHora = new System.Windows.Forms.Timer(this.components);
             this.panelSuperior.SuspendLayout();
             this.panelIzquierdo.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -158,7 +161,7 @@
             // 
             // panelSuperior
             // 
-            this.panelSuperior.BackColor = System.Drawing.Color.Silver;
+            this.panelSuperior.BackColor = System.Drawing.Color.DimGray;
             this.panelSuperior.Controls.Add(this.lblForm1);
             this.panelSuperior.Controls.Add(this.btnSerial_Conectar);
             this.panelSuperior.Controls.Add(this.cmbSerial_COM);
@@ -197,7 +200,7 @@
             // 
             // panelIzquierdo
             // 
-            this.panelIzquierdo.BackColor = System.Drawing.Color.LightGray;
+            this.panelIzquierdo.BackColor = System.Drawing.Color.DimGray;
             this.panelIzquierdo.Controls.Add(this.label4);
             this.panelIzquierdo.Controls.Add(this.label5);
             this.panelIzquierdo.Controls.Add(this.btnNodo5);
@@ -224,15 +227,6 @@
             this.panelIzquierdo.Name = "panelIzquierdo";
             this.panelIzquierdo.Size = new System.Drawing.Size(173, 685);
             this.panelIzquierdo.TabIndex = 11;
-            // 
-            // labelprueba
-            // 
-            this.labelprueba.AutoSize = true;
-            this.labelprueba.Location = new System.Drawing.Point(161, 17);
-            this.labelprueba.Name = "labelprueba";
-            this.labelprueba.Size = new System.Drawing.Size(41, 13);
-            this.labelprueba.TabIndex = 25;
-            this.labelprueba.Text = "prueba";
             // 
             // label4
             // 
@@ -398,9 +392,20 @@
             this.btnNodo3.Text = "Nodo 3";
             this.btnNodo3.UseVisualStyleBackColor = true;
             // 
+            // labelprueba
+            // 
+            this.labelprueba.AutoSize = true;
+            this.labelprueba.Location = new System.Drawing.Point(161, 17);
+            this.labelprueba.Name = "labelprueba";
+            this.labelprueba.Size = new System.Drawing.Size(41, 13);
+            this.labelprueba.TabIndex = 25;
+            this.labelprueba.Text = "prueba";
+            // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.LightGray;
+            this.panel3.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.panel3.Controls.Add(this.lblHora);
+            this.panel3.Controls.Add(this.lblFecha);
             this.panel3.Controls.Add(this.labelprueba);
             this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.btnConfig_Zones);
@@ -433,6 +438,7 @@
             // 
             // panel4
             // 
+            this.panel4.BackColor = System.Drawing.Color.DimGray;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel4.Location = new System.Drawing.Point(1338, 64);
             this.panel4.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
@@ -627,6 +633,32 @@
             this.pbxPerimetro.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pbxPerimetro_MouseClick);
             this.pbxPerimetro.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbxPerimetro_MouseDown);
             // 
+            // lblFecha
+            // 
+            this.lblFecha.AutoSize = true;
+            this.lblFecha.ForeColor = System.Drawing.Color.DarkCyan;
+            this.lblFecha.Location = new System.Drawing.Point(889, 16);
+            this.lblFecha.Name = "lblFecha";
+            this.lblFecha.Size = new System.Drawing.Size(35, 13);
+            this.lblFecha.TabIndex = 26;
+            this.lblFecha.Text = "Fecha";
+            // 
+            // lblHora
+            // 
+            this.lblHora.AutoSize = true;
+            this.lblHora.Font = new System.Drawing.Font("XOUMEG S57", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHora.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.lblHora.Location = new System.Drawing.Point(1023, 16);
+            this.lblHora.Name = "lblHora";
+            this.lblHora.Size = new System.Drawing.Size(30, 14);
+            this.lblHora.TabIndex = 27;
+            this.lblHora.Text = "Hora";
+            // 
+            // tmrHora
+            // 
+            this.tmrHora.Enabled = true;
+            this.tmrHora.Tick += new System.EventHandler(this.tmrHora_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -645,7 +677,6 @@
             this.Text = "Seguridad Perimetral";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.panelSuperior.ResumeLayout(false);
             this.panelSuperior.PerformLayout();
             this.panelIzquierdo.ResumeLayout(false);
@@ -710,6 +741,9 @@
         private System.Windows.Forms.Label lblZ3;
         private System.Windows.Forms.Label lblZ2;
         private System.Windows.Forms.Label labelprueba;
+        private System.Windows.Forms.Label lblHora;
+        private System.Windows.Forms.Label lblFecha;
+        private System.Windows.Forms.Timer tmrHora;
     }
 }
 
