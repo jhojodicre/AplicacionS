@@ -84,6 +84,7 @@ namespace AplicacionS
         bool FAL_N5_ZA = false;
         bool FAL_N5_ZB = false;
 
+        Nodo Nodo_1;
         #region Form1
         public Form1()
         {
@@ -112,6 +113,12 @@ namespace AplicacionS
 
                 mensajeCompleto = true;
             }
+            if (nodo == "1")
+            {
+                Nodo_1.NodeUpdate(estado, nodo, zona);
+
+            }
+
             if (mensajeCompleto)
             {
                 mensajeCompleto = false;
@@ -177,13 +184,15 @@ namespace AplicacionS
             // Condicion Inicial
             WindowState = FormWindowState.Maximized;
 
+            Nodo_1 = new Nodo(1, new Point(50, 50), new Point(100, 50), new Point(110, 50), new Point(200, 50));
 
         }
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             try
             {
-                SerialESP.Close();
+                if(SerialESP.IsOpen)
+                    SerialESP.Close();
                 SerialESPconect = false;
             }
             catch (Exception ex)
@@ -416,6 +425,12 @@ namespace AplicacionS
         }
         private void Perimetro_Actualizar()
         {
+            if (Nodo_1.Zone_A_OK)
+            {
+                lblZ1.BackColor = Color.Green;
+
+            }
+            if (!Nodo_1.Zone_A_OK) { lblZ1.BackColor = Color.Red; }
             switch (estado)
             {
                 case "BOK":
@@ -497,19 +512,7 @@ namespace AplicacionS
                     }
                     break;
                 case "NOK":
-                    if (!sound_Alarma_Status)
-                    {
-                        sound_Alarma_Status = true;
-                        try
-                        {
-                            sound_Alarma.Play();
 
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message);
-                        }
-                    }
                     switch (nodo)
                     {
                         case "1":
@@ -517,11 +520,21 @@ namespace AplicacionS
                             {
                                 Perimetro.DrawLine(zRoja, 119, 335, 189, 426);
                                 AL_N1_ZA = true;
+                                if (!ACK_N1_ZA && !sound_Alarma_Status)
+                                {
+                                    sound_Alarma.Play();
+                                    sound_Alarma_Status = true;
+                                }
                             }
                             else if (zona == "B" && !ACK_N1_ZB)
                             {
                                 Perimetro.DrawLine(zRoja, 206, 451, 359, 661);
                                 AL_N1_ZB = true;
+                                if (!ACK_N1_ZB && !sound_Alarma_Status)
+                                {
+                                    sound_Alarma.Play();
+                                    sound_Alarma_Status = true;
+                                }
                             }
                             break;
                         case "2":
@@ -529,11 +542,23 @@ namespace AplicacionS
                             {
                                 Perimetro.DrawLine(zRoja, 385, 679, 616, 582);
                                 AL_N2_ZA = true;
+                                if (!ACK_N2_ZB && !sound_Alarma_Status)
+                                {
+                                    sound_Alarma.Play();
+                                    sound_Alarma_Status = true;
+
+                                }
                             }
                             else if (zona == "B" && !ACK_N2_ZB)
                             {
                                 Perimetro.DrawLine(zRoja, 650, 563, 855, 473);
                                 AL_N2_ZB = true;
+                                if (!ACK_N2_ZB && !sound_Alarma_Status)
+                                {
+                                    sound_Alarma.Play();
+                                    sound_Alarma_Status = true;
+
+                                }
                             }
                             break;
                         case "3":
@@ -677,6 +702,7 @@ namespace AplicacionS
             btnNodo_3.Visible = true;
             btnNodo_4.Visible = true;
             btnNodo_5.Visible = true;
+
         }
 
         #region Dibujar Zona
@@ -714,7 +740,7 @@ namespace AplicacionS
         private void btnNodo_1_Click(object sender, EventArgs e)
         {
             // Initializes the variables to pass to the MessageBox.Show method.
-            string message = "Zonas Reconocidas";
+            string message = "ZONA ACTIVADA";
             string caption = "Reconocer Zonas";
             MessageBoxButtons buttons = MessageBoxButtons.OK;
             DialogResult result;
@@ -727,10 +753,38 @@ namespace AplicacionS
                 if (AL_N1_ZA)
                 {
                     ACK_N1_ZA = true;
+                    sound_Alarma_Status = false;
                 }
                 if (AL_N1_ZB)
                 {
+                    sound_Alarma_Status = false;
                     ACK_N1_ZB = true;
+                }
+            }
+            ReconocimientoDeZonas();
+        }
+        private void btnNodo_2_Click(object sender, EventArgs e)
+        {
+            // Initializes the variables to pass to the MessageBox.Show method.
+            string message = "ZONA ACTIVADA";
+            string caption = "Reconocer Zonas";
+            MessageBoxButtons buttons = MessageBoxButtons.OK;
+            DialogResult result;
+
+            // Displays the MessageBox.
+            result = MessageBox.Show(message, caption, buttons);
+            if (result == System.Windows.Forms.DialogResult.OK)
+            {
+                sound_Alarma.Stop();
+                if (AL_N2_ZA)
+                {
+                    ACK_N2_ZA = true;
+                    sound_Alarma_Status = false;
+                }
+                if (AL_N2_ZB)
+                {
+                    sound_Alarma_Status = false;
+                    ACK_N2_ZB = true;
                 }
             }
             ReconocimientoDeZonas();
@@ -769,5 +823,6 @@ namespace AplicacionS
             //lblHora.Text = DateTime.Now.ToString("dddd:MMMM:yyyy");
             //lblHora.Text = DateTime.Now.ToString("dddd MMMM yyyy");
         }
+
     }
 }

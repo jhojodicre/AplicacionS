@@ -58,6 +58,8 @@
             this.btnNodo3 = new System.Windows.Forms.Button();
             this.labelprueba = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lblHora = new System.Windows.Forms.Label();
+            this.lblFecha = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.btnConfig_Zones = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -78,8 +80,6 @@
             this.btnNodo_2 = new System.Windows.Forms.Button();
             this.btnNodo_1 = new System.Windows.Forms.Button();
             this.pbxPerimetro = new System.Windows.Forms.PictureBox();
-            this.lblFecha = new System.Windows.Forms.Label();
-            this.lblHora = new System.Windows.Forms.Label();
             this.tmrHora = new System.Windows.Forms.Timer(this.components);
             this.panelSuperior.SuspendLayout();
             this.panelIzquierdo.SuspendLayout();
@@ -177,7 +177,7 @@
             this.lblForm1.AutoSize = true;
             this.lblForm1.BackColor = System.Drawing.Color.Transparent;
             this.lblForm1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblForm1.ForeColor = System.Drawing.Color.DarkCyan;
+            this.lblForm1.ForeColor = System.Drawing.Color.LightSteelBlue;
             this.lblForm1.Location = new System.Drawing.Point(512, 16);
             this.lblForm1.Name = "lblForm1";
             this.lblForm1.Size = new System.Drawing.Size(133, 37);
@@ -304,6 +304,7 @@
             // 
             // lblSerial_Status
             // 
+            this.lblSerial_Status.ForeColor = System.Drawing.Color.SkyBlue;
             this.lblSerial_Status.Location = new System.Drawing.Point(7, 2);
             this.lblSerial_Status.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSerial_Status.Name = "lblSerial_Status";
@@ -415,6 +416,27 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1197, 46);
             this.panel3.TabIndex = 12;
+            // 
+            // lblHora
+            // 
+            this.lblHora.AutoSize = true;
+            this.lblHora.Font = new System.Drawing.Font("XOUMEG S57", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHora.ForeColor = System.Drawing.Color.LightSkyBlue;
+            this.lblHora.Location = new System.Drawing.Point(1014, 0);
+            this.lblHora.Name = "lblHora";
+            this.lblHora.Size = new System.Drawing.Size(66, 33);
+            this.lblHora.TabIndex = 27;
+            this.lblHora.Text = "Hora";
+            // 
+            // lblFecha
+            // 
+            this.lblFecha.AutoSize = true;
+            this.lblFecha.ForeColor = System.Drawing.Color.LightCyan;
+            this.lblFecha.Location = new System.Drawing.Point(1029, 33);
+            this.lblFecha.Name = "lblFecha";
+            this.lblFecha.Size = new System.Drawing.Size(35, 13);
+            this.lblFecha.TabIndex = 26;
+            this.lblFecha.Text = "Fecha";
             // 
             // button1
             // 
@@ -610,6 +632,7 @@
             this.btnNodo_2.TabIndex = 2;
             this.btnNodo_2.Text = "Nodo 2";
             this.btnNodo_2.UseVisualStyleBackColor = true;
+            this.btnNodo_2.Click += new System.EventHandler(this.btnNodo_2_Click);
             // 
             // btnNodo_1
             // 
@@ -632,27 +655,6 @@
             this.pbxPerimetro.TabStop = false;
             this.pbxPerimetro.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pbxPerimetro_MouseClick);
             this.pbxPerimetro.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbxPerimetro_MouseDown);
-            // 
-            // lblFecha
-            // 
-            this.lblFecha.AutoSize = true;
-            this.lblFecha.ForeColor = System.Drawing.Color.DarkCyan;
-            this.lblFecha.Location = new System.Drawing.Point(889, 16);
-            this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(35, 13);
-            this.lblFecha.TabIndex = 26;
-            this.lblFecha.Text = "Fecha";
-            // 
-            // lblHora
-            // 
-            this.lblHora.AutoSize = true;
-            this.lblHora.Font = new System.Drawing.Font("XOUMEG S57", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHora.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.lblHora.Location = new System.Drawing.Point(1023, 16);
-            this.lblHora.Name = "lblHora";
-            this.lblHora.Size = new System.Drawing.Size(30, 14);
-            this.lblHora.TabIndex = 27;
-            this.lblHora.Text = "Hora";
             // 
             // tmrHora
             // 
