@@ -60,7 +60,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblHora = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnNodos_Reset = new System.Windows.Forms.Button();
             this.btnConfig_Zones = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panelCentral = new System.Windows.Forms.Panel();
@@ -342,6 +342,7 @@
             this.btnNodo2.TabIndex = 15;
             this.btnNodo2.Text = "Nodo 2";
             this.btnNodo2.UseVisualStyleBackColor = true;
+            this.btnNodo2.Click += new System.EventHandler(this.btnNodo2_Click);
             // 
             // lblNodo1_ZA
             // 
@@ -392,6 +393,7 @@
             this.btnNodo3.TabIndex = 10;
             this.btnNodo3.Text = "Nodo 3";
             this.btnNodo3.UseVisualStyleBackColor = true;
+            this.btnNodo3.Click += new System.EventHandler(this.btnNodo3_Click);
             // 
             // labelprueba
             // 
@@ -408,7 +410,7 @@
             this.panel3.Controls.Add(this.lblHora);
             this.panel3.Controls.Add(this.lblFecha);
             this.panel3.Controls.Add(this.labelprueba);
-            this.panel3.Controls.Add(this.button1);
+            this.panel3.Controls.Add(this.btnNodos_Reset);
             this.panel3.Controls.Add(this.btnConfig_Zones);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(173, 703);
@@ -438,15 +440,15 @@
             this.lblFecha.TabIndex = 26;
             this.lblFecha.Text = "Fecha";
             // 
-            // button1
+            // btnNodos_Reset
             // 
-            this.button1.Location = new System.Drawing.Point(16, 8);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(58, 30);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "CONFIG";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnNodos_Reset.Location = new System.Drawing.Point(16, 8);
+            this.btnNodos_Reset.Name = "btnNodos_Reset";
+            this.btnNodos_Reset.Size = new System.Drawing.Size(58, 30);
+            this.btnNodos_Reset.TabIndex = 1;
+            this.btnNodos_Reset.Text = "Reset";
+            this.btnNodos_Reset.UseVisualStyleBackColor = true;
+            this.btnNodos_Reset.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnConfig_Zones
             // 
@@ -726,7 +728,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnNodo4;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnNodos_Reset;
         private System.Windows.Forms.Button btnNodo_1;
         private System.Windows.Forms.Button btnNodo_2;
         private System.Windows.Forms.Button btnNodo_3;

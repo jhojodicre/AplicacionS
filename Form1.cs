@@ -352,6 +352,42 @@ namespace AplicacionS
                 catch { }
             }
         }
+        private void btnNodo2_Click(object sender, EventArgs e)
+        {
+            MessageBoxButtons msgNodo2 = MessageBoxButtons.YesNoCancel;
+            string message = "Desea Resetear el Nodo2";
+            string caption = "Reset Nodo2";
+            DialogResult result;
+
+            // Displays the MessageBox.
+            result = MessageBox.Show(message, caption, msgNodo2);
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                try
+                {
+                    SerialESP.WriteLine("B72A9");
+                }
+                catch { }
+            }
+        }
+        private void btnNodo3_Click(object sender, EventArgs e)
+        {
+            MessageBoxButtons msgNodo3 = MessageBoxButtons.YesNoCancel;
+            string message = "Desea Resetear el Nodo3";
+            string caption = "Reset Nodo3";
+            DialogResult result;
+
+            // Displays the MessageBox.
+            result = MessageBox.Show(message, caption, msgNodo3);
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                try
+                {
+                    SerialESP.WriteLine("B32A9");
+                }
+                catch { }
+            }
+        }
         #endregion
         #region Perimetro
 
@@ -727,16 +763,23 @@ namespace AplicacionS
         }
         #endregion
         #endregion
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
         private void btnConfig_Zones_Click(object sender, EventArgs e)
         {
 
 
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SerialESP.WriteLine("B70A9");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
         private void btnNodo_1_Click(object sender, EventArgs e)
         {
             // Initializes the variables to pass to the MessageBox.Show method.
