@@ -49,42 +49,13 @@ namespace AplicacionS
         string nodo;
         string estado;
 
-        bool ACK_N1_ZA = false;
-        bool ACK_N1_ZB = false;
-        bool ACK_N2_ZA = false;
-        bool ACK_N2_ZB = false;
-        bool ACK_N3_ZA = false;
-        bool ACK_N3_ZB = false;
-        bool ACK_N4_ZA = false;
-        bool ACK_N4_ZB = false;
-        bool ACK_N5_ZA = false;
-        bool ACK_N5_ZB = false;
-        bool ACK_N6_ZA = false;
-        bool ACK_N6_ZB = false;
-
-        bool AL_N1_ZA = false;
-        bool AL_N1_ZB = false;
-        bool AL_N2_ZA = false;
-        bool AL_N2_ZB = false;
-        bool AL_N3_ZA = false;
-        bool AL_N3_ZB = false;
-        bool AL_N4_ZA = false;
-        bool AL_N4_ZB = false;
-        bool AL_N5_ZA = false;
-        bool AL_N5_ZB = false;
-
-        bool FAL_N1_ZA = false;
-        bool FAL_N1_ZB = false;
-        bool FAL_N2_ZA = false;
-        bool FAL_N2_ZB = false;
-        bool FAL_N3_ZA = false;
-        bool FAL_N3_ZB = false;
-        bool FAL_N4_ZA = false;
-        bool FAL_N4_ZB = false;
-        bool FAL_N5_ZA = false;
-        bool FAL_N5_ZB = false;
 
         Nodo Nodo_1;
+        Nodo Nodo_2;
+        Nodo Nodo_3;
+        Nodo Nodo_4;
+        Nodo Nodo_5;
+
         #region Form1
         public Form1()
         {
@@ -113,17 +84,13 @@ namespace AplicacionS
 
                 mensajeCompleto = true;
             }
-            if (nodo == "1")
-            {
-                Nodo_1.NodeUpdate(estado, nodo, zona);
-
-            }
 
             if (mensajeCompleto)
             {
                 mensajeCompleto = false;
 
-                Perimetro_Actualizar();
+                Perimetro_Actualizar_2();
+                Zonas_Actualizar();
             }
 
         }
@@ -158,7 +125,7 @@ namespace AplicacionS
 
             Perimetro = pbxPerimetro.CreateGraphics();
             // Desactivar Controles.
-            btnNodo1.Enabled = false;
+            btnNodo1_RST.Enabled = false;
             btnSerial_Enviar.Enabled = false;
 
 
@@ -175,23 +142,27 @@ namespace AplicacionS
             lblZ9.Visible = false;
             lblz10.Visible = false;
 
-            btnNodo_1.Visible = false;
-            btnNodo_2.Visible = false;
-            btnNodo_3.Visible = false;
-            btnNodo_4.Visible = false;
-            btnNodo_5.Visible = false;
+            btnNodo1_ACK.Visible = false;
+            btnNodo2_ACK.Visible = false;
+            btnNodo3_ACK.Visible = false;
+            btnNodo4_ACK.Visible = false;
+            btnNodo5_ACK.Visible = false;
 
             // Condicion Inicial
             WindowState = FormWindowState.Maximized;
 
             Nodo_1 = new Nodo(1, new Point(50, 50), new Point(100, 50), new Point(110, 50), new Point(200, 50));
+            Nodo_2 = new Nodo(2);
+            Nodo_3 = new Nodo(3);
+            Nodo_4 = new Nodo(4);
+            Nodo_5 = new Nodo(5);
 
         }
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             try
             {
-                if(SerialESP.IsOpen)
+                if (SerialESP.IsOpen)
                     SerialESP.Close();
                 SerialESPconect = false;
             }
@@ -264,7 +235,7 @@ namespace AplicacionS
                 }
                 if (SerialESP.IsOpen)
                 {
-                    btnNodo1.Enabled = true;
+                    btnNodo1_RST.Enabled = true;
                     btnSerial_Enviar.Enabled = true;
 
                     btnSerial_Conectar.Text = "Desconectar";
@@ -333,7 +304,46 @@ namespace AplicacionS
         }
         #endregion
         #region Botones Nodos
-        private void btnNodo1_Click(object sender, EventArgs e)
+        private void btnNodoS_ACK_Click(object sender, EventArgs e)
+        {
+            // Initializes the variables to pass to the MessageBox.Show method.
+            string message = "ZONA ACTIVADA";
+            string caption = "Reconocer Zonas";
+            MessageBoxButtons buttons = MessageBoxButtons.OK;
+            DialogResult result;
+
+            Button button = (Button)sender;
+            string Nodo_ACK = button.Text;
+            char Nodo_ACK_Indice = Nodo_ACK[Nodo_ACK.Length - 1];
+            Nodo_ACK = Nodo_ACK_Indice.ToString();
+            txBSerial.AppendText(Nodo_ACK);
+            switch (Nodo_ACK)
+            {
+                case "1":
+                    Nodo_1.NodeUpdate("ACK", Nodo_ACK, zona);
+                    break;
+                case "2":
+                    Nodo_2.NodeUpdate("ACK", Nodo_ACK, zona);
+                    break;
+                case "3":
+                    Nodo_3.NodeUpdate("ACK", Nodo_ACK, zona);
+                    break;
+                case "4":
+                    Nodo_4.NodeUpdate("ACK", Nodo_ACK, zona);
+                    break;
+                case "5":
+                    Nodo_5.NodeUpdate("ACK", Nodo_ACK, zona);
+                    break;
+                default:
+                    break;
+            }
+            // Displays the MessageBox.
+            result = MessageBox.Show(message, caption, buttons);
+            if (result == System.Windows.Forms.DialogResult.OK)
+            {
+            }
+        }
+        private void btnNodo1_RST_Click(object sender, EventArgs e)
         {
             MessageBoxButtons msgNodo1 = MessageBoxButtons.YesNoCancel;
             string message = "Desea Resetear el Nodo1";
@@ -352,7 +362,7 @@ namespace AplicacionS
                 catch { }
             }
         }
-        private void btnNodo2_Click(object sender, EventArgs e)
+        private void btnNodo2_RST_Click(object sender, EventArgs e)
         {
             MessageBoxButtons msgNodo2 = MessageBoxButtons.YesNoCancel;
             string message = "Desea Resetear el Nodo2";
@@ -370,7 +380,7 @@ namespace AplicacionS
                 catch { }
             }
         }
-        private void btnNodo3_Click(object sender, EventArgs e)
+        private void btnNodo3_RST_Click(object sender, EventArgs e)
         {
             MessageBoxButtons msgNodo3 = MessageBoxButtons.YesNoCancel;
             string message = "Desea Resetear el Nodo3";
@@ -388,325 +398,44 @@ namespace AplicacionS
                 catch { }
             }
         }
+        private void btnNodos_RST_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SerialESP.WriteLine("B70A9");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
         #endregion
         #region Perimetro
 
         private void Perimetro_Actualizar_2()
         {
-            switch (mensajeProcesado)
+            switch (nodo)
             {
-                case "SEC,BOK,1,A":
-                    Perimetro.DrawLine(zVerde, 119, 335, 189, 426);
+                case "1":
+                    Nodo_1.NodeUpdate(estado, nodo, zona);
                     break;
-                case "SEC,BOK,1,B":
-                    Perimetro.DrawLine(zVerde, 206, 451, 359, 661);
-                    //txBSerial.AppendText("Zona b verde\r");
+                case "2":
+                    Nodo_2.NodeUpdate(estado, nodo, zona);
                     break;
-                case "SEC,BOK,2,A":
-                    Perimetro.DrawLine(zVerde, 385, 679, 616, 582);
+                case "3":
+                    Nodo_3.NodeUpdate(estado, nodo, zona);
                     break;
-                case "SEC,BOX,2,B":
-                    Perimetro.DrawLine(zVerde, 650, 563, 855, 473);
+                case "4":
+                    Nodo_4.NodeUpdate(estado, nodo, zona);
                     break;
-                case "SEC,BOK,3,A":
-                    Perimetro.DrawLine(zVerde, 881, 460, 1012, 374);
-                    break;
-                case "SEC,BOK,3,B":
-                    Perimetro.DrawLine(zVerde, 1017, 364, 932, 128);
-                    break;
-                case "SEC,BOK,4,A":
-                    Perimetro.DrawLine(zVerde, 924, 116, 827, 4);
-                    break;
-                case "SEC,BOK,4,B":
-                    Perimetro.DrawLine(zVerde, 924, 116, 827, 4);
-                    break;
-                case "SEC,BOK,5,A":
-                    Perimetro.DrawLine(zVerde, 654, 72, 458, 157);
-                    break;
-                case "SEC,BOK,5,B":
-                    Perimetro.DrawLine(zVerde, 444, 167, 121, 318);
-                    break;
-                case "SEC,NOK,1,A":
-                    Perimetro.DrawLine(zRoja, 119, 335, 189, 426);
-                    break;
-                case "SEC,NOK,1,B":
-                    Perimetro.DrawLine(zRoja, 206, 451, 359, 661);
-                    break;
-                case "SEC,NOK,2,A":
-                    Perimetro.DrawLine(zRoja, 385, 679, 616, 582);
-                    break;
-                case "SEC,NOK,2,B":
-                    Perimetro.DrawLine(zRoja, 650, 563, 855, 473);
-                    break;
-                case "SEC,NOK,3,A":
-                    Perimetro.DrawLine(zRoja, 881, 460, 1012, 374);
-                    break;
-                case "SEC,NOK,3,B":
-                    Perimetro.DrawLine(zRoja, 1017, 364, 932, 128);
+                case "5":
+                    Nodo_5.NodeUpdate(estado, nodo, zona);
                     break;
                 default:
-                    Perimetro.DrawLine(zAmarilla, 119, 335, 189, 426);
-                    Perimetro.DrawLine(zAmarilla, 206, 451, 359, 661);
-                    Perimetro.DrawLine(zAmarilla, 385, 679, 616, 582);
-                    Perimetro.DrawLine(zAmarilla, 650, 563, 855, 473);
-                    Perimetro.DrawLine(zAmarilla, 881, 460, 1012, 374);
-                    Perimetro.DrawLine(zAmarilla, 1017, 364, 932, 128);
-                    Perimetro.DrawLine(zAmarilla, 924, 116, 827, 4);
-                    Perimetro.DrawLine(zAmarilla, 817, 14, 677, 62);
-                    Perimetro.DrawLine(zAmarilla, 654, 72, 458, 157);
-                    Perimetro.DrawLine(zAmarilla, 444, 167, 121, 318);
+
                     break;
             }
 
-        }
-        private void Perimetro_Actualizar()
-        {
-            if (Nodo_1.Zone_A_OK)
-            {
-                lblZ1.BackColor = Color.Green;
-
-            }
-            if (!Nodo_1.Zone_A_OK) { lblZ1.BackColor = Color.Red; }
-            switch (estado)
-            {
-                case "BOK":
-                    switch (nodo)
-                    {
-                        case "1":
-                            if (zona == "A")
-                            {
-                                Perimetro.DrawLine(zVerde, 119, 335, 189, 426);
-                                ACK_N1_ZA = false;
-                                AL_N1_ZA = false;
-                            }
-                            else if (zona == "B")
-                            {
-                                Perimetro.DrawLine(zVerde, 206, 451, 359, 661);
-                                ACK_N1_ZB = false;
-                                AL_N1_ZB = false;
-                            }
-                            break;
-                        case "2":
-                            if (zona == "A")
-                            {
-                                Perimetro.DrawLine(zVerde, 385, 679, 616, 582);
-                                ACK_N2_ZA = false;
-                                AL_N2_ZA = false;
-                            }
-                            else if (zona == "B")
-                            {
-                                Perimetro.DrawLine(zVerde, 650, 563, 855, 473);
-                                ACK_N2_ZB = false;
-                                AL_N2_ZB = false;
-                            }
-                            break;
-                        case "3":
-                            if (zona == "A")
-                            {
-                                Perimetro.DrawLine(zVerde, 881, 460, 1012, 374);
-                                ACK_N3_ZA = false;
-                                AL_N3_ZA = false;
-                            }
-                            else if (zona == "B")
-                            {
-                                Perimetro.DrawLine(zVerde, 1017, 364, 932, 128);
-                                ACK_N3_ZB = false;
-                                AL_N3_ZB = false;
-                            }
-                            break;
-                        case "4":
-                            if (zona == "A")
-                            {
-                                Perimetro.DrawLine(zVerde, 924, 116, 827, 4);
-                                ACK_N4_ZA = false;
-                                AL_N4_ZA = false;
-                            }
-                            else if (zona == "B")
-                            {
-                                Perimetro.DrawLine(zVerde, 817, 14, 677, 62);
-                                ACK_N4_ZB = false;
-                                AL_N4_ZB = false;
-                            }
-                            break;
-                        case "5":
-                            if (zona == "A")
-                            {
-                                Perimetro.DrawLine(zVerde, 654, 72, 458, 157);
-                                ACK_N5_ZA = false;
-                                AL_N5_ZA = false;
-                            }
-                            else if (zona == "B")
-                            {
-                                Perimetro.DrawLine(zVerde, 444, 167, 121, 318);
-                                ACK_N5_ZB = false;
-                                AL_N5_ZB = false;
-                            }
-                            break;
-                        default:
-                            break;
-
-                    }
-                    break;
-                case "NOK":
-
-                    switch (nodo)
-                    {
-                        case "1":
-                            if (zona == "A" && !ACK_N1_ZA)
-                            {
-                                Perimetro.DrawLine(zRoja, 119, 335, 189, 426);
-                                AL_N1_ZA = true;
-                                if (!ACK_N1_ZA && !sound_Alarma_Status)
-                                {
-                                    sound_Alarma.Play();
-                                    sound_Alarma_Status = true;
-                                }
-                            }
-                            else if (zona == "B" && !ACK_N1_ZB)
-                            {
-                                Perimetro.DrawLine(zRoja, 206, 451, 359, 661);
-                                AL_N1_ZB = true;
-                                if (!ACK_N1_ZB && !sound_Alarma_Status)
-                                {
-                                    sound_Alarma.Play();
-                                    sound_Alarma_Status = true;
-                                }
-                            }
-                            break;
-                        case "2":
-                            if (zona == "A" && !ACK_N2_ZA)
-                            {
-                                Perimetro.DrawLine(zRoja, 385, 679, 616, 582);
-                                AL_N2_ZA = true;
-                                if (!ACK_N2_ZB && !sound_Alarma_Status)
-                                {
-                                    sound_Alarma.Play();
-                                    sound_Alarma_Status = true;
-
-                                }
-                            }
-                            else if (zona == "B" && !ACK_N2_ZB)
-                            {
-                                Perimetro.DrawLine(zRoja, 650, 563, 855, 473);
-                                AL_N2_ZB = true;
-                                if (!ACK_N2_ZB && !sound_Alarma_Status)
-                                {
-                                    sound_Alarma.Play();
-                                    sound_Alarma_Status = true;
-
-                                }
-                            }
-                            break;
-                        case "3":
-                            if (zona == "A" && !ACK_N3_ZA)
-                            {
-                                Perimetro.DrawLine(zRoja, 881, 460, 1012, 374);
-                                AL_N3_ZA = true;
-                            }
-                            else if (zona == "B" && !ACK_N3_ZB)
-                            {
-                                Perimetro.DrawLine(zRoja, 1017, 364, 932, 128);
-                                AL_N3_ZB = true;
-                            }
-                            break;
-                        case "4":
-                            if (zona == "A" && !ACK_N4_ZA)
-                            {
-                                Perimetro.DrawLine(zRoja, 924, 116, 827, 4);
-                                AL_N4_ZA = true;
-                            }
-                            else if (zona == "B" && !ACK_N4_ZB)
-                            {
-                                Perimetro.DrawLine(zRoja, 817, 14, 677, 62);
-                                AL_N4_ZB = true;
-                            }
-                            break;
-                        case "5":
-                            if (zona == "A" && !ACK_N5_ZA)
-                            {
-                                Perimetro.DrawLine(zRoja, 654, 72, 458, 157);
-                                AL_N5_ZA = true;
-                            }
-                            else if (zona == "B" && !ACK_N5_ZB)
-                            {
-                                Perimetro.DrawLine(zRoja, 444, 167, 121, 318);
-                                AL_N5_ZB = true;
-                            }
-                            break;
-
-                    }
-                    break;
-                case "ERR":
-                    switch (nodo)
-                    {
-                        case "1":
-                            if (zona == "A")
-                            {
-                                Perimetro.DrawLine(zAzul, 119, 335, 189, 426);
-                                FAL_N1_ZA = true;
-                            }
-                            else if (zona == "B")
-                            {
-                                Perimetro.DrawLine(zAzul, 206, 451, 359, 661);
-                                FAL_N1_ZB = true;
-                            }
-                            break;
-                        case "2":
-                            if (zona == "A")
-                            {
-                                Perimetro.DrawLine(zAzul, 385, 679, 616, 582);
-                                FAL_N2_ZA = true;
-                            }
-                            else if (zona == "B")
-                            {
-                                Perimetro.DrawLine(zAzul, 650, 563, 855, 473);
-                                FAL_N2_ZB = true;
-                            }
-                            break;
-                        case "3":
-                            if (zona == "A")
-                            {
-                                Perimetro.DrawLine(zAzul, 881, 460, 1012, 374);
-                                FAL_N3_ZA = true;
-                            }
-                            else if (zona == "B")
-                            {
-                                Perimetro.DrawLine(zAzul, 1017, 364, 932, 128);
-                                FAL_N3_ZB = true;
-                            }
-                            break;
-                        case "4":
-                            if (zona == "A")
-                            {
-                                Perimetro.DrawLine(zAzul, 924, 116, 827, 4);
-                                FAL_N4_ZA = true;
-                            }
-                            else if (zona == "B")
-                            {
-                                Perimetro.DrawLine(zAzul, 817, 14, 677, 62);
-                                FAL_N4_ZB = true;
-                            }
-                            break;
-                        case "5":
-                            if (zona == "A")
-                            {
-                                Perimetro.DrawLine(zAzul, 654, 72, 458, 157);
-                                FAL_N5_ZA = true;
-                            }
-                            else if (zona == "B")
-                            {
-                                Perimetro.DrawLine(zAzul, 444, 167, 121, 318);
-                                FAL_N5_ZB = true;
-                            }
-                            break;
-                        default:
-                            break;
-
-                    }
-                    break;
-                default:
-                    break;
-            }
         }
         private void EstablecerZonas()
         {
@@ -733,11 +462,11 @@ namespace AplicacionS
             lblZ9.Visible = true;
             lblz10.Visible = true;
 
-            btnNodo_1.Visible = true;
-            btnNodo_2.Visible = true;
-            btnNodo_3.Visible = true;
-            btnNodo_4.Visible = true;
-            btnNodo_5.Visible = true;
+            btnNodo1_ACK.Visible = true;
+            btnNodo2_ACK.Visible = true;
+            btnNodo3_ACK.Visible = true;
+            btnNodo4_ACK.Visible = true;
+            btnNodo5_ACK.Visible = true;
 
         }
 
@@ -763,99 +492,93 @@ namespace AplicacionS
         }
         #endregion
         #endregion
-        private void btnConfig_Zones_Click(object sender, EventArgs e)
-        {
 
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void Zonas_Actualizar()
         {
             try
             {
-                SerialESP.WriteLine("B70A9");
+                // Zonas Verdes
+
+                if (Nodo_1.Zone_A_OK) Perimetro.DrawLine(zVerde, 119, 335, 189, 426);
+                if (Nodo_1.Zone_B_OK) Perimetro.DrawLine(zVerde, 206, 451, 359, 661);
+
+                if (Nodo_2.Zone_A_OK) Perimetro.DrawLine(zVerde, 385, 679, 616, 582);
+                if (Nodo_2.Zone_B_OK) Perimetro.DrawLine(zVerde, 650, 563, 855, 473);
+
+                if (Nodo_3.Zone_A_OK) Perimetro.DrawLine(zVerde, 881, 460, 1012, 374);
+                if (Nodo_3.Zone_B_OK) Perimetro.DrawLine(zVerde, 1017, 364, 932, 128);
+
+                if (Nodo_4.Zone_A_OK) Perimetro.DrawLine(zVerde, 924, 116, 827, 4);
+                if (Nodo_4.Zone_B_OK) Perimetro.DrawLine(zVerde, 817, 14, 677, 62);
+
+                if (Nodo_5.Zone_A_OK) Perimetro.DrawLine(zVerde, 654, 72, 458, 157);
+                if (Nodo_5.Zone_B_OK) Perimetro.DrawLine(zVerde, 444, 167, 121, 318);
+
+
+                //ZONA ROJA
+                if (Nodo_1.Zone_A_ALR) Perimetro.DrawLine(zRoja, 119, 335, 189, 426);
+                if (Nodo_1.Zone_B_ALR) Perimetro.DrawLine(zRoja, 206, 451, 359, 661);
+
+                if (Nodo_2.Zone_A_ALR) Perimetro.DrawLine(zRoja, 385, 679, 616, 582);
+                if (Nodo_2.Zone_B_ALR) Perimetro.DrawLine(zRoja, 650, 563, 855, 473);
+
+                if (Nodo_3.Zone_A_ALR) Perimetro.DrawLine(zRoja, 881, 460, 1012, 374);
+                if (Nodo_3.Zone_B_ALR) Perimetro.DrawLine(zRoja, 1017, 364, 932, 128);
+
+                if (Nodo_4.Zone_A_ALR) Perimetro.DrawLine(zRoja, 924, 116, 827, 4);
+                if (Nodo_4.Zone_B_ALR) Perimetro.DrawLine(zRoja, 817, 14, 677, 62);
+
+                if (Nodo_5.Zone_A_ALR) Perimetro.DrawLine(zRoja, 654, 72, 458, 157);
+                if (Nodo_5.Zone_B_ALR) Perimetro.DrawLine(zRoja, 444, 167, 121, 318);
+
+                // ZONA AZUL
+                if (Nodo_1.Zone_A_ERR) Perimetro.DrawLine(zAzul, 119, 335, 189, 426);
+                if (Nodo_1.Zone_B_ERR) Perimetro.DrawLine(zAzul, 206, 451, 359, 661);
+
+                if (Nodo_2.Zone_A_ERR) Perimetro.DrawLine(zAzul, 385, 679, 616, 582);
+                if (Nodo_2.Zone_B_ERR) Perimetro.DrawLine(zAzul, 650, 563, 855, 473);
+
+                if (Nodo_3.Zone_A_ERR) Perimetro.DrawLine(zAzul, 881, 460, 1012, 374);
+                if (Nodo_3.Zone_B_ERR) Perimetro.DrawLine(zAzul, 1017, 364, 932, 128);
+
+                if (Nodo_4.Zone_A_ERR) Perimetro.DrawLine(zAzul, 924, 116, 827, 4);
+                if (Nodo_4.Zone_B_ERR) Perimetro.DrawLine(zAzul, 817, 14, 677, 62);
+
+                if (Nodo_5.Zone_A_ERR) Perimetro.DrawLine(zAzul, 654, 72, 458, 157);
+                if (Nodo_5.Zone_B_ERR) Perimetro.DrawLine(zAzul, 444, 167, 121, 318);
+
+                //Nodo1
+                if (Nodo_1.Zone_A_ACK) Perimetro.DrawLine(zAmarilla, 119, 335, 189, 426);
+                if (Nodo_1.Zone_B_ACK) Perimetro.DrawLine(zAmarilla, 206, 451, 359, 661);
+
+                //Nodo2
+                if (Nodo_2.Zone_A_ACK) Perimetro.DrawLine(zAmarilla, 385, 679, 616, 582);
+                if (Nodo_2.Zone_B_ACK) Perimetro.DrawLine(zAmarilla, 650, 563, 855, 473);
+
+                //Nodo3
+                if (Nodo_3.Zone_A_ACK) Perimetro.DrawLine(zAmarilla, 881, 460, 1012, 374);
+                if (Nodo_3.Zone_B_ACK) Perimetro.DrawLine(zAmarilla, 1017, 364, 932, 128);
+
+                //Nodo4
+                if (Nodo_4.Zone_A_ACK) Perimetro.DrawLine(zAmarilla, 924, 116, 827, 4);
+                if (Nodo_4.Zone_B_ACK) Perimetro.DrawLine(zAmarilla, 817, 14, 677, 62);
+
+                //Nodo5
+                if (Nodo_5.Zone_A_ACK) Perimetro.DrawLine(zAmarilla, 654, 72, 458, 157);
+                if (Nodo_5.Zone_B_ACK) Perimetro.DrawLine(zAmarilla, 444, 167, 121, 318);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+
+
         }
-        private void btnNodo_1_Click(object sender, EventArgs e)
+        private void btnConfig_Zones_Click(object sender, EventArgs e)
         {
-            // Initializes the variables to pass to the MessageBox.Show method.
-            string message = "ZONA ACTIVADA";
-            string caption = "Reconocer Zonas";
-            MessageBoxButtons buttons = MessageBoxButtons.OK;
-            DialogResult result;
-
-            // Displays the MessageBox.
-            result = MessageBox.Show(message, caption, buttons);
-            if (result == System.Windows.Forms.DialogResult.OK)
-            {
-                sound_Alarma.Stop();
-                if (AL_N1_ZA)
-                {
-                    ACK_N1_ZA = true;
-                    sound_Alarma_Status = false;
-                }
-                if (AL_N1_ZB)
-                {
-                    sound_Alarma_Status = false;
-                    ACK_N1_ZB = true;
-                }
-            }
-            ReconocimientoDeZonas();
-        }
-        private void btnNodo_2_Click(object sender, EventArgs e)
-        {
-            // Initializes the variables to pass to the MessageBox.Show method.
-            string message = "ZONA ACTIVADA";
-            string caption = "Reconocer Zonas";
-            MessageBoxButtons buttons = MessageBoxButtons.OK;
-            DialogResult result;
-
-            // Displays the MessageBox.
-            result = MessageBox.Show(message, caption, buttons);
-            if (result == System.Windows.Forms.DialogResult.OK)
-            {
-                sound_Alarma.Stop();
-                if (AL_N2_ZA)
-                {
-                    ACK_N2_ZA = true;
-                    sound_Alarma_Status = false;
-                }
-                if (AL_N2_ZB)
-                {
-                    sound_Alarma_Status = false;
-                    ACK_N2_ZB = true;
-                }
-            }
-            ReconocimientoDeZonas();
-        }
-        private void ReconocimientoDeZonas()
-        {
-            if (ACK_N1_ZA) Perimetro.DrawLine(zAmarilla, 119, 335, 189, 426);
-            if (ACK_N1_ZB) Perimetro.DrawLine(zAmarilla, 206, 451, 359, 661);
-
-
-            if (ACK_N2_ZA) Perimetro.DrawLine(zAmarilla, 385, 679, 616, 582);
-            if (ACK_N2_ZB) Perimetro.DrawLine(zAmarilla, 650, 563, 855, 473);
-
-
-            if (ACK_N3_ZA) Perimetro.DrawLine(zAmarilla, 881, 460, 1012, 374);
-            if (ACK_N3_ZB) Perimetro.DrawLine(zAmarilla, 1017, 364, 932, 128);
-
-
-            if (ACK_N4_ZA) Perimetro.DrawLine(zAmarilla, 924, 116, 827, 4);
-            if (ACK_N4_ZB) Perimetro.DrawLine(zAmarilla, 817, 14, 677, 62);
-
-
-            if (ACK_N5_ZA) Perimetro.DrawLine(zAmarilla, 654, 72, 458, 157);
-            if (ACK_N5_ZB) Perimetro.DrawLine(zAmarilla, 444, 167, 121, 318);
 
 
         }
-
         private void tmrHora_Tick(object sender, EventArgs e)
         {
             lblHora.Text = DateTime.Now.ToLongTimeString();

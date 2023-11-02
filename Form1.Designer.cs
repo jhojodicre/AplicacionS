@@ -34,7 +34,7 @@
             this.cmbSerial_COM = new System.Windows.Forms.ComboBox();
             this.btnSerial_Conectar = new System.Windows.Forms.Button();
             this.txtSerial_BufferTX = new System.Windows.Forms.TextBox();
-            this.btnNodo1 = new System.Windows.Forms.Button();
+            this.btnNodo1_RST = new System.Windows.Forms.Button();
             this.btnSerial_Enviar = new System.Windows.Forms.Button();
             this.panelSuperior = new System.Windows.Forms.Panel();
             this.lblForm1 = new System.Windows.Forms.Label();
@@ -42,20 +42,20 @@
             this.panelIzquierdo = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnNodo5 = new System.Windows.Forms.Button();
+            this.btnNodo5_RST = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnNodo4 = new System.Windows.Forms.Button();
+            this.btnNodo4_RST = new System.Windows.Forms.Button();
             this.txBSerial = new System.Windows.Forms.TextBox();
             this.lblSerial_Status = new System.Windows.Forms.Label();
             this.lblNodo2_ZA = new System.Windows.Forms.Label();
             this.lblNodo2_ZB = new System.Windows.Forms.Label();
-            this.btnNodo2 = new System.Windows.Forms.Button();
+            this.btnNodo2_RST = new System.Windows.Forms.Button();
             this.lblNodo1_ZA = new System.Windows.Forms.Label();
             this.lblNodo1_ZB = new System.Windows.Forms.Label();
             this.lblNodo3_ZA = new System.Windows.Forms.Label();
             this.lblNodo3_ZB = new System.Windows.Forms.Label();
-            this.btnNodo3 = new System.Windows.Forms.Button();
+            this.btnNodo3_RST = new System.Windows.Forms.Button();
             this.labelprueba = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblHora = new System.Windows.Forms.Label();
@@ -74,11 +74,11 @@
             this.lblZ3 = new System.Windows.Forms.Label();
             this.lblZ2 = new System.Windows.Forms.Label();
             this.lblZ1 = new System.Windows.Forms.Label();
-            this.btnNodo_4 = new System.Windows.Forms.Button();
-            this.btnNodo_5 = new System.Windows.Forms.Button();
-            this.btnNodo_3 = new System.Windows.Forms.Button();
-            this.btnNodo_2 = new System.Windows.Forms.Button();
-            this.btnNodo_1 = new System.Windows.Forms.Button();
+            this.btnNodo4_ACK = new System.Windows.Forms.Button();
+            this.btnNodo5_ACK = new System.Windows.Forms.Button();
+            this.btnNodo3_ACK = new System.Windows.Forms.Button();
+            this.btnNodo2_ACK = new System.Windows.Forms.Button();
+            this.btnNodo1_ACK = new System.Windows.Forms.Button();
             this.pbxPerimetro = new System.Windows.Forms.PictureBox();
             this.tmrHora = new System.Windows.Forms.Timer(this.components);
             this.panelSuperior.SuspendLayout();
@@ -135,17 +135,17 @@
             this.txtSerial_BufferTX.TabIndex = 7;
             this.txtSerial_BufferTX.TextChanged += new System.EventHandler(this.txtSerial_BufferTX_TextChanged);
             // 
-            // btnNodo1
+            // btnNodo1_RST
             // 
-            this.btnNodo1.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnNodo1.Location = new System.Drawing.Point(32, 26);
-            this.btnNodo1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.btnNodo1.Name = "btnNodo1";
-            this.btnNodo1.Size = new System.Drawing.Size(55, 31);
-            this.btnNodo1.TabIndex = 8;
-            this.btnNodo1.Text = "Nodo 1";
-            this.btnNodo1.UseVisualStyleBackColor = true;
-            this.btnNodo1.Click += new System.EventHandler(this.btnNodo1_Click);
+            this.btnNodo1_RST.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnNodo1_RST.Location = new System.Drawing.Point(32, 26);
+            this.btnNodo1_RST.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.btnNodo1_RST.Name = "btnNodo1_RST";
+            this.btnNodo1_RST.Size = new System.Drawing.Size(55, 31);
+            this.btnNodo1_RST.TabIndex = 8;
+            this.btnNodo1_RST.Text = "Nodo 1";
+            this.btnNodo1_RST.UseVisualStyleBackColor = true;
+            this.btnNodo1_RST.Click += new System.EventHandler(this.btnNodo1_RST_Click);
             // 
             // btnSerial_Enviar
             // 
@@ -203,10 +203,10 @@
             this.panelIzquierdo.BackColor = System.Drawing.Color.DimGray;
             this.panelIzquierdo.Controls.Add(this.label4);
             this.panelIzquierdo.Controls.Add(this.label5);
-            this.panelIzquierdo.Controls.Add(this.btnNodo5);
+            this.panelIzquierdo.Controls.Add(this.btnNodo5_RST);
             this.panelIzquierdo.Controls.Add(this.label2);
             this.panelIzquierdo.Controls.Add(this.label3);
-            this.panelIzquierdo.Controls.Add(this.btnNodo4);
+            this.panelIzquierdo.Controls.Add(this.btnNodo4_RST);
             this.panelIzquierdo.Controls.Add(this.txtSerial_BufferTX);
             this.panelIzquierdo.Controls.Add(this.btnSerial_Consola);
             this.panelIzquierdo.Controls.Add(this.btnSerial_Enviar);
@@ -214,13 +214,13 @@
             this.panelIzquierdo.Controls.Add(this.lblSerial_Status);
             this.panelIzquierdo.Controls.Add(this.lblNodo2_ZA);
             this.panelIzquierdo.Controls.Add(this.lblNodo2_ZB);
-            this.panelIzquierdo.Controls.Add(this.btnNodo2);
+            this.panelIzquierdo.Controls.Add(this.btnNodo2_RST);
             this.panelIzquierdo.Controls.Add(this.lblNodo1_ZA);
             this.panelIzquierdo.Controls.Add(this.lblNodo1_ZB);
             this.panelIzquierdo.Controls.Add(this.lblNodo3_ZA);
             this.panelIzquierdo.Controls.Add(this.lblNodo3_ZB);
-            this.panelIzquierdo.Controls.Add(this.btnNodo3);
-            this.panelIzquierdo.Controls.Add(this.btnNodo1);
+            this.panelIzquierdo.Controls.Add(this.btnNodo3_RST);
+            this.panelIzquierdo.Controls.Add(this.btnNodo1_RST);
             this.panelIzquierdo.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelIzquierdo.Location = new System.Drawing.Point(0, 64);
             this.panelIzquierdo.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
@@ -248,15 +248,15 @@
             this.label5.TabIndex = 23;
             this.label5.Text = "ZB";
             // 
-            // btnNodo5
+            // btnNodo5_RST
             // 
-            this.btnNodo5.Location = new System.Drawing.Point(34, 169);
-            this.btnNodo5.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.btnNodo5.Name = "btnNodo5";
-            this.btnNodo5.Size = new System.Drawing.Size(55, 31);
-            this.btnNodo5.TabIndex = 22;
-            this.btnNodo5.Text = "Nodo 5";
-            this.btnNodo5.UseVisualStyleBackColor = true;
+            this.btnNodo5_RST.Location = new System.Drawing.Point(34, 169);
+            this.btnNodo5_RST.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.btnNodo5_RST.Name = "btnNodo5_RST";
+            this.btnNodo5_RST.Size = new System.Drawing.Size(55, 31);
+            this.btnNodo5_RST.TabIndex = 22;
+            this.btnNodo5_RST.Text = "Nodo 5";
+            this.btnNodo5_RST.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -278,15 +278,15 @@
             this.label3.TabIndex = 20;
             this.label3.Text = "ZB";
             // 
-            // btnNodo4
+            // btnNodo4_RST
             // 
-            this.btnNodo4.Location = new System.Drawing.Point(34, 134);
-            this.btnNodo4.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.btnNodo4.Name = "btnNodo4";
-            this.btnNodo4.Size = new System.Drawing.Size(55, 31);
-            this.btnNodo4.TabIndex = 19;
-            this.btnNodo4.Text = "Nodo 4";
-            this.btnNodo4.UseVisualStyleBackColor = true;
+            this.btnNodo4_RST.Location = new System.Drawing.Point(34, 134);
+            this.btnNodo4_RST.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.btnNodo4_RST.Name = "btnNodo4_RST";
+            this.btnNodo4_RST.Size = new System.Drawing.Size(55, 31);
+            this.btnNodo4_RST.TabIndex = 19;
+            this.btnNodo4_RST.Text = "Nodo 4";
+            this.btnNodo4_RST.UseVisualStyleBackColor = true;
             // 
             // txBSerial
             // 
@@ -333,16 +333,16 @@
             this.lblNodo2_ZB.TabIndex = 16;
             this.lblNodo2_ZB.Text = "ZB";
             // 
-            // btnNodo2
+            // btnNodo2_RST
             // 
-            this.btnNodo2.Location = new System.Drawing.Point(34, 63);
-            this.btnNodo2.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.btnNodo2.Name = "btnNodo2";
-            this.btnNodo2.Size = new System.Drawing.Size(55, 31);
-            this.btnNodo2.TabIndex = 15;
-            this.btnNodo2.Text = "Nodo 2";
-            this.btnNodo2.UseVisualStyleBackColor = true;
-            this.btnNodo2.Click += new System.EventHandler(this.btnNodo2_Click);
+            this.btnNodo2_RST.Location = new System.Drawing.Point(34, 63);
+            this.btnNodo2_RST.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.btnNodo2_RST.Name = "btnNodo2_RST";
+            this.btnNodo2_RST.Size = new System.Drawing.Size(55, 31);
+            this.btnNodo2_RST.TabIndex = 15;
+            this.btnNodo2_RST.Text = "Nodo 2";
+            this.btnNodo2_RST.UseVisualStyleBackColor = true;
+            this.btnNodo2_RST.Click += new System.EventHandler(this.btnNodo2_RST_Click);
             // 
             // lblNodo1_ZA
             // 
@@ -384,16 +384,16 @@
             this.lblNodo3_ZB.TabIndex = 11;
             this.lblNodo3_ZB.Text = "ZB";
             // 
-            // btnNodo3
+            // btnNodo3_RST
             // 
-            this.btnNodo3.Location = new System.Drawing.Point(34, 99);
-            this.btnNodo3.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.btnNodo3.Name = "btnNodo3";
-            this.btnNodo3.Size = new System.Drawing.Size(55, 31);
-            this.btnNodo3.TabIndex = 10;
-            this.btnNodo3.Text = "Nodo 3";
-            this.btnNodo3.UseVisualStyleBackColor = true;
-            this.btnNodo3.Click += new System.EventHandler(this.btnNodo3_Click);
+            this.btnNodo3_RST.Location = new System.Drawing.Point(34, 99);
+            this.btnNodo3_RST.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.btnNodo3_RST.Name = "btnNodo3_RST";
+            this.btnNodo3_RST.Size = new System.Drawing.Size(55, 31);
+            this.btnNodo3_RST.TabIndex = 10;
+            this.btnNodo3_RST.Text = "Nodo 3";
+            this.btnNodo3_RST.UseVisualStyleBackColor = true;
+            this.btnNodo3_RST.Click += new System.EventHandler(this.btnNodo3_RST_Click);
             // 
             // labelprueba
             // 
@@ -448,7 +448,7 @@
             this.btnNodos_Reset.TabIndex = 1;
             this.btnNodos_Reset.Text = "Reset";
             this.btnNodos_Reset.UseVisualStyleBackColor = true;
-            this.btnNodos_Reset.Click += new System.EventHandler(this.button1_Click);
+            this.btnNodos_Reset.Click += new System.EventHandler(this.btnNodos_RST_Click);
             // 
             // btnConfig_Zones
             // 
@@ -484,11 +484,11 @@
             this.panelCentral.Controls.Add(this.lblZ3);
             this.panelCentral.Controls.Add(this.lblZ2);
             this.panelCentral.Controls.Add(this.lblZ1);
-            this.panelCentral.Controls.Add(this.btnNodo_4);
-            this.panelCentral.Controls.Add(this.btnNodo_5);
-            this.panelCentral.Controls.Add(this.btnNodo_3);
-            this.panelCentral.Controls.Add(this.btnNodo_2);
-            this.panelCentral.Controls.Add(this.btnNodo_1);
+            this.panelCentral.Controls.Add(this.btnNodo4_ACK);
+            this.panelCentral.Controls.Add(this.btnNodo5_ACK);
+            this.panelCentral.Controls.Add(this.btnNodo3_ACK);
+            this.panelCentral.Controls.Add(this.btnNodo2_ACK);
+            this.panelCentral.Controls.Add(this.btnNodo1_ACK);
             this.panelCentral.Controls.Add(this.pbxPerimetro);
             this.panelCentral.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelCentral.Font = new System.Drawing.Font("Yu Gothic UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -599,52 +599,53 @@
             this.lblZ1.TabIndex = 6;
             this.lblZ1.Text = "Z1";
             // 
-            // btnNodo_4
+            // btnNodo4_ACK
             // 
-            this.btnNodo_4.Location = new System.Drawing.Point(792, 5);
-            this.btnNodo_4.Name = "btnNodo_4";
-            this.btnNodo_4.Size = new System.Drawing.Size(53, 35);
-            this.btnNodo_4.TabIndex = 5;
-            this.btnNodo_4.Text = "Nodo 4";
-            this.btnNodo_4.UseVisualStyleBackColor = true;
+            this.btnNodo4_ACK.Location = new System.Drawing.Point(792, 5);
+            this.btnNodo4_ACK.Name = "btnNodo4_ACK";
+            this.btnNodo4_ACK.Size = new System.Drawing.Size(53, 35);
+            this.btnNodo4_ACK.TabIndex = 5;
+            this.btnNodo4_ACK.Text = "Nodo 4";
+            this.btnNodo4_ACK.UseVisualStyleBackColor = true;
             // 
-            // btnNodo_5
+            // btnNodo5_ACK
             // 
-            this.btnNodo_5.Location = new System.Drawing.Point(430, 156);
-            this.btnNodo_5.Name = "btnNodo_5";
-            this.btnNodo_5.Size = new System.Drawing.Size(64, 41);
-            this.btnNodo_5.TabIndex = 4;
-            this.btnNodo_5.Text = "Nodo 5";
-            this.btnNodo_5.UseVisualStyleBackColor = true;
+            this.btnNodo5_ACK.Location = new System.Drawing.Point(430, 156);
+            this.btnNodo5_ACK.Name = "btnNodo5_ACK";
+            this.btnNodo5_ACK.Size = new System.Drawing.Size(64, 41);
+            this.btnNodo5_ACK.TabIndex = 4;
+            this.btnNodo5_ACK.Text = "Nodo 5";
+            this.btnNodo5_ACK.UseVisualStyleBackColor = true;
+            this.btnNodo5_ACK.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnNodoS_ACK_Click);
             // 
-            // btnNodo_3
+            // btnNodo3_ACK
             // 
-            this.btnNodo_3.Location = new System.Drawing.Point(989, 352);
-            this.btnNodo_3.Name = "btnNodo_3";
-            this.btnNodo_3.Size = new System.Drawing.Size(65, 32);
-            this.btnNodo_3.TabIndex = 3;
-            this.btnNodo_3.Text = "Nodo 3";
-            this.btnNodo_3.UseVisualStyleBackColor = true;
+            this.btnNodo3_ACK.Location = new System.Drawing.Point(989, 352);
+            this.btnNodo3_ACK.Name = "btnNodo3_ACK";
+            this.btnNodo3_ACK.Size = new System.Drawing.Size(65, 32);
+            this.btnNodo3_ACK.TabIndex = 3;
+            this.btnNodo3_ACK.Text = "Nodo 3";
+            this.btnNodo3_ACK.UseVisualStyleBackColor = true;
             // 
-            // btnNodo_2
+            // btnNodo2_ACK
             // 
-            this.btnNodo_2.Location = new System.Drawing.Point(607, 568);
-            this.btnNodo_2.Name = "btnNodo_2";
-            this.btnNodo_2.Size = new System.Drawing.Size(65, 39);
-            this.btnNodo_2.TabIndex = 2;
-            this.btnNodo_2.Text = "Nodo 2";
-            this.btnNodo_2.UseVisualStyleBackColor = true;
-            this.btnNodo_2.Click += new System.EventHandler(this.btnNodo_2_Click);
+            this.btnNodo2_ACK.Location = new System.Drawing.Point(607, 568);
+            this.btnNodo2_ACK.Name = "btnNodo2_ACK";
+            this.btnNodo2_ACK.Size = new System.Drawing.Size(65, 39);
+            this.btnNodo2_ACK.TabIndex = 2;
+            this.btnNodo2_ACK.Text = "Nodo 2";
+            this.btnNodo2_ACK.UseVisualStyleBackColor = true;
+            this.btnNodo2_ACK.Click += new System.EventHandler(this.btnNodoS_ACK_Click);
             // 
-            // btnNodo_1
+            // btnNodo1_ACK
             // 
-            this.btnNodo_1.Location = new System.Drawing.Point(174, 442);
-            this.btnNodo_1.Name = "btnNodo_1";
-            this.btnNodo_1.Size = new System.Drawing.Size(67, 37);
-            this.btnNodo_1.TabIndex = 1;
-            this.btnNodo_1.Text = "Nodo 1";
-            this.btnNodo_1.UseVisualStyleBackColor = true;
-            this.btnNodo_1.Click += new System.EventHandler(this.btnNodo_1_Click);
+            this.btnNodo1_ACK.Location = new System.Drawing.Point(174, 442);
+            this.btnNodo1_ACK.Name = "btnNodo1_ACK";
+            this.btnNodo1_ACK.Size = new System.Drawing.Size(67, 37);
+            this.btnNodo1_ACK.TabIndex = 1;
+            this.btnNodo1_ACK.Text = "Nodo 1";
+            this.btnNodo1_ACK.UseVisualStyleBackColor = true;
+            this.btnNodo1_ACK.Click += new System.EventHandler(this.btnNodoS_ACK_Click);
             // 
             // pbxPerimetro
             // 
@@ -701,7 +702,7 @@
         private System.Windows.Forms.ComboBox cmbSerial_COM;
         private System.Windows.Forms.Button btnSerial_Conectar;
         private System.Windows.Forms.TextBox txtSerial_BufferTX;
-        private System.Windows.Forms.Button btnNodo1;
+        private System.Windows.Forms.Button btnNodo1_RST;
         private System.Windows.Forms.Button btnSerial_Enviar;
         private System.Windows.Forms.Panel panelSuperior;
         private System.Windows.Forms.Panel panelIzquierdo;
@@ -709,12 +710,12 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panelCentral;
         private System.Windows.Forms.Label lblSerial_Status;
-        private System.Windows.Forms.Button btnNodo3;
+        private System.Windows.Forms.Button btnNodo3_RST;
         private System.Windows.Forms.Label lblNodo3_ZB;
         private System.Windows.Forms.Label lblNodo3_ZA;
         private System.Windows.Forms.Label lblNodo2_ZA;
         private System.Windows.Forms.Label lblNodo2_ZB;
-        private System.Windows.Forms.Button btnNodo2;
+        private System.Windows.Forms.Button btnNodo2_RST;
         private System.Windows.Forms.Label lblNodo1_ZA;
         private System.Windows.Forms.Label lblNodo1_ZB;
         private System.Windows.Forms.TextBox txBSerial;
@@ -724,16 +725,16 @@
         private System.Windows.Forms.Button btnConfig_Zones;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnNodo5;
+        private System.Windows.Forms.Button btnNodo5_RST;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnNodo4;
+        private System.Windows.Forms.Button btnNodo4_RST;
         private System.Windows.Forms.Button btnNodos_Reset;
-        private System.Windows.Forms.Button btnNodo_1;
-        private System.Windows.Forms.Button btnNodo_2;
-        private System.Windows.Forms.Button btnNodo_3;
-        private System.Windows.Forms.Button btnNodo_5;
-        private System.Windows.Forms.Button btnNodo_4;
+        private System.Windows.Forms.Button btnNodo1_ACK;
+        private System.Windows.Forms.Button btnNodo2_ACK;
+        private System.Windows.Forms.Button btnNodo3_ACK;
+        private System.Windows.Forms.Button btnNodo5_ACK;
+        private System.Windows.Forms.Button btnNodo4_ACK;
         private System.Windows.Forms.Label lblZ1;
         private System.Windows.Forms.Label lblz10;
         private System.Windows.Forms.Label lblZ9;
