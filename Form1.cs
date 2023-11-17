@@ -162,8 +162,7 @@ namespace AplicacionS
         {
             try
             {
-                if (SerialESP.IsOpen)
-                    SerialESP.Close();
+                SerialESP.Close();
                 SerialESPconect = false;
             }
             catch (Exception ex)

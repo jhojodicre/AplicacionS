@@ -37,6 +37,8 @@
             this.btnNodo1_RST = new System.Windows.Forms.Button();
             this.btnSerial_Enviar = new System.Windows.Forms.Button();
             this.panelSuperior = new System.Windows.Forms.Panel();
+            this.lblHora = new System.Windows.Forms.Label();
+            this.lblFecha = new System.Windows.Forms.Label();
             this.lblForm1 = new System.Windows.Forms.Label();
             this.btnSerial_Consola = new System.Windows.Forms.Button();
             this.panelIzquierdo = new System.Windows.Forms.Panel();
@@ -58,8 +60,6 @@
             this.btnNodo3_RST = new System.Windows.Forms.Button();
             this.labelprueba = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.lblHora = new System.Windows.Forms.Label();
-            this.lblFecha = new System.Windows.Forms.Label();
             this.btnNodos_Reset = new System.Windows.Forms.Button();
             this.btnConfig_Zones = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -106,7 +106,7 @@
             this.cmbSerial_COM.Location = new System.Drawing.Point(955, 19);
             this.cmbSerial_COM.Margin = new System.Windows.Forms.Padding(2);
             this.cmbSerial_COM.Name = "cmbSerial_COM";
-            this.cmbSerial_COM.Size = new System.Drawing.Size(124, 21);
+            this.cmbSerial_COM.Size = new System.Drawing.Size(82, 21);
             this.cmbSerial_COM.TabIndex = 3;
             this.cmbSerial_COM.Text = "Seleccionar Puerto";
             this.cmbSerial_COM.DropDown += new System.EventHandler(this.cmbSerial_DropDown);
@@ -116,10 +116,10 @@
             // 
             this.btnSerial_Conectar.Font = new System.Drawing.Font("Yu Gothic UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSerial_Conectar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnSerial_Conectar.Location = new System.Drawing.Point(1109, 19);
+            this.btnSerial_Conectar.Location = new System.Drawing.Point(1041, 16);
             this.btnSerial_Conectar.Margin = new System.Windows.Forms.Padding(2);
             this.btnSerial_Conectar.Name = "btnSerial_Conectar";
-            this.btnSerial_Conectar.Size = new System.Drawing.Size(101, 24);
+            this.btnSerial_Conectar.Size = new System.Drawing.Size(83, 34);
             this.btnSerial_Conectar.TabIndex = 4;
             this.btnSerial_Conectar.Text = "Conectar";
             this.btnSerial_Conectar.UseVisualStyleBackColor = true;
@@ -128,7 +128,7 @@
             // txtSerial_BufferTX
             // 
             this.txtSerial_BufferTX.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txtSerial_BufferTX.Location = new System.Drawing.Point(0, 423);
+            this.txtSerial_BufferTX.Location = new System.Drawing.Point(0, 419);
             this.txtSerial_BufferTX.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.txtSerial_BufferTX.Name = "txtSerial_BufferTX";
             this.txtSerial_BufferTX.Size = new System.Drawing.Size(173, 22);
@@ -150,7 +150,7 @@
             // btnSerial_Enviar
             // 
             this.btnSerial_Enviar.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnSerial_Enviar.Location = new System.Drawing.Point(0, 469);
+            this.btnSerial_Enviar.Location = new System.Drawing.Point(0, 465);
             this.btnSerial_Enviar.Margin = new System.Windows.Forms.Padding(2);
             this.btnSerial_Enviar.Name = "btnSerial_Enviar";
             this.btnSerial_Enviar.Size = new System.Drawing.Size(173, 19);
@@ -162,6 +162,8 @@
             // panelSuperior
             // 
             this.panelSuperior.BackColor = System.Drawing.Color.DimGray;
+            this.panelSuperior.Controls.Add(this.lblHora);
+            this.panelSuperior.Controls.Add(this.lblFecha);
             this.panelSuperior.Controls.Add(this.lblForm1);
             this.panelSuperior.Controls.Add(this.btnSerial_Conectar);
             this.panelSuperior.Controls.Add(this.cmbSerial_COM);
@@ -169,8 +171,29 @@
             this.panelSuperior.Location = new System.Drawing.Point(0, 0);
             this.panelSuperior.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.panelSuperior.Name = "panelSuperior";
-            this.panelSuperior.Size = new System.Drawing.Size(1370, 64);
+            this.panelSuperior.Size = new System.Drawing.Size(1366, 64);
             this.panelSuperior.TabIndex = 10;
+            // 
+            // lblHora
+            // 
+            this.lblHora.AutoSize = true;
+            this.lblHora.Font = new System.Drawing.Font("XOUMEG S57", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHora.ForeColor = System.Drawing.Color.LightSkyBlue;
+            this.lblHora.Location = new System.Drawing.Point(1185, 18);
+            this.lblHora.Name = "lblHora";
+            this.lblHora.Size = new System.Drawing.Size(66, 33);
+            this.lblHora.TabIndex = 27;
+            this.lblHora.Text = "Hora";
+            // 
+            // lblFecha
+            // 
+            this.lblFecha.AutoSize = true;
+            this.lblFecha.ForeColor = System.Drawing.Color.LightCyan;
+            this.lblFecha.Location = new System.Drawing.Point(1216, 49);
+            this.lblFecha.Name = "lblFecha";
+            this.lblFecha.Size = new System.Drawing.Size(35, 13);
+            this.lblFecha.TabIndex = 26;
+            this.lblFecha.Text = "Fecha";
             // 
             // lblForm1
             // 
@@ -188,7 +211,7 @@
             // btnSerial_Consola
             // 
             this.btnSerial_Consola.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnSerial_Consola.Location = new System.Drawing.Point(0, 445);
+            this.btnSerial_Consola.Location = new System.Drawing.Point(0, 441);
             this.btnSerial_Consola.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.btnSerial_Consola.Name = "btnSerial_Consola";
             this.btnSerial_Consola.Size = new System.Drawing.Size(173, 24);
@@ -225,7 +248,7 @@
             this.panelIzquierdo.Location = new System.Drawing.Point(0, 64);
             this.panelIzquierdo.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.panelIzquierdo.Name = "panelIzquierdo";
-            this.panelIzquierdo.Size = new System.Drawing.Size(173, 685);
+            this.panelIzquierdo.Size = new System.Drawing.Size(173, 681);
             this.panelIzquierdo.TabIndex = 11;
             // 
             // label4
@@ -294,7 +317,7 @@
             this.txBSerial.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txBSerial.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.txBSerial.ForeColor = System.Drawing.Color.Maroon;
-            this.txBSerial.Location = new System.Drawing.Point(0, 488);
+            this.txBSerial.Location = new System.Drawing.Point(0, 484);
             this.txBSerial.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.txBSerial.Multiline = true;
             this.txBSerial.Name = "txBSerial";
@@ -407,38 +430,15 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.panel3.Controls.Add(this.lblHora);
-            this.panel3.Controls.Add(this.lblFecha);
             this.panel3.Controls.Add(this.labelprueba);
             this.panel3.Controls.Add(this.btnNodos_Reset);
             this.panel3.Controls.Add(this.btnConfig_Zones);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(173, 703);
+            this.panel3.Location = new System.Drawing.Point(173, 699);
             this.panel3.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1197, 46);
+            this.panel3.Size = new System.Drawing.Size(1193, 46);
             this.panel3.TabIndex = 12;
-            // 
-            // lblHora
-            // 
-            this.lblHora.AutoSize = true;
-            this.lblHora.Font = new System.Drawing.Font("XOUMEG S57", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHora.ForeColor = System.Drawing.Color.LightSkyBlue;
-            this.lblHora.Location = new System.Drawing.Point(1014, 0);
-            this.lblHora.Name = "lblHora";
-            this.lblHora.Size = new System.Drawing.Size(66, 33);
-            this.lblHora.TabIndex = 27;
-            this.lblHora.Text = "Hora";
-            // 
-            // lblFecha
-            // 
-            this.lblFecha.AutoSize = true;
-            this.lblFecha.ForeColor = System.Drawing.Color.LightCyan;
-            this.lblFecha.Location = new System.Drawing.Point(1029, 33);
-            this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(35, 13);
-            this.lblFecha.TabIndex = 26;
-            this.lblFecha.Text = "Fecha";
             // 
             // btnNodos_Reset
             // 
@@ -464,10 +464,10 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.DimGray;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(1338, 64);
+            this.panel4.Location = new System.Drawing.Point(1334, 64);
             this.panel4.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(32, 639);
+            this.panel4.Size = new System.Drawing.Size(32, 635);
             this.panel4.TabIndex = 13;
             // 
             // panelCentral
@@ -495,7 +495,7 @@
             this.panelCentral.Location = new System.Drawing.Point(173, 64);
             this.panelCentral.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.panelCentral.Name = "panelCentral";
-            this.panelCentral.Size = new System.Drawing.Size(1165, 639);
+            this.panelCentral.Size = new System.Drawing.Size(1161, 635);
             this.panelCentral.TabIndex = 14;
             // 
             // lblz10
@@ -669,7 +669,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
-            this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.ClientSize = new System.Drawing.Size(1366, 745);
             this.Controls.Add(this.panelCentral);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
@@ -677,6 +677,7 @@
             this.Controls.Add(this.panelSuperior);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Yu Gothic UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Seguridad Perimetral";

@@ -124,6 +124,9 @@
   <data name="Imagen_de_Seguridad" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Imagen de Seguridad.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Sistema_de_Segruidad_Perimetral" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sistema de Segruidad Perimetral.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="_0abde68a_e3a8_4d20_b346_ce66116c8a05" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>_0abde68a-e3a8-4d20-b346-ce66116c8a05.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

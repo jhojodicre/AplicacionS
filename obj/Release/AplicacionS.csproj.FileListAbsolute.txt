@@ -1,0 +1,14 @@
+C:\Users\ILATINA\source\repos\jhojodicre\AplicacionS\bin\Release\Seguridad Perimetral.exe.config
+C:\Users\ILATINA\source\repos\jhojodicre\AplicacionS\bin\Release\Seguridad Perimetral.exe.manifest
+C:\Users\ILATINA\source\repos\jhojodicre\AplicacionS\bin\Release\Seguridad Perimetral.application
+C:\Users\ILATINA\source\repos\jhojodicre\AplicacionS\bin\Release\Seguridad Perimetral.exe
+C:\Users\ILATINA\source\repos\jhojodicre\AplicacionS\bin\Release\Seguridad Perimetral.pdb
+C:\Users\ILATINA\source\repos\jhojodicre\AplicacionS\obj\Release\AplicacionS.csproj.AssemblyReference.cache
+C:\Users\ILATINA\source\repos\jhojodicre\AplicacionS\obj\Release\AplicacionS.Form1.resources
+C:\Users\ILATINA\source\repos\jhojodicre\AplicacionS\obj\Release\AplicacionS.Properties.Resources.resources
+C:\Users\ILATINA\source\repos\jhojodicre\AplicacionS\obj\Release\AplicacionS.csproj.GenerateResource.cache
+C:\Users\ILATINA\source\repos\jhojodicre\AplicacionS\obj\Release\AplicacionS.csproj.CoreCompileInputs.cache
+C:\Users\ILATINA\source\repos\jhojodicre\AplicacionS\obj\Release\Seguridad Perimetral.exe.manifest
+C:\Users\ILATINA\source\repos\jhojodicre\AplicacionS\obj\Release\Seguridad Perimetral.application
+C:\Users\ILATINA\source\repos\jhojodicre\AplicacionS\obj\Release\Seguridad Perimetral.exe
+C:\Users\ILATINA\source\repos\jhojodicre\AplicacionS\obj\Release\Seguridad Perimetral.pdb
