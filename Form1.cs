@@ -91,6 +91,11 @@ namespace AplicacionS
 
                 Perimetro_Actualizar_2();
                 Zonas_Actualizar();
+                if (sec == "BAT")
+                {
+
+                }
+
             }
 
         }
@@ -500,6 +505,7 @@ namespace AplicacionS
 
                 if (Nodo_1.Zone_A_OK) Perimetro.DrawLine(zVerde, 119, 335, 189, 426);
                 if (Nodo_1.Zone_B_OK) Perimetro.DrawLine(zVerde, 206, 451, 359, 661);
+                if (Nodo_1.Zone_A_BAT) lblZ1.BackColor= Color.Blue;
 
                 if (Nodo_2.Zone_A_OK) Perimetro.DrawLine(zVerde, 385, 679, 616, 582);
                 if (Nodo_2.Zone_B_OK) Perimetro.DrawLine(zVerde, 650, 563, 855, 473);
@@ -588,6 +594,5 @@ namespace AplicacionS
             //lblHora.Text = DateTime.Now.ToString("dddd:MMMM:yyyy");
             //lblHora.Text = DateTime.Now.ToString("dddd MMMM yyyy");
         }
-
     }
 }

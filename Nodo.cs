@@ -30,6 +30,9 @@ namespace AplicacionS
         public bool Zone_A_OK;
         public bool Zone_B_OK;
 
+        public bool Zone_A_BAT;
+        public bool Zone_B_BAT;
+
         public bool Zone_Check;
 
         Point Zone_A_Ini;
@@ -184,6 +187,18 @@ namespace AplicacionS
                     break;
 
             }
+            if (nodeStatus == "BAT")
+            {
+                if (nodeZone == "A")
+                {
+                    Zone_A_BAT = true;
+                }
+                if (nodeZone == "B")
+                {
+                    Zone_B_BAT = true;
+                }
+            }
+
             if (Zone_A_ALR && !Zone_A_ACK)
             {
                 SoundAlarm.Play();
