@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Seguridad Perimetral.exe" size="730072">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Seguridad Perimetral.exe" size="731096">
       <assemblyIdentity name="Seguridad Perimetral" version="1.0.0.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>/Bq6o7U4ji/bqFQLgglpZED9CQMclmh4pw3lzTJgUNQ=</dsig:DigestValue>
+        <dsig:DigestValue>5TR4XsGdDC1GzIVqMTZXbjNcMUHHakplZ8kSRwRBXCM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -64,6 +64,7 @@
             this.btnConfig_Zones = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panelCentral = new System.Windows.Forms.Panel();
+            this.lblNodo1_BAT = new System.Windows.Forms.Label();
             this.lblz10 = new System.Windows.Forms.Label();
             this.lblZ9 = new System.Windows.Forms.Label();
             this.lblZ8 = new System.Windows.Forms.Label();
@@ -81,6 +82,7 @@
             this.btnNodo1_ACK = new System.Windows.Forms.Button();
             this.pbxPerimetro = new System.Windows.Forms.PictureBox();
             this.tmrHora = new System.Windows.Forms.Timer(this.components);
+            this.lblNodo2_BAT = new System.Windows.Forms.Label();
             this.panelSuperior.SuspendLayout();
             this.panelIzquierdo.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -474,6 +476,8 @@
             // 
             this.panelCentral.AutoScroll = true;
             this.panelCentral.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.panelCentral.Controls.Add(this.lblNodo2_BAT);
+            this.panelCentral.Controls.Add(this.lblNodo1_BAT);
             this.panelCentral.Controls.Add(this.lblz10);
             this.panelCentral.Controls.Add(this.lblZ9);
             this.panelCentral.Controls.Add(this.lblZ8);
@@ -497,6 +501,16 @@
             this.panelCentral.Name = "panelCentral";
             this.panelCentral.Size = new System.Drawing.Size(1161, 635);
             this.panelCentral.TabIndex = 14;
+            // 
+            // lblNodo1_BAT
+            // 
+            this.lblNodo1_BAT.AutoSize = true;
+            this.lblNodo1_BAT.BackColor = System.Drawing.Color.Yellow;
+            this.lblNodo1_BAT.Location = new System.Drawing.Point(247, 428);
+            this.lblNodo1_BAT.Name = "lblNodo1_BAT";
+            this.lblNodo1_BAT.Size = new System.Drawing.Size(49, 13);
+            this.lblNodo1_BAT.TabIndex = 17;
+            this.lblNodo1_BAT.Text = "BATERIA";
             // 
             // lblz10
             // 
@@ -664,6 +678,16 @@
             this.tmrHora.Enabled = true;
             this.tmrHora.Tick += new System.EventHandler(this.tmrHora_Tick);
             // 
+            // lblNodo2_BAT
+            // 
+            this.lblNodo2_BAT.AutoSize = true;
+            this.lblNodo2_BAT.BackColor = System.Drawing.Color.Yellow;
+            this.lblNodo2_BAT.Location = new System.Drawing.Point(644, 542);
+            this.lblNodo2_BAT.Name = "lblNodo2_BAT";
+            this.lblNodo2_BAT.Size = new System.Drawing.Size(49, 13);
+            this.lblNodo2_BAT.TabIndex = 18;
+            this.lblNodo2_BAT.Text = "BATERIA";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -750,6 +774,8 @@
         private System.Windows.Forms.Label lblHora;
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.Timer tmrHora;
+        private System.Windows.Forms.Label lblNodo1_BAT;
+        private System.Windows.Forms.Label lblNodo2_BAT;
     }
 }
 

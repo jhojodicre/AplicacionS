@@ -195,7 +195,7 @@ namespace AplicacionS
                 }
                 if (nodeZone == "B")
                 {
-                    Zone_B_BAT = true;
+                    Zone_A_BAT = false;
                 }
             }
 

@@ -90,11 +90,12 @@ namespace AplicacionS
                 mensajeCompleto = false;
 
                 Perimetro_Actualizar_2();
-                Zonas_Actualizar();
+                
                 if (sec == "BAT")
                 {
-
+                    Perimetro_Actualizar_3();
                 }
+                Zonas_Actualizar();
 
             }
 
@@ -153,6 +154,8 @@ namespace AplicacionS
             btnNodo4_ACK.Visible = false;
             btnNodo5_ACK.Visible = false;
 
+            lblNodo1_BAT.Visible = false;
+            lblNodo2_BAT.Visible = false;
             // Condicion Inicial
             WindowState = FormWindowState.Maximized;
 
@@ -441,6 +444,31 @@ namespace AplicacionS
             }
 
         }
+        private void Perimetro_Actualizar_3()
+        {
+            switch (nodo)
+            {
+                case "1":
+                    Nodo_1.NodeUpdate("BAT", nodo, zona);
+                    break;
+                case "2":
+                    Nodo_2.NodeUpdate(estado, nodo, zona);
+                    break;
+                //case "3":
+                //    Nodo_3.NodeUpdate(estado, nodo, zona);
+                //    break;
+                //case "4":
+                //    Nodo_4.NodeUpdate(estado, nodo, zona);
+                //    break;
+                //case "5":
+                //    Nodo_5.NodeUpdate(estado, nodo, zona);
+                //    break;
+                default:
+
+                    break;
+            }
+
+        }
         private void EstablecerZonas()
         {
             PerimetroState = true;
@@ -505,10 +533,13 @@ namespace AplicacionS
 
                 if (Nodo_1.Zone_A_OK) Perimetro.DrawLine(zVerde, 119, 335, 189, 426);
                 if (Nodo_1.Zone_B_OK) Perimetro.DrawLine(zVerde, 206, 451, 359, 661);
-                if (Nodo_1.Zone_A_BAT) lblZ1.BackColor= Color.Blue;
+                if (Nodo_1.Zone_A_BAT) lblNodo1_BAT.Visible = true;
+                if (!Nodo_1.Zone_A_BAT) lblNodo1_BAT.Visible = false;
 
                 if (Nodo_2.Zone_A_OK) Perimetro.DrawLine(zVerde, 385, 679, 616, 582);
                 if (Nodo_2.Zone_B_OK) Perimetro.DrawLine(zVerde, 650, 563, 855, 473);
+                if (Nodo_2.Zone_A_BAT) lblNodo2_BAT.Visible = true;
+                if (!Nodo_2.Zone_A_BAT) lblNodo2_BAT.Visible = false;
 
                 if (Nodo_3.Zone_A_OK) Perimetro.DrawLine(zVerde, 881, 460, 1012, 374);
                 if (Nodo_3.Zone_B_OK) Perimetro.DrawLine(zVerde, 1017, 364, 932, 128);
