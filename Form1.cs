@@ -156,6 +156,7 @@ namespace AplicacionS
 
             lblNodo1_BAT.Visible = false;
             lblNodo2_BAT.Visible = false;
+
             // Condicion Inicial
             WindowState = FormWindowState.Maximized;
 
@@ -217,7 +218,7 @@ namespace AplicacionS
             SerialESP.DataBits = 8;
             SerialESP.StopBits = StopBits.One;
             SerialESP.WriteTimeout = 300;
-            SerialESP.ReadTimeout = 300;
+            SerialESP.ReadTimeout = 1000;
             SerialESP.Handshake = Handshake.None;
         }
         private void btnSerial_Conectar_Click(object sender, EventArgs e)

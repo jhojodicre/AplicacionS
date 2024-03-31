@@ -64,6 +64,7 @@
             this.btnConfig_Zones = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panelCentral = new System.Windows.Forms.Panel();
+            this.lblNodo2_BAT = new System.Windows.Forms.Label();
             this.lblNodo1_BAT = new System.Windows.Forms.Label();
             this.lblz10 = new System.Windows.Forms.Label();
             this.lblZ9 = new System.Windows.Forms.Label();
@@ -82,7 +83,6 @@
             this.btnNodo1_ACK = new System.Windows.Forms.Button();
             this.pbxPerimetro = new System.Windows.Forms.PictureBox();
             this.tmrHora = new System.Windows.Forms.Timer(this.components);
-            this.lblNodo2_BAT = new System.Windows.Forms.Label();
             this.panelSuperior.SuspendLayout();
             this.panelIzquierdo.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -100,6 +100,7 @@
             // 
             // SerialESP
             // 
+            this.SerialESP.PortName = "COM4";
             this.SerialESP.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.bufSerial_DataReceived);
             // 
             // cmbSerial_COM
@@ -502,6 +503,16 @@
             this.panelCentral.Size = new System.Drawing.Size(1161, 635);
             this.panelCentral.TabIndex = 14;
             // 
+            // lblNodo2_BAT
+            // 
+            this.lblNodo2_BAT.AutoSize = true;
+            this.lblNodo2_BAT.BackColor = System.Drawing.Color.Yellow;
+            this.lblNodo2_BAT.Location = new System.Drawing.Point(644, 542);
+            this.lblNodo2_BAT.Name = "lblNodo2_BAT";
+            this.lblNodo2_BAT.Size = new System.Drawing.Size(49, 13);
+            this.lblNodo2_BAT.TabIndex = 18;
+            this.lblNodo2_BAT.Text = "BATERIA";
+            // 
             // lblNodo1_BAT
             // 
             this.lblNodo1_BAT.AutoSize = true;
@@ -677,16 +688,6 @@
             // 
             this.tmrHora.Enabled = true;
             this.tmrHora.Tick += new System.EventHandler(this.tmrHora_Tick);
-            // 
-            // lblNodo2_BAT
-            // 
-            this.lblNodo2_BAT.AutoSize = true;
-            this.lblNodo2_BAT.BackColor = System.Drawing.Color.Yellow;
-            this.lblNodo2_BAT.Location = new System.Drawing.Point(644, 542);
-            this.lblNodo2_BAT.Name = "lblNodo2_BAT";
-            this.lblNodo2_BAT.Size = new System.Drawing.Size(49, 13);
-            this.lblNodo2_BAT.TabIndex = 18;
-            this.lblNodo2_BAT.Text = "BATERIA";
             // 
             // Form1
             // 
