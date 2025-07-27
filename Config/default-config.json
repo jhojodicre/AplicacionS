@@ -1,0 +1,15 @@
+{
+  "DefaultComPort": "",
+  "BaudRate": 115200,
+  "ConnectionTimeoutMinutes": 5,
+  "EnableAlarmSounds": true,
+  "AlarmVolume": 80,
+  "GraphicsUpdateInterval": 100,
+  "LogRetentionDays": 30,
+  "DebugMode": false,
+  "AutoAcknowledgeMinutes": 0,
+  "Sounds": {
+    "AlarmSound": "Resources\\sound_alarm_Zones.wav",
+    "WarningSound": "Resources\\sound_alarma_1.wav"
+  }
+}

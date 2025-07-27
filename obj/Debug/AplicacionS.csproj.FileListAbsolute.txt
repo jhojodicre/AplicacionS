@@ -52,3 +52,17 @@ C:\Users\ILATINA\source\repos\jhojodicre\AplicacionS\obj\Debug\Seguridad Perimet
 C:\Users\ILATINA\source\repos\jhojodicre\AplicacionS\obj\Debug\Seguridad Perimetral.application
 C:\Users\ILATINA\source\repos\jhojodicre\AplicacionS\obj\Debug\Seguridad Perimetral.exe
 C:\Users\ILATINA\source\repos\jhojodicre\AplicacionS\obj\Debug\Seguridad Perimetral.pdb
+C:\Users\Jhonny.Diaz\source\repos\jhojodicre\AplicacionS\bin\Debug\Seguridad Perimetral.exe.config
+C:\Users\Jhonny.Diaz\source\repos\jhojodicre\AplicacionS\bin\Debug\Seguridad Perimetral.exe.manifest
+C:\Users\Jhonny.Diaz\source\repos\jhojodicre\AplicacionS\bin\Debug\Seguridad Perimetral.application
+C:\Users\Jhonny.Diaz\source\repos\jhojodicre\AplicacionS\bin\Debug\Seguridad Perimetral.exe
+C:\Users\Jhonny.Diaz\source\repos\jhojodicre\AplicacionS\bin\Debug\Seguridad Perimetral.pdb
+C:\Users\Jhonny.Diaz\source\repos\jhojodicre\AplicacionS\obj\Debug\AplicacionS.csproj.AssemblyReference.cache
+C:\Users\Jhonny.Diaz\source\repos\jhojodicre\AplicacionS\obj\Debug\AplicacionS.Form1.resources
+C:\Users\Jhonny.Diaz\source\repos\jhojodicre\AplicacionS\obj\Debug\AplicacionS.Properties.Resources.resources
+C:\Users\Jhonny.Diaz\source\repos\jhojodicre\AplicacionS\obj\Debug\AplicacionS.csproj.GenerateResource.cache
+C:\Users\Jhonny.Diaz\source\repos\jhojodicre\AplicacionS\obj\Debug\AplicacionS.csproj.CoreCompileInputs.cache
+C:\Users\Jhonny.Diaz\source\repos\jhojodicre\AplicacionS\obj\Debug\Seguridad Perimetral.exe.manifest
+C:\Users\Jhonny.Diaz\source\repos\jhojodicre\AplicacionS\obj\Debug\Seguridad Perimetral.application
+C:\Users\Jhonny.Diaz\source\repos\jhojodicre\AplicacionS\obj\Debug\Seguridad Perimetral.exe
+C:\Users\Jhonny.Diaz\source\repos\jhojodicre\AplicacionS\obj\Debug\Seguridad Perimetral.pdb
