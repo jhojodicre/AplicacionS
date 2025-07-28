@@ -46,8 +46,16 @@ AplicacionS/
 ## Instalación
 1. Clonar el repositorio
 2. Abrir en Visual Studio 2019 o superior
-3. Compilar y ejecutar
-4. Configurar puerto serial en la interfaz
+3. Instalar dependencias: `Install-Package Newtonsoft.Json -Version 13.0.3`
+4. Compilar y ejecutar
+5. Configurar puerto serial en la interfaz
+
+## Setup en Nueva PC
+1. **Clonar repositorio:** `git clone https://github.com/jhojodicre/AplicacionS.git`
+2. **Leer documentación:** Revisar `DEVELOPMENT_GUIDE.md` y `COPILOT_CONTEXT.md`
+3. **Configurar Copilot:** Usar prompts de contexto en `COPILOT_CONTEXT.md`
+4. **Instalar dependencias:** NuGet packages necesarios
+5. **Configurar:** Puerto COM y rutas de archivos
 
 ## Uso
 1. Seleccionar puerto COM disponible
