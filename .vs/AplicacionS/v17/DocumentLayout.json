@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Jhonny.Diaz\\source\\repos\\jhojodicre\\AplicacionS\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C59C6D52-3D5B-43F6-A21D-BDB2BBC7B435}|AplicacionS.csproj|c:\\users\\jhonny.diaz\\source\\repos\\jhojodicre\\aplicacions\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C59C6D52-3D5B-43F6-A21D-BDB2BBC7B435}|AplicacionS.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jhonny.Diaz\\source\\repos\\jhojodicre\\AplicacionS\\Nodo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Nodo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C59C6D52-3D5B-43F6-A21D-BDB2BBC7B435}|AplicacionS.csproj|C:\\Users\\Jhonny.Diaz\\source\\repos\\jhojodicre\\AplicacionS\\Nodo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C59C6D52-3D5B-43F6-A21D-BDB2BBC7B435}|AplicacionS.csproj|solutionrelative:Nodo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jhonny.Diaz\\source\\repos\\jhojodicre\\AplicacionS\\Form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C59C6D52-3D5B-43F6-A21D-BDB2BBC7B435}|AplicacionS.csproj|C:\\Users\\Jhonny.Diaz\\source\\repos\\jhojodicre\\AplicacionS\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C59C6D52-3D5B-43F6-A21D-BDB2BBC7B435}|AplicacionS.csproj|solutionrelative:Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jhonny.Diaz\\source\\repos\\jhojodicre\\AplicacionS\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,28 +38,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\Jhonny.Diaz\\source\\repos\\jhojodicre\\AplicacionS\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
               "ToolTip": "C:\\Users\\Jhonny.Diaz\\source\\repos\\jhojodicre\\AplicacionS\\Form1.cs",
               "RelativeToolTip": "Form1.cs",
-              "ViewState": "AQIAAC0AAAAAAAAAAAAswKQBAAAIAAAA",
+              "ViewState": "AQIAAD4CAAAAAAAAAAAUwKQBAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-22T16:16:16.799Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Nodo.cs",
               "DocumentMoniker": "C:\\Users\\Jhonny.Diaz\\source\\repos\\jhojodicre\\AplicacionS\\Nodo.cs",
               "RelativeDocumentMoniker": "Nodo.cs",
               "ToolTip": "C:\\Users\\Jhonny.Diaz\\source\\repos\\jhojodicre\\AplicacionS\\Nodo.cs",
               "RelativeToolTip": "Nodo.cs",
-              "ViewState": "AQIAADkAAAAAAAAAAAAAAOIAAAAAAAAA",
+              "ViewState": "AQIAAG8AAAAAAAAAAAAAAOIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-16T00:00:27.329Z"
+              "WhenOpened": "2024-10-16T00:00:27.329Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
