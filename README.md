@@ -63,3 +63,7 @@ El sistema espera mensajes con formato: `SEC,ESTADO,NODO,ZONA`
 - ESTADO: BOK/NOK/ERR/FAL/ACK/BAT
 - NODO: 1-5
 - ZONA: A/B
+
+## Instalacion
+Abrir el power shell como administrador y ejecutar
+- Install-Package Newtonsoft.Json 
